@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import SassComponent from "./testComponents/SassComponent";
+import Clock from "./component/clock/Clock";
 
 function App() {
   return (
     <div className="App">
-      <SassComponent />
+      <Clock />
     </div>
   );
 }
