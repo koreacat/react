@@ -1,20 +1,20 @@
-import React, {useState, useEffect, useCallback, Component} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Clock.scss';
 import DateFormat from '../../common/DateFormat';
-import {clockProps} from './type';
+import { clockProps, clockList } from './type';
 
-const DigitalClock = ({date}: clockProps) => {
+const DigitalClock = ({ date }: clockProps) => {
     return (
         <div className={'digitalClock'}>
             <p>
-                <span>{DateFormat(date,'a/p hh:mm:ss')}</span>
-                <span>{DateFormat(date,'yyyy-MM-dd ES')}</span>
+                <span>{DateFormat(date, 'a/p hh:mm:ss')}</span>
+                <span>{DateFormat(date, 'yyyy-MM-dd ES')}</span>
             </p>
         </div>
     )
 };
 
-const AnalogClock = ({date}: clockProps) => {
+const AnalogClock = ({ date }: clockProps) => {
     const h_s = date.getHours() * 60 * 60;
     const m_s = date.getMinutes() * 60;
     const s = date.getSeconds();
@@ -25,7 +25,7 @@ const AnalogClock = ({date}: clockProps) => {
     const hoursStyle = {
         transform: `rotate(${hoursDeg}deg)`
     };
-    
+
     const minutesStyle = {
         transform: `rotate(${minutesDeg}deg)`
     };
@@ -44,71 +44,81 @@ const AnalogClock = ({date}: clockProps) => {
     );
 };
 
-const DigilogClocks = (({date, digilogClocks}: any) => {
-    console.log(digilogClocks);
+const DigilogClocks = (({ date, digilogClocks }: any) => {
+    const ns = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    const h1 = Math.floor(date.getHours() / 10);
+    const h2 = date.getHours() % 10;
+    const m1 = Math.floor(date.getMinutes() / 10);
+    const m2 = date.getMinutes() % 10;
+    const s1 = Math.floor(date.getSeconds() / 10);
+    const s2 = date.getSeconds() % 10;
 
     return (
         <div className={'digilogClocks'}>
             <table>
-
+                <tbody>
+                    {
+                     digilogClocks.map((digilogClock: any, index: number) => (
+                     <tr key={index}>
+                         {
+                             digilogClock.map((clock: string, index: number) => 
+                                <td key={index}>
+                                    <div className={
+                                        'digilogClock ' + 
+                                        clock.replace(/(h1|h2|m1|m2|s1|s2)/gi, ((__: any) => {
+                                            switch (__) {
+                                                case 'h1': return ns[h1];
+                                                case 'h2': return ns[h2];
+                                                case 'm1': return ns[m1];
+                                                case 'm2': return ns[m2];
+                                                case 's1': return ns[s1];
+                                                case 's2': return ns[s2];
+                                                default: return __;
+                                            }
+                                        }))
+                                        }>
+                                        <div className={'h'}></div>
+                                        <div className={'m'}></div>
+                                     </div>
+                                </td>
+                             )
+                         }
+                     </tr>))
+                    }
+                </tbody>
             </table>
         </div>
     )
 });
 
 const Clock = () => {
-    let arr = Array.from(Array(12), () => Array(24).fill(null));
-    for(let i=0; i<12; i++){
-        for(let j=0; j<24; j++){
-            if(i<3 || i>8 || j==0 || j==23 || (i==3 && (j==11 || j==12)) || (i==8 && (j==11 || j==12))){
-                arr[i][j] = '--';
-            }
-            else if((i==4 && j==11) || (i==6 && j==11)){
-                arr[i][j] = ':00'
-            }
-            else if((i==4 && j==12) || (i==6 && j==12)){
-                arr[i][j] = ':01'
-            }
-            else if((i==5 && j==11) || (i==7 && j==11)){
-                arr[i][j] = ':10'
-            }
-            else if((i==5 && j==12) || (i==7 && j==12)){
-                arr[i][j] = ':11'
-            }
-        }
-    }
-
-
     const [date, setDate] = useState(new Date());
     const [digilog, setDigilog] = useState(true);
-    const [digilogClocks, setDigilogClocks] = useState(arr);
-
-
-
+    const [digilogClocks, setDigilogClocks] = useState(clockList);
 
     useEffect(() => {
         const interval = setInterval(
             () => setDate(new Date()),
             1000
-          );
-          return () => {
+        );
+        return () => {
             clearInterval(interval);
-          }
+        }
     }, []);
 
     const clockClick = useCallback(() => {
         setDigilog(!digilog);
     }, [digilog]);
 
-    return(
+    return (
         <div className={'clock'} onClick={clockClick}>
             {!digilog ?
                 <>
-                    <AnalogClock date={date}/>
-                    <DigitalClock date={date}/>
+                    <AnalogClock date={date} />
+                    <DigitalClock date={date} />
                 </>
                 :
-                <DigilogClocks date={date} digilogClocks={digilogClocks}/>
+                <DigilogClocks date={date} digilogClocks={digilogClocks} />
             }
         </div>
     );
