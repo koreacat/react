@@ -35,7 +35,7 @@ export const clockList = (() => {
                 arr[i][j] = 'bb'
             }
             else {
-                arr[i][j] = hms + z + ' ' + a[x] + a[y++]
+                arr[i][j] = hms + z + ' ' + a[x] + a[y++];
                 if(y>4){
                     z++;
                     y=0;
@@ -50,6 +50,5 @@ export const clockList = (() => {
             x>5 && (x=0);
         }
     }
-    console.log(arr);
     return arr;
 });

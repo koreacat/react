@@ -33,7 +33,7 @@
             width: 3px;
             background-color: #000000;
             transform-origin: bottom center;
-            transition: all 1s;
+            transition: all 0.5s;
         }
         .minute {
             position: absolute;
@@ -43,7 +43,7 @@
             width: 2px;
             background-color: #000000;
             transform-origin: bottom center;
-            transition: all 1s;
+            transition: all 0.5s;
         }
         .second {
             position: absolute;
@@ -53,7 +53,7 @@
             width: 1px;
             background-color: #ffffff;
             transform-origin: bottom center;
-            transition: all 1s;
+            transition: all 0.5s;
         }
 
         .pin {
@@ -306,7 +306,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.zero.fb {
@@ -330,7 +330,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.zero.fe {
@@ -572,7 +572,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.one.fe {
@@ -790,7 +790,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.two.fb {
@@ -814,7 +814,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.two.fe {
@@ -1032,7 +1032,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.three.fb {
@@ -1056,7 +1056,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.three.fe {
@@ -1274,7 +1274,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.four.fb {
@@ -1298,7 +1298,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.four.fe {
@@ -1516,7 +1516,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.five.fb {
@@ -1540,7 +1540,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.five.fe {
@@ -1758,7 +1758,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.six.fb {
@@ -1782,7 +1782,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.six.fe {
@@ -2024,7 +2024,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.seven.fe {
@@ -2242,7 +2242,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.eight.fb {
@@ -2266,7 +2266,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.eight.fe {
@@ -2484,7 +2484,7 @@
                 transform: rotate(0deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.nine.fb {
@@ -2508,7 +2508,7 @@
                 transform: rotate(-90deg);
             }
             .m {
-                transform: rotate(90edg);
+                transform: rotate(90deg);
             }
         }
         .digilogClock.nine.fe {

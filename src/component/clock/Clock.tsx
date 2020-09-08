@@ -44,7 +44,7 @@ const AnalogClock = ({ date }: clockProps) => {
     );
 };
 
-const DigilogClocks = (({ date, digilogClocks }: any) => {
+const DigilogClocks = (({ date, digilogClockList }: any) => {
     const ns = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
     const h1 = Math.floor(date.getHours() / 10);
     const h2 = date.getHours() % 10;
@@ -58,10 +58,10 @@ const DigilogClocks = (({ date, digilogClocks }: any) => {
             <table>
                 <tbody>
                     {
-                     digilogClocks.map((digilogClock: any, index: number) => (
+                     digilogClockList.map((digilogClocks: any, index: number) => (
                      <tr key={index}>
                          {
-                             digilogClock.map((clock: string, index: number) => 
+                             digilogClocks.map((clock: string, index: number) =>
                                 <td key={index}>
                                     <div className={
                                         'digilogClock ' + 
@@ -94,7 +94,7 @@ const DigilogClocks = (({ date, digilogClocks }: any) => {
 const Clock = () => {
     const [date, setDate] = useState(new Date());
     const [digilog, setDigilog] = useState(true);
-    const [digilogClocks, setDigilogClocks] = useState(clockList);
+    const [digilogClockList, setDigilogClockList] = useState(clockList);
 
     useEffect(() => {
         const interval = setInterval(
@@ -118,7 +118,7 @@ const Clock = () => {
                     <DigitalClock date={date} />
                 </>
                 :
-                <DigilogClocks date={date} digilogClocks={digilogClocks} />
+                <DigilogClocks date={date} digilogClockList={digilogClockList} />
             }
         </div>
     );
