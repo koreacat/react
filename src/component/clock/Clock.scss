@@ -84,7 +84,7 @@
                 width: 1px;
                 background-color: #ffffff;
                 transform-origin: bottom center;
-                transition: all 1s;
+                transition: all 0.5s;
                 transform: rotate(-90deg);
             }
             .m {
@@ -95,7 +95,7 @@
                 width: 1px;
                 background-color: #ffffff;
                 transform-origin: bottom center;
-                transition: all 1s;
+                transition: all 0.5s;
                 transform: rotate(90deg);
             }
         }
