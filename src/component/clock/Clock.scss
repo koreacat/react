@@ -68,20 +68,21 @@
     }
 
     .digilogClocks {
+        background-color: #00000095;
         .digilogClock{
             position: relative;
             width: 8px;
             height: 8px;
-            border: 1px solid #ffffff20;
+            border: 0.5px solid #ffffff30;
             border-radius: 100%;
 
             .h {
                 position: absolute;
                 bottom: calc(50%);
                 left: calc(50%);
-                height: 3px;
+                height: 4px;
                 width: 1px;
-                background-color: #000000;
+                background-color: #ffffff;
                 transform-origin: bottom center;
                 transition: all 1s;
                 transform: rotate(-90deg);
@@ -90,9 +91,9 @@
                 position: absolute;
                 bottom: calc(50%);
                 left: calc(50%);
-                height: 3px;
+                height: 4px;
                 width: 1px;
-                background-color: #000000;
+                background-color: #ffffff;
                 transform-origin: bottom center;
                 transition: all 1s;
                 transform: rotate(90deg);
