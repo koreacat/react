@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-import Clock from "./component/clock/Clock";
+import AppMenu from './component/appMenu/AppMenu';
 
 function App() {
+  const [appState, setAppState] = useState(<></>);
+
   return (
     <div className="App">
-      <Clock />
+      {appState}
+      <AppMenu setAppState={setAppState}/>
     </div>
   );
 }
