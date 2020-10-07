@@ -43,7 +43,7 @@ const KoreanClock = (({date}: clockProps) => {
                         <td className={parseInt(DateFormat(date, 'mm')) >= 50 || parseInt(DateFormat(date, 'HH')) == 12 ? 'on' : ''}>오</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 10 ? 'on' : ''}>십</td>
                         <td className={parseInt(DateFormat(date, 'mm')) % 10 >= 5 ? 'on' : ''}>오</td>
-                        <td className={parseInt(DateFormat(date, 'mm')) > 5 ? 'on' : ''}>분</td>
+                        <td className={parseInt(DateFormat(date, 'mm')) >= 5 ? 'on' : ''}>분</td>
                     </tr>
                     </tbody>
                 </table>
