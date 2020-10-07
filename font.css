@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'NotoSerif-Black';
+    src: url('./font/NotoSerifKR-Black.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-Bold';
+    src: url('./font/NotoSerifKR-Bold.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-ExtraLight';
+    src: url('./font/NotoSerifKR-ExtraLight.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-Light';
+    src: url('./font/NotoSerifKR-Light.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-Medium';
+    src: url('./font/NotoSerifKR-Medium.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-Regular';
+    src: url('./font/NotoSerifKR-Regular.otf');
+}
+
+@font-face {
+    font-family: 'NotoSerif-SemiBold';
+    src: url('./font/NotoSerifKR-SemiBold.otf');
+}
