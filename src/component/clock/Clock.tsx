@@ -3,6 +3,53 @@ import './Clock.scss';
 import DateFormat from '../../common/DateFormat';
 import { clockProps, clockList } from './type';
 
+
+const KoreanClock = (() => {
+    return (
+      <div className={'koreanClock'}>
+          <table>
+              <tbody>
+                <tr>
+                    <td>낮</td>
+                    <td>다</td>
+                    <td>일</td>
+                    <td>세</td>
+                    <td>네</td>
+                </tr>
+                <tr>
+                    <td>여</td>
+                    <td>섯</td>
+                    <td>곱</td>
+                    <td>열</td>
+                    <td>한</td>
+                </tr>
+                <tr>
+                    <td>덟</td>
+                    <td>아</td>
+                    <td>홉</td>
+                    <td>두</td>
+                    <td>시</td>
+                </tr>
+                <tr>
+                    <td>밤</td>
+                    <td>정</td>
+                    <td>이</td>
+                    <td>삼</td>
+                    <td>십</td>
+                </tr>
+                <tr>
+                    <td>사</td>
+                    <td>오</td>
+                    <td>십</td>
+                    <td>오</td>
+                    <td>분</td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+    );
+});
+
 const DigitalClock = ({ date }: clockProps) => {
     return (
         <div className={'digitalClock'}>
