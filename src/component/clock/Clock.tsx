@@ -36,12 +36,12 @@ const KoreanClock = (({date}: clockProps) => {
                         <td className={parseInt(DateFormat(date, 'HH')) == 12 ? 'on' : ''}>정</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 20 && parseInt(DateFormat(date, 'mm')) < 30 ? 'on' : ''}>이</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 30 && parseInt(DateFormat(date, 'mm')) < 40 ? 'on' : ''}>삼</td>
-                        <td className={parseInt(DateFormat(date, 'mm')) >= 10 && parseInt(DateFormat(date, 'mm')) < 20 ? 'on' : ''}>십</td>
+                        <td className={parseInt(DateFormat(date, 'mm')) >= 10 && parseInt(DateFormat(date, 'mm')) < 40 ? 'on' : ''}>십</td>
                     </tr>
                     <tr>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 40 && parseInt(DateFormat(date, 'mm')) < 50 ? 'on' : ''}>사</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 50 || parseInt(DateFormat(date, 'HH')) == 12 ? 'on' : ''}>오</td>
-                        <td className={parseInt(DateFormat(date, 'mm')) >= 10 ? 'on' : ''}>십</td>
+                        <td className={parseInt(DateFormat(date, 'mm')) >= 40 ? 'on' : ''}>십</td>
                         <td className={parseInt(DateFormat(date, 'mm')) % 10 >= 5 ? 'on' : ''}>오</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 5 ? 'on' : ''}>분</td>
                     </tr>
