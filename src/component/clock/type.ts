@@ -11,11 +11,11 @@ export const clockList = (() => {
     let hms = 'h';
     for(let i=0; i<12; i++){
         for(let j=0; j<36; j++){
-            if(j==0){
+            if(j===0){
                 hms = 'h';
-            }else if(j==12) {
+            }else if(j===12) {
                 hms = 'm';
-            }else if(j==24){
+            }else if(j===24){
                 hms = 's';
             }
 

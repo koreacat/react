@@ -12,35 +12,35 @@ const KoreanClock = (({date}: clockProps) => {
                     <tbody>
                     <tr>
                         <td className={parseInt(DateFormat(date, 'HH')) >= 9 && parseInt(DateFormat(date, 'HH')) < 21 ? 'on' : ''}>낮</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 5 ? 'on' : ''}>다</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 7 ? 'on' : ''}>일</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 3 ? 'on' : ''}>세</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 4 ? 'on' : ''}>네</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 5 ? 'on' : ''}>다</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 7 ? 'on' : ''}>일</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 3 ? 'on' : ''}>세</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 4 ? 'on' : ''}>네</td>
                     </tr>
                     <tr>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 6 || parseInt(DateFormat(date, 'hh')) == 8 ? 'on' : ''}>여</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 5 || parseInt(DateFormat(date, 'hh')) == 6 ? 'on' : ''}>섯</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 7 ? 'on' : ''}>곱</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 6 || parseInt(DateFormat(date, 'hh')) === 8 ? 'on' : ''}>여</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 5 || parseInt(DateFormat(date, 'hh')) === 6 ? 'on' : ''}>섯</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 7 ? 'on' : ''}>곱</td>
                         <td className={parseInt(DateFormat(date, 'hh')) >= 10 ? 'on' : ''}>열</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 1 || parseInt(DateFormat(date, 'hh')) == 11 ? 'on' : ''}>한</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 1 || parseInt(DateFormat(date, 'hh')) === 11 ? 'on' : ''}>한</td>
                     </tr>
                     <tr>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 8 ? 'on' : ''}>덟</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 9 ? 'on' : ''}>아</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 9 ? 'on' : ''}>홉</td>
-                        <td className={parseInt(DateFormat(date, 'hh')) == 2 || parseInt(DateFormat(date, 'hh')) == 12 ? 'on' : ''}>두</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 8 ? 'on' : ''}>덟</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 9 ? 'on' : ''}>아</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 9 ? 'on' : ''}>홉</td>
+                        <td className={parseInt(DateFormat(date, 'hh')) === 2 || parseInt(DateFormat(date, 'hh')) === 12 ? 'on' : ''}>두</td>
                         <td className={'on'}>시</td>
                     </tr>
                     <tr>
                         <td className={parseInt(DateFormat(date, 'HH')) >= 21 || parseInt(DateFormat(date, 'HH')) < 9 ? 'on' : ''}>밤</td>
-                        <td className={parseInt(DateFormat(date, 'HH')) == 12 ? 'on' : ''}>정</td>
+                        <td className={parseInt(DateFormat(date, 'HH')) === 12 ? 'on' : ''}>정</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 20 && parseInt(DateFormat(date, 'mm')) < 30 ? 'on' : ''}>이</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 30 && parseInt(DateFormat(date, 'mm')) < 40 ? 'on' : ''}>삼</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 10 && parseInt(DateFormat(date, 'mm')) < 40 ? 'on' : ''}>십</td>
                     </tr>
                     <tr>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 40 && parseInt(DateFormat(date, 'mm')) < 50 ? 'on' : ''}>사</td>
-                        <td className={parseInt(DateFormat(date, 'mm')) >= 50 || parseInt(DateFormat(date, 'HH')) == 12 ? 'on' : ''}>오</td>
+                        <td className={parseInt(DateFormat(date, 'mm')) >= 50 || parseInt(DateFormat(date, 'HH')) === 12 ? 'on' : ''}>오</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 40 ? 'on' : ''}>십</td>
                         <td className={parseInt(DateFormat(date, 'mm')) % 10 >= 5 ? 'on' : ''}>오</td>
                         <td className={parseInt(DateFormat(date, 'mm')) >= 5 ? 'on' : ''}>분</td>
