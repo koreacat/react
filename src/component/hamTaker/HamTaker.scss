@@ -26,7 +26,7 @@
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: cover;
-                transform: perspective(0) rotateX(-40deg) scale(1.5) translateY(-15px);
+                transform: scale(1.3) translateY(-20px);
             }
 
             &:focus {
@@ -43,7 +43,7 @@
 
         .map {
             position: relative;
-            transform: perspective(400px) rotateX(25deg);
+            transform: perspective(400px) rotateX(15deg);
 
             p {
                 display: inline-block;
@@ -67,6 +67,29 @@
 
             .goal {
                 background: green;
+            }
+
+            .spikeTrapOn {
+                background: darkgrey;
+            }
+
+            .spikeTrapOff {
+                background: darkslategray;
+            }
+
+            .skeleton {
+                background: #700c29;
+            }
+            .skeleton::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-image: url('./img/해골.gif');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+                transform: scale(1.3) translateY(-20px);
             }
         }
 
@@ -126,13 +149,38 @@
             width: 100%;
             height: 100%;
             top: 0;
-            background: #000000;
-            transition: all 0.5s;
             
-            >h2 {
-                color: #ffffff;
-                font-size: 10vw;
+            .hamTakerFailUp {
+                position: absolute;
+                width: 100%;
+                height: 0px;
+                background: #000000;
+                top: 0;
+                transition: all 0.5s;
             }
+
+            .hamTakerFailDown {
+                position: absolute;
+                width: 100%;
+                height: 0px;
+                background: #000000;
+                bottom: 0;
+                transition: all 0.5s;
+            }
+
+            .hamTakerFailCenter {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                opacity: 0;
+                transition: all 0.5s;
+                background-image: url("./img/hamTaker.jpg");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+            
         }
     }
     .characterWrap {

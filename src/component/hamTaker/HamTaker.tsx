@@ -12,6 +12,9 @@ enum MapData {
     rock,
     thorn,
     goal,
+    spikeTrapOn,
+    spikeTrapOff,
+    skeleton,
 }
 
 const HamTaker = () => {
@@ -19,64 +22,91 @@ const HamTaker = () => {
     let [clear, setClear] = useState(false);
     let [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
     let [life, setLife] = useState(10);
-    let [failOpacity, setFailOpacity] = useState(0);
+    let [failHeight, setFailHeight] = useState('0');
+    let [failOpacity, setFailOpacity] = useState('0');
+    let [controllable, setControllable] = useState(true);
     let [data, setData] = useState([
         [1],
         [1, 1, 1, 1, 1, 1],
         [0, 1, 0, 3, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 2, 1],
+        [1, 1, 1, 1, 6, 1],
+        [1, 2, 1, 7, 7, 7],
         [1, 0, 1, 1, 1, 4]
     ]);
 
     const keyDown = (e: any) => {
-        clear && reset();
-
+        if(!controllable) return;
         switch (e.key) {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
                 setCoordinates({ x: coordinates.x, y: coordinates.y - 1 });
-                setLife(life - 1);
                 break;
             case 'ArrowDown':
                 if (!data[coordinates.y + 1] || !movable(data, coordinates.y + 1, coordinates.x)) return;
                 setCoordinates({ x: coordinates.x, y: coordinates.y + 1 });
-                setLife(life - 1);
                 break;
             case 'ArrowLeft':
                 if (!data[coordinates.x - 1] || !movable(data, coordinates.y, coordinates.x - 1)) return;
                 setCoordinates({ x: coordinates.x - 1, y: coordinates.y });
-                setLife(life - 1);
                 break;
             case 'ArrowRight':
                 if (!data[coordinates.x + 1] || !movable(data, coordinates.y, coordinates.x + 1)) return;
                 setCoordinates({ x: coordinates.x + 1, y: coordinates.y });
-                setLife(life - 1);
                 break;
         }
-        life <= 0 && reset();
     };
 
     const reset = () => {
-        setFailOpacity(100);
+        setControllable(false);
+        failAnimation();
         setTimeout(function () {
-            setFailOpacity(0);
-        }, 1000);
+            setLife(10);
+            setCoordinates({ x: 0, y: 0 });
+            setClear(false);
+        }, 350);  
 
-        setLife(10);
-        setCoordinates({ x: 0, y: 0 });
-        setClear(false);
+        setTimeout(function () {
+            setControllable(true);
+        }, 2500);
+    };
+
+    const failAnimation = () => {
+        setFailHeight('50%');
+
+        setTimeout(function () {
+            setFailOpacity('100');
+        }, 350);
+
+        setTimeout(function () {
+            setFailOpacity('0');
+        }, 1600);
+
+        setTimeout(function () {
+            setFailHeight('0');
+        }, 1900);
     };
 
     const movable = (data: number[][], y: number, x: number) => {
+        if(life - 1 < 0 || clear) { reset(); return;}
         switch (data[y][x]) {
             case MapData.land:
+                setLife(life - 1);
                 return true;
             case MapData.thorn:
-                life--;
+                if(life - 2 < 0) { reset() };
+                setLife(life - 2);
                 return true;
             case MapData.goal:
+                setLife(life - 1);
                 setClear(true);
+                return true;
+            case MapData.skeleton:
+                return false;
+            case MapData.spikeTrapOff:
+                setLife(life - 1);
+                return true;
+            case MapData.spikeTrapOn:
+                setLife(life - 2);
                 return true;
             default:
                 return false;
@@ -90,12 +120,16 @@ const HamTaker = () => {
     };
 
     const failStyle = {
-        opacity: failOpacity
+        height: failHeight
     };
+
+    const failStyleCenter = {
+        opacity: failOpacity
+    }
 
     return (
         <div className={'hamTaker'}>
-            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style={{ position: 'absolute', right: 0 }}></iframe>
+            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style={{ position: 'absolute', right: 0, zIndex: 999 }}></iframe>
             <div className={'characterWrap'}>
                 <p className={'루시퍼'} />
                 <p className={'말리나'} />
@@ -138,8 +172,10 @@ const HamTaker = () => {
                         <h2>SUCCESS</h2>
                     </div>
                 </div>
-                <div className={'hamTakerFail'} style={failStyle}>
-                    <h2>HAMTAKER</h2>
+                <div className={'hamTakerFail'}>
+                    <div className={'hamTakerFailUp'} style={failStyle}></div>
+                    <div className={'hamTakerFailDown'} style={failStyle}></div>
+                    <div className={'hamTakerFailCenter'} style={failStyleCenter}></div>
                 </div>
             </div>
         </div>
