@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c4046dfbb44f5b91b137c91ed3353555",
+    "revision": "8c2a690cfcb77da8779021603acfad28",
     "url": "/index.html"
   },
   {
-    "revision": "64e4383af35fe5aaa6ee",
-    "url": "/static/css/main.6a77eb94.chunk.css"
+    "revision": "e8e923515a46f0f466b0",
+    "url": "/static/css/main.44ce8eb7.chunk.css"
   },
   {
     "revision": "f2efc206b7c02dfb7f4f",
@@ -16,16 +16,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.6d2b89a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "64e4383af35fe5aaa6ee",
-    "url": "/static/js/main.ecd196e3.chunk.js"
+    "revision": "e8e923515a46f0f466b0",
+    "url": "/static/js/main.29584114.chunk.js"
   },
   {
     "revision": "1870aadd15afa9926657",
     "url": "/static/js/runtime-main.528af2ee.js"
-  },
-  {
-    "revision": "605a1135ab1708245cc342435b019097",
-    "url": "/static/media/hamTaker.605a1135.jpg"
   },
   {
     "revision": "a98989af613e325329e128e09eefcc3a",
