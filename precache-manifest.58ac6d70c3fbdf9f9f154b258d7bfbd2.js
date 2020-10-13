@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f2dc5294ce47c6ba39e7aa0e3a149fbb",
+    "revision": "c4046dfbb44f5b91b137c91ed3353555",
     "url": "/index.html"
   },
   {
-    "revision": "beb12ae53298530bde6c",
-    "url": "/static/css/main.31ed3d28.chunk.css"
+    "revision": "64e4383af35fe5aaa6ee",
+    "url": "/static/css/main.6a77eb94.chunk.css"
   },
   {
     "revision": "f2efc206b7c02dfb7f4f",
@@ -16,12 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.6d2b89a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "beb12ae53298530bde6c",
-    "url": "/static/js/main.b9111f30.chunk.js"
+    "revision": "64e4383af35fe5aaa6ee",
+    "url": "/static/js/main.ecd196e3.chunk.js"
   },
   {
     "revision": "1870aadd15afa9926657",
     "url": "/static/js/runtime-main.528af2ee.js"
+  },
+  {
+    "revision": "605a1135ab1708245cc342435b019097",
+    "url": "/static/media/hamTaker.605a1135.jpg"
   },
   {
     "revision": "a98989af613e325329e128e09eefcc3a",
@@ -62,6 +66,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "66896bfe0f8c61e0a58a19d6bd57bf44",
     "url": "/static/media/판데모니카.66896bfe.gif"
+  },
+  {
+    "revision": "82f1c0370fd42c26667e4b7ae7dde35c",
+    "url": "/static/media/해골.82f1c037.gif"
   },
   {
     "revision": "f1013f24bdd6140605cf746eff1f4df3",
