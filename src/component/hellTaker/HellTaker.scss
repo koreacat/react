@@ -17,6 +17,7 @@
       transition: all 0.5s;
       z-index: 1;
 
+
       &:focus {
         outline: none;
       }
@@ -31,6 +32,7 @@
 
     .map {
       position: relative;
+      transform: perspective(400px) rotateX(25deg);
 
       p {
         display: inline-block;
