@@ -95,7 +95,7 @@ const HamTaker = () => {
 
     return (
         <div className={'hamTaker'}>
-            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style={{ position: 'absolute', right: 0 }}></iframe>
+            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style={{ position: 'absolute', right: 0 }}></iframe>
             <div className={'characterWrap'}>
                 <p className={'루시퍼'} />
                 <p className={'말리나'} />
