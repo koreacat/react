@@ -1,0 +1,126 @@
+.hamTaker {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+
+    .hamTakerWrap {
+        display: flex;
+        width: 100%;
+        height: calc(100% - 80px);
+        justify-content: center;
+        align-items: center;
+
+        .hamTaker {
+            position: absolute;
+            background: #000000;
+            border-radius: 100%;
+            transition: all 0.5s;
+            z-index: 1;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .life {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        .map {
+            position: relative;
+            transform: perspective(400px) rotateX(25deg);
+
+            p {
+                display: inline-block;
+            }
+
+            div {
+                font-size: 0;
+            }
+
+            .land {
+                background: #700c29;
+            }
+
+            .rock {
+                background: brown;
+            }
+
+            .thorn {
+                background: lightgrey;
+            }
+
+            .goal {
+                background: green;
+            }
+        }
+
+        .hamTakerSuccess {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 80px);
+            background: #00000080;
+            
+            .hamTakerSuccessLeft {
+                position: absolute;
+                width: 35%;
+                height: 50%;
+                left: 0;
+                bottom: 0;
+                background-image: url("./img/hamTakerDone.gif");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+            .hamTakerSuccessRight {
+                position: absolute;
+                width: 35%;
+                height: 50%;
+                right: 0;
+                bottom: 0;
+                transform: scaleX(-1);
+                background-image: url("./img/hamTakerDone.gif");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+            .hamTakerSuccessSentence {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                height: 20%;
+                color: #ffffff;
+                bottom: 0;
+                >h2 {
+                    font-size: 5vw;
+                    font-weight: bold;
+                    letter-spacing: 1vw;
+                }
+                >h3 {
+                    font-size: 2vw;
+                    letter-spacing: 2vw;
+                }
+            }
+        }
+        .hamTakerFail {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: calc(100% - 80px);
+            top: 0;
+            background: #000000;
+            transition: all 0.5s;
+            
+            >h2 {
+                color: #ffffff;
+                font-size: 10vw;
+            }
+        }
+
+    }
+}

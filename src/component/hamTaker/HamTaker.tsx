@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import './HellTaker.scss';
+import './HamTaker.scss';
 
 window.addEventListener('keydown', function () {
     // @ts-ignore
-    document.getElementById('hellTaker').focus();
+    document.getElementById('hamTaker').focus();
 });
 
 enum MapData {
@@ -14,10 +14,12 @@ enum MapData {
     goal,
 }
 
-const HellTaker = () => {
+const HamTaker = () => {
     const distance = 50;
+    let [clear, setClear] = useState(false);
     let [coordinates, setCoordinates] = useState({x: 0, y: 0});
     let [life, setLife] = useState(10);
+    let [failOpacity, setFailOpacity] = useState(0);
     let [data, setData] = useState([
         [1],
         [1, 1, 1, 1, 1, 1],
@@ -28,6 +30,8 @@ const HellTaker = () => {
     ]);
 
     const keyDown = (e: any) => {
+        clear && reset();
+
         switch (e.key) {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
@@ -54,9 +58,15 @@ const HellTaker = () => {
     };
 
     const reset = () => {
+
+        setFailOpacity(100);
+        setTimeout(function () {
+            setFailOpacity(0);
+        }, 1000);
+
         setLife(10);
         setCoordinates({x:0, y:0});
-        alert('Hell Taker!');
+        setClear(false);
     };
 
     const movable = (data: number[][], y: number, x: number) => {
@@ -67,24 +77,28 @@ const HellTaker = () => {
                 life--;
                 return true;
             case MapData.goal:
-                alert('done');
+                setClear(true);
                 return true;
             default:
                 return false;
         }
     };
 
-    const style = {
+    const hamTakerStyle = {
         width: distance,
         height: distance,
         transform: `translate(${coordinates.x * distance}px, ${coordinates.y * distance}px)`,
     };
 
+    const failStyle = {
+        opacity: failOpacity
+    };
+
     return (
-        <div className={'hellTaker'}>
-            <div className={'hellTakerWrap'}>
+        <div className={'hamTaker'}>
+            <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'hellTaker'} className={'hellTaker'} tabIndex={0} onKeyDown={keyDown} style={style}/>
+                    <div id={'hamTaker'} className={'hamTaker'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}/>
                     {
                         data.map((line, x) => {
                             return (
@@ -103,9 +117,20 @@ const HellTaker = () => {
                     }
                     <h2 className={'life'}>{life}</h2>
                 </div>
+                <div className={'hamTakerSuccess'} style={{display: clear ? 'block' : 'none'}}>
+                    <div className={'hamTakerSuccessLeft'}></div>
+                    <div className={'hamTakerSuccessRight'}></div>
+                    <div className={'hamTakerSuccessSentence'}>
+                        <h3>GLORIOUS</h3>
+                        <h2>SUCCESS</h2>
+                    </div>
+                </div>
+                <div className={'hamTakerFail'} style={failStyle}>
+                    <h2>HAMTAKER</h2>
+                </div>
             </div>
         </div>
     )
 };
 
-export default HellTaker;
+export default HamTaker;
