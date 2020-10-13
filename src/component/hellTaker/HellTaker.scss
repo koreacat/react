@@ -1,5 +1,14 @@
 .hellTaker {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+
   .hellTakerWrap {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 80px);
+    justify-content: center;
+    align-items: center;
 
     .hellTaker {
       position: absolute;
@@ -7,6 +16,7 @@
       border-radius: 100%;
       transition: all 0.5s;
       z-index: 1;
+
       &:focus {
         outline: none;
       }
@@ -20,22 +30,27 @@
 
     .map {
       position: relative;
+
       p {
         display: inline-block;
       }
+
       div {
         font-size: 0;
       }
 
       .land {
-        background: #ffffff;
+        background: #700c29;
       }
+
       .rock {
-        background: black;
+        background: brown;
       }
+
       .thorn {
         background: lightgrey;
       }
+
       .goal {
         background: green;
       }

@@ -1,2599 +1,3213 @@
 
 .clock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 
-    .digitalClock {
-        color: white;
-        text-align: center;
-        margin: 20px;
-        p {
-            font-weight: 900;
-            > span {
-                display: block;
-                margin-bottom: 5px;
-            }
-        }
-    }
+    .clockWrap {
+        display: flex;
+        width: 100%;
+        height: calc(100% - 80px);
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
-    .analogClock {
-        position: relative;
-        width: 100px;
-        height: 100px;
-        border: 5px solid #ffffff;
-        border-radius: 100%;
-        transform-style: preserve-3d;
-        animation: spin 10s ease-in-out infinite;
-        
-        @keyframes spin {
-            0% { transform: rotateY(0); }
-            100%  { transform:rotateY(360deg); }
-        }
-        
-        .hour {
-            position: absolute;
-            bottom: calc(50% - 1px);
-            left: calc(50% - 1px);
-            height: 30px;
-            width: 3px;
-            background-color: #000000;
-            transform-origin: bottom center;
-            transition: all 0.5s;
-        }
-        .minute {
-            position: absolute;
-            bottom: calc(50% - 1px);
-            left: calc(50% - 1px);
-            height: 40px;
-            width: 2px;
-            background-color: #000000;
-            transform-origin: bottom center;
-            transition: all 0.5s;
-        }
-        .second {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            height: 43px;
-            width: 1px;
-            background-color: #ffffff;
-            transform-origin: bottom center;
-            transition: all 0.5s;
-        }
+        .digitalClock {
+            color: white;
+            text-align: center;
+            margin: 20px;
 
-        .pin {
-            position: absolute;
-            bottom: calc(50% - 2px);
-            left: calc(50% - 2px);
-            width: 4px;
-            height: 4px;
-            border-radius: 100%;
-            background-color: #ffffff;
-        }
-    }
+            p {
+                font-weight: 900;
 
-    .koreanClock {
-        font-family: 'NotoSerif-Regular';
-        .koreanClockWrap {
-            background: #000000;
-            color: #444444;
-            transform: perspective(500px) rotateY(45deg);
-            padding: 8px;
-
-            .on {
-                color: #ffffff;
-                text-shadow: 0px 0px  10px #ffffff;
-            }
-
-            table {
-
-                td {
-                    padding: 5px;
-                    transition: all 2s;
+                > span {
+                    display: block;
+                    margin-bottom: 5px;
                 }
             }
         }
 
-    }
-
-    .digilogClocks {
-        margin: 20px;
-
-        .digilogClockWrap {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background-color: #00000095;
-        }
-
-        .digilogClock{
+        .analogClock {
             position: relative;
-            width: 8px;
-            height: 8px;
-            border: 0.5px solid #ffffff30;
+            width: 100px;
+            height: 100px;
+            border: 5px solid #ffffff;
             border-radius: 100%;
+            transform-style: preserve-3d;
+            animation: spin 10s ease-in-out infinite;
 
-            .h {
+            @keyframes spin {
+                0% {
+                    transform: rotateY(0);
+                }
+                100% {
+                    transform: rotateY(360deg);
+                }
+            }
+
+            .hour {
                 position: absolute;
-                bottom: calc(50%);
-                left: calc(50%);
-                height: 4px;
+                bottom: calc(50% - 1px);
+                left: calc(50% - 1px);
+                height: 30px;
+                width: 3px;
+                background-color: #000000;
+                transform-origin: bottom center;
+                transition: all 0.5s;
+            }
+
+            .minute {
+                position: absolute;
+                bottom: calc(50% - 1px);
+                left: calc(50% - 1px);
+                height: 40px;
+                width: 2px;
+                background-color: #000000;
+                transform-origin: bottom center;
+                transition: all 0.5s;
+            }
+
+            .second {
+                position: absolute;
+                bottom: 50%;
+                left: 50%;
+                height: 43px;
                 width: 1px;
                 background-color: #ffffff;
                 transform-origin: bottom center;
                 transition: all 0.5s;
-                transform: rotate(-90deg);
             }
-            .m {
+
+            .pin {
                 position: absolute;
-                bottom: calc(50%);
-                left: calc(50%);
+                bottom: calc(50% - 2px);
+                left: calc(50% - 2px);
+                width: 4px;
                 height: 4px;
-                width: 1px;
+                border-radius: 100%;
                 background-color: #ffffff;
-                transform-origin: bottom center;
-                transition: all 0.5s;
-                transform: rotate(90deg);
             }
         }
 
-        //zero
-        .digilogClock.zero.aa {
-            .h {
-                transform: rotate(90deg);
+        .koreanClock {
+            font-family: 'NotoSerif-Regular';
+
+            .koreanClockWrap {
+                background: #000000;
+                color: #444444;
+                transform: perspective(500px) rotateY(45deg);
+                padding: 8px;
+
+                .on {
+                    color: #ffffff;
+                    text-shadow: 0px 0px 10px #ffffff;
+                }
+
+                table {
+
+                    td {
+                        padding: 5px;
+                        transition: all 2s;
+                    }
+                }
             }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.bb {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.cd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.db {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.dd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.ea {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.eb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(-90deg);
-            }
-        }
-        .digilogClock.zero.ee {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.zero.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.zero.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
+
         }
 
-        //one
-        .digilogClock.one.aa {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.ad {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ba {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.bb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.bd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ca {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.cb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.cd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.da {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.dd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ea {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.ee {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.one.fa {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.fd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.one.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
+        .digilogClocks {
+            margin: 20px;
 
-        //two
-        .digilogClock.two.aa {
-            .h {
-                transform: rotate(90deg);
+            .digilogClockWrap {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background-color: #00000095;
             }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.bb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.ca {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.cb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.two.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.db {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.de {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.two.ea {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.eb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ed {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.ee {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.two.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.two.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
 
-        //three
-        .digilogClock.three.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.bb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.ca {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.cb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.three.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.ea {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.ed {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.three.ee {
-            .h {
-                transform: rotate(-0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.three.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.three.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        
-        //four
-        .digilogClock.four.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.ad {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.bb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.bd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.four.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ea {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.ee {
-            .h {
-                transform: rotate(-0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.four.fa {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.fd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.four.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
+            .digilogClock {
+                position: relative;
+                width: 8px;
+                height: 8px;
+                border: 0.5px solid #ffffff30;
+                border-radius: 100%;
 
-        //five
-        .digilogClock.five.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.bb {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.be {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.five.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ce {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.ea {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.ed {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.five.ee {
-            .h {
-                transform: rotate(-0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.five.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.five.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        
-        //six
-        .digilogClock.six.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.bb {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.be {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.six.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ce {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.db {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.ea {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.eb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.ed {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.six.ee {
-            .h {
-                transform: rotate(-0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.six.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.six.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        
-        //seven
-        .digilogClock.seven.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.bb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ca {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.cb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.cd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.da {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.dd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ea {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.ee {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.seven.fa {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.fd {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.seven.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
+                .h {
+                    position: absolute;
+                    bottom: calc(50%);
+                    left: calc(50%);
+                    height: 4px;
+                    width: 1px;
+                    background-color: #ffffff;
+                    transform-origin: bottom center;
+                    transition: all 0.5s;
+                    transform: rotate(-90deg);
+                }
 
-        //eight
-        .digilogClock.eight.aa {
-            .h {
-                transform: rotate(90deg);
+                .m {
+                    position: absolute;
+                    bottom: calc(50%);
+                    left: calc(50%);
+                    height: 4px;
+                    width: 1px;
+                    background-color: #ffffff;
+                    transform-origin: bottom center;
+                    transition: all 0.5s;
+                    transform: rotate(90deg);
+                }
             }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.bb {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.eight.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.db {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.ea {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.eb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(-90deg);
-            }
-        }
-        .digilogClock.eight.ee {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.eight.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.eight.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
 
-        //nine
-        .digilogClock.nine.aa {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.ac {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.ad {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.ae {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.bb {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.bc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.bd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.be {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.ca {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.cb {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.cc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.cd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
-        .digilogClock.nine.ce {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.da {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.db {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.dc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.dd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.de {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.ea {
-            .h {
-                transform: rotate(90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.eb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.ec {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.ed {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(-90deg);
-            }
-        }
-        .digilogClock.nine.ee {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.nine.fa {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.fb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.fc {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.fd {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.nine.fe {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
+            //zero
+            .digilogClock.zero.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
 
-        //dot
-        .digilogClock.aa {
-            .h {
-                transform: rotate(90deg);
+                .m {
+                    transform: rotate(180deg);
+                }
             }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.ab {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(180deg);
-            }
-        }
-        .digilogClock.ba {
-            .h {
-                transform: rotate(0deg);
-            }
-            .m {
-                transform: rotate(90deg);
-            }
-        }
-        .digilogClock.bb {
-            .h {
-                transform: rotate(-90deg);
-            }
-            .m {
-                transform: rotate(0deg);
-            }
-        }
 
+            .digilogClock.zero.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.bb {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.cd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.db {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.dd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.ea {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.eb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(-90deg);
+                }
+            }
+
+            .digilogClock.zero.ee {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.zero.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.zero.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //one
+            .digilogClock.one.aa {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.ad {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ba {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.bb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.bd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ca {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.cb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.cd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.da {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.dd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ea {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.ee {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.one.fa {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.fd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.one.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //two
+            .digilogClock.two.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.bb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.ca {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.cb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.two.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.db {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.de {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.two.ea {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.eb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ed {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.ee {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.two.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.two.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //three
+            .digilogClock.three.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.bb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.ca {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.cb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.three.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.ea {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.ed {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.three.ee {
+                .h {
+                    transform: rotate(-0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.three.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.three.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //four
+            .digilogClock.four.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.ad {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.bb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.bd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.four.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ea {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.ee {
+                .h {
+                    transform: rotate(-0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.four.fa {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.fd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.four.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //five
+            .digilogClock.five.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.bb {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.be {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.five.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ce {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.ea {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.ed {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.five.ee {
+                .h {
+                    transform: rotate(-0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.five.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.five.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //six
+            .digilogClock.six.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.bb {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.be {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.six.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ce {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.db {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.ea {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.eb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.ed {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.six.ee {
+                .h {
+                    transform: rotate(-0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.six.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.six.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //seven
+            .digilogClock.seven.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.bb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ca {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.cb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.cd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.da {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.dd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ea {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.ee {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.seven.fa {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.fd {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.seven.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //eight
+            .digilogClock.eight.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.bb {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.eight.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.db {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.ea {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.eb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(-90deg);
+                }
+            }
+
+            .digilogClock.eight.ee {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.eight.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.eight.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //nine
+            .digilogClock.nine.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.ac {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.ad {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.ae {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.bb {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.bc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.bd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.be {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.ca {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.cb {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.cc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.cd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .digilogClock.nine.ce {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.da {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.db {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.dc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.dd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.de {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.ea {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.eb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.ec {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.ed {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(-90deg);
+                }
+            }
+
+            .digilogClock.nine.ee {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.nine.fa {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.fb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.fc {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.fd {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.nine.fe {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+            //dot
+            .digilogClock.aa {
+                .h {
+                    transform: rotate(90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.ab {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .digilogClock.ba {
+                .h {
+                    transform: rotate(0deg);
+                }
+
+                .m {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .digilogClock.bb {
+                .h {
+                    transform: rotate(-90deg);
+                }
+
+                .m {
+                    transform: rotate(0deg);
+                }
+            }
+
+        }
     }
 }

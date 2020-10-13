@@ -166,10 +166,12 @@ const Clock = () => {
 
     return (
         <div className={'clock'}>
-            <AnalogClock date={date}/>
-            <DigitalClock date={date}/>
-            <DigilogClocks date={date} digilogClockList={digilogClockList}/>
-            <KoreanClock date={date}/>
+            <div className={'clockWrap'}>
+                <AnalogClock date={date}/>
+                <DigitalClock date={date}/>
+                <DigilogClocks date={date} digilogClockList={digilogClockList}/>
+                <KoreanClock date={date}/>
+            </div>
         </div>
     );
 };
