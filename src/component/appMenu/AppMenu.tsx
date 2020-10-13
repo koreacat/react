@@ -24,7 +24,7 @@ const AppMenu = ({setAppState}: any) => {
         setAppState(<TodoList />);
     };
 
-    const hellTakerClick = () => {
+    const hamTakerClick = () => {
         setAppState(<HamTaker />);
     };
 
@@ -32,7 +32,7 @@ const AppMenu = ({setAppState}: any) => {
         <div className={'appMenu'}>
             <AppIcon title={'clock'} img={'./img/default_icon.png'} onClick={clockClick}/>
             <AppIcon title={'todoList'} img={'./img/default_icon.png'} onClick={todoListClick}/>
-            <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={hellTakerClick}/>
+            <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={hamTakerClick}/>
         </div>
     );
 };
