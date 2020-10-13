@@ -175,7 +175,9 @@ const HamTaker = () => {
                 <div className={'hamTakerFail'}>
                     <div className={'hamTakerFailUp'} style={failStyle}></div>
                     <div className={'hamTakerFailDown'} style={failStyle}></div>
-                    <div className={'hamTakerFailCenter'} style={failStyleCenter}></div>
+                    <div className={'hamTakerFailCenter'} style={failStyleCenter}>
+                        <h2>HAMTAKER</h2>
+                    </div>
                 </div>
             </div>
         </div>
