@@ -1,0 +1,45 @@
+.hellTaker {
+  .hellTakerWrap {
+
+    .hellTaker {
+      position: absolute;
+      background: #000000;
+      border-radius: 100%;
+      transition: all 0.5s;
+      z-index: 1;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .life {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .map {
+      position: relative;
+      p {
+        display: inline-block;
+      }
+      div {
+        font-size: 0;
+      }
+
+      .land {
+        background: #ffffff;
+      }
+      .rock {
+        background: black;
+      }
+      .thorn {
+        background: lightgrey;
+      }
+      .goal {
+        background: green;
+      }
+    }
+
+  }
+}
