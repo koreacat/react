@@ -62,7 +62,9 @@ const HellTaker = () => {
     const movable = (data: number[][], y: number, x: number) => {
         switch (data[y][x]) {
             case MapData.land:
+                return true;
             case MapData.thorn:
+                life--;
                 return true;
             case MapData.goal:
                 alert('done');
@@ -99,8 +101,8 @@ const HellTaker = () => {
                             )
                         })
                     }
+                    <h2 className={'life'}>{life}</h2>
                 </div>
-                <h2 className={'life'}>{life}</h2>
             </div>
         </div>
     )
