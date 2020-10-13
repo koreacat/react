@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './HamTaker.scss';
 
 window.addEventListener('keydown', function () {
     // @ts-ignore
-    document.getElementById('hamTaker').focus();
+    document.getElementById('ham').focus();
 });
 
 enum MapData {
@@ -17,7 +17,7 @@ enum MapData {
 const HamTaker = () => {
     const distance = 50;
     let [clear, setClear] = useState(false);
-    let [coordinates, setCoordinates] = useState({x: 0, y: 0});
+    let [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
     let [life, setLife] = useState(10);
     let [failOpacity, setFailOpacity] = useState(0);
     let [data, setData] = useState([
@@ -35,22 +35,25 @@ const HamTaker = () => {
         switch (e.key) {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
-                setCoordinates({x: coordinates.x, y: coordinates.y - 1});
+                setCoordinates({ x: coordinates.x, y: coordinates.y - 1 });
+                setLife(life - 1);
                 break;
             case 'ArrowDown':
                 if (!data[coordinates.y + 1] || !movable(data, coordinates.y + 1, coordinates.x)) return;
-                setCoordinates({x: coordinates.x, y: coordinates.y + 1});
+                setCoordinates({ x: coordinates.x, y: coordinates.y + 1 });
+                setLife(life - 1);
                 break;
             case 'ArrowLeft':
                 if (!data[coordinates.x - 1] || !movable(data, coordinates.y, coordinates.x - 1)) return;
-                setCoordinates({x: coordinates.x - 1, y: coordinates.y});
+                setCoordinates({ x: coordinates.x - 1, y: coordinates.y });
+                setLife(life - 1);
                 break;
             case 'ArrowRight':
                 if (!data[coordinates.x + 1] || !movable(data, coordinates.y, coordinates.x + 1)) return;
-                setCoordinates({x: coordinates.x + 1, y: coordinates.y});
+                setCoordinates({ x: coordinates.x + 1, y: coordinates.y });
+                setLife(life - 1);
                 break;
         }
-        setLife(life-1);
         life <= 0 && reset();
     };
 
@@ -61,7 +64,7 @@ const HamTaker = () => {
         }, 1000);
 
         setLife(10);
-        setCoordinates({x:0, y:0});
+        setCoordinates({ x: 0, y: 0 });
         setClear(false);
     };
 
@@ -92,9 +95,23 @@ const HamTaker = () => {
 
     return (
         <div className={'hamTaker'}>
+            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style={{ position: 'absolute', right: 0 }}></iframe>
+            <div className={'characterWrap'}>
+                <p className={'루시퍼'} />
+                <p className={'말리나'} />
+                <p className={'모데우스'} />
+                <p className={'아자젤'} />
+                <p className={'저스티스'} />
+                <p className={'저지먼트'} />
+                <p className={'즈드라다'} />
+                <p className={'판데모니카'} />
+                <p className={'케르베로스'} />
+                <p className={'케르베로스'} />
+                <p className={'케르베로스'} />
+            </div>
             <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'hamTaker'} className={'hamTaker'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}/>
+                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p></p></div>
                     {
                         data.map((line, x) => {
                             return (
@@ -103,7 +120,7 @@ const HamTaker = () => {
                                         line.map((point, y) => {
                                             return (
                                                 <p key={x + '' + y} className={MapData[point]}
-                                                   style={{width: distance, height: distance}}/>
+                                                    style={{ width: distance, height: distance }} />
                                             )
                                         })
                                     }
@@ -113,7 +130,7 @@ const HamTaker = () => {
                     }
                     <h2 className={'life'}>{life}</h2>
                 </div>
-                <div className={'hamTakerSuccess'} style={{display: clear ? 'block' : 'none'}}>
+                <div className={'hamTakerSuccess'} style={{ display: clear ? 'block' : 'none' }}>
                     <div className={'hamTakerSuccessLeft'}></div>
                     <div className={'hamTakerSuccessRight'}></div>
                     <div className={'hamTakerSuccessSentence'}>
