@@ -36,29 +36,25 @@ const HamTaker = () => {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
                 setCoordinates({x: coordinates.x, y: coordinates.y - 1});
-                setLife(life-1);
                 break;
             case 'ArrowDown':
                 if (!data[coordinates.y + 1] || !movable(data, coordinates.y + 1, coordinates.x)) return;
                 setCoordinates({x: coordinates.x, y: coordinates.y + 1});
-                setLife(life-1);
                 break;
             case 'ArrowLeft':
                 if (!data[coordinates.x - 1] || !movable(data, coordinates.y, coordinates.x - 1)) return;
                 setCoordinates({x: coordinates.x - 1, y: coordinates.y});
-                setLife(life-1);
                 break;
             case 'ArrowRight':
                 if (!data[coordinates.x + 1] || !movable(data, coordinates.y, coordinates.x + 1)) return;
                 setCoordinates({x: coordinates.x + 1, y: coordinates.y});
-                setLife(life-1);
                 break;
         }
+        setLife(life-1);
         life <= 0 && reset();
     };
 
     const reset = () => {
-
         setFailOpacity(100);
         setTimeout(function () {
             setFailOpacity(0);
