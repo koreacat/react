@@ -138,24 +138,10 @@ const HamTaker = () => {
             <iframe width="100" height=" 100"
                     src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    style={{position: 'absolute', right: 0, zIndex: 999}}></iframe>
-            <div className={'characterWrap'}>
-                <p className={'루시퍼'}/>
-                <p className={'말리나'}/>
-                <p className={'모데우스'}/>
-                <p className={'아자젤'}/>
-                <p className={'저스티스'}/>
-                <p className={'저지먼트'}/>
-                <p className={'즈드라다'}/>
-                <p className={'판데모니카'}/>
-                <p className={'케르베로스'}/>
-                <p className={'케르베로스'}/>
-                <p className={'케르베로스'}/>
-            </div>
+                    style={{position: 'absolute', right: 0, zIndex: 999}} />
             <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p></p>
-                    </div>
+                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p /></div>
                     {
                         data.map((line, x) => {
                             return (
@@ -179,20 +165,33 @@ const HamTaker = () => {
                     <h2 className={'life'}>{life}</h2>
                 </div>
                 <div className={'hamTakerSuccess'} style={{display: clear ? 'block' : 'none'}}>
-                    <div className={'hamTakerSuccessLeft'}></div>
-                    <div className={'hamTakerSuccessRight'}></div>
+                    <div className={'hamTakerSuccessLeft'} />
+                    <div className={'hamTakerSuccessRight'} />
                     <div className={'hamTakerSuccessSentence'}>
                         <h3>GLORIOUS</h3>
                         <h2>SUCCESS</h2>
                     </div>
                 </div>
                 <div className={'hamTakerFail'}>
-                    <div className={'hamTakerFailUp'} style={failStyle}></div>
-                    <div className={'hamTakerFailDown'} style={failStyle}></div>
+                    <div className={'hamTakerFailUp'} style={failStyle} />
+                    <div className={'hamTakerFailDown'} style={failStyle} />
                     <div className={'hamTakerFailCenter'} style={failStyleCenter}>
                         <h2>HAMTAKER</h2>
                     </div>
                 </div>
+            </div>
+            <div className={'characterWrap'}>
+                <p className={'루시퍼'}/>
+                <p className={'말리나'}/>
+                <p className={'모데우스'}/>
+                <p className={'아자젤'}/>
+                <p className={'저스티스'}/>
+                <p className={'저지먼트'}/>
+                <p className={'즈드라다'}/>
+                <p className={'판데모니카'}/>
+                <p className={'케르베로스'}/>
+                <p className={'케르베로스'}/>
+                <p className={'케르베로스'}/>
             </div>
         </div>
     )
