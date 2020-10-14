@@ -16,23 +16,43 @@ enum MapData {
     skeleton,
 }
 
+const stage01 = {
+    stage : [
+        [1, 0, 0, 1, 1, 1],
+        [1, 1, 1, 1, 2, 1],
+        [0, 1, 0, 3, 1, 0],
+        [1, 1, 1, 1, 5, 1],
+        [1, 2, 5, 6, 6, 6],
+        [3, 0, 1, 1, 1, 4]
+    ],
+    startPoint : {x: 0, y: 0}
+}
+
+const stage = () => {
+    return [
+        [1, 0, 0, 1, 1, 1],
+        [1, 1, 1, 1, 2, 1],
+        [0, 1, 0, 3, 1, 0],
+        [1, 1, 1, 1, 5, 1],
+        [1, 2, 5, 6, 6, 6],
+        [3, 0, 1, 1, 1, 4]
+    ];
+} 
+
+const startPoint = () => {
+    return {x: 0, y: 0};
+}
+
 const HamTaker = () => {
     const distance = 50;
     let [clear, setClear] = useState(false);
-    let [coordinates, setCoordinates] = useState({x: 0, y: 0});
+    let [coordinates, setCoordinates] = useState(startPoint);
     let [life, setLife] = useState(10);
     let [spike, setSpike] = useState(false);
     let [failHeight, setFailHeight] = useState('0');
     let [failOpacity, setFailOpacity] = useState('0');
     let [controllable, setControllable] = useState(true);
-    let [data, setData] = useState([
-        [1],
-        [1, 1, 1, 1, 2, 1],
-        [0, 1, 0, 3, 1],
-        [1, 1, 1, 1, 5, 1],
-        [1, 2, 1, 6, 6, 6],
-        [1, 0, 5, 1, 1, 4]
-    ]);
+    let [data, setData] = useState(stage);
 
     const keyDown = (e: any) => {
         if (!controllable) return;
@@ -85,7 +105,14 @@ const HamTaker = () => {
                 setLife(life - (spike ? 1 : 2));
                 return true;
             case MapData.rock:
-                moveRock(y, x, dir) && setLife(life - 1);
+                if(moveRock(y, x, dir)) {
+                    setSpike(!spike);
+                    if(data[coordinates.y][coordinates.x] === MapData.spikeTrapOnOff && !spike){
+                        setLife(life - 2);
+                    }else {
+                        setLife(life - 1);
+                    }
+                } 
                 return false;
             default:
                 return false;
@@ -93,22 +120,23 @@ const HamTaker = () => {
     };
 
     const moveRock = (y: number, x: number, dir: string) => {
-        //진행 방향의 앞칸 유효성 체크 유효하지 않으면 false
-        //진행 방향의 앞칸 타입 체크
-        switch (dir) {
-            case 'UP':
-                break;
-            case 'DOWN':
-                break;
-            case 'LEFT':
-                break;
-            case 'RIGHT':
-                break;
+        let dy = y;
+        let dx = x;
+
+        dir === 'UP' && dy--;
+        dir === 'DOWN' && dy++;
+        dir === 'LEFT' && dx--;
+        dir === 'RIGHT' && dx++;
+
+        //진행 방향의 앞칸에 돌 옮길 수 있는지 체크
+        if(data[dy] && data[dx] && data[dy][dx]){
+            //진행 방향의 앞칸이 땅이나 가시, 트랩, 골일 경우 그 방향으로 돌 옮기기
+            if(data[dy][dx] === MapData.land){
+                data[dy][dx] = MapData.rock;
+                data[y][x] = MapData.land;
+                return true;
+            }
         }
-
-        //진행 방향의 앞칸이 땅이나 가시, 트랩, 골일 경우 그 방향으로 돌 옮기기
-        //돌이 있던 땅은 돌이 없는 원래 땅으로
-
         return false;
     };
 
@@ -116,9 +144,11 @@ const HamTaker = () => {
         setControllable(false);
         failAnimation();
         setTimeout(function () {
+            setData(stage);
             setLife(10);
             setCoordinates({x: 0, y: 0});
             setClear(false);
+            setSpike(false);
         }, 350);
 
         setTimeout(function () {
@@ -135,11 +165,11 @@ const HamTaker = () => {
 
         setTimeout(function () {
             setFailOpacity('0');
-        }, 1600);
+        }, 2200);
 
         setTimeout(function () {
             setFailHeight('0');
-        }, 1900);
+        }, 2500);
     };
 
     const hamTakerStyle = {
@@ -161,10 +191,10 @@ const HamTaker = () => {
             <iframe width="100" height=" 100"
                     src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    style={{position: 'absolute', right: 0, zIndex: 999}} />
+                    style={{position: 'absolute', right: 0, zIndex: 998}} />
             <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p /></div>
+                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}></div>
                     {
                         data.map((line, x) => {
                             return (
@@ -202,6 +232,10 @@ const HamTaker = () => {
                         <h2>HAMTAKER</h2>
                     </div>
                 </div>
+                <div className={'hamTakerUpButton'} onClick={() => {keyDown({key: 'ArrowUp'})}}/>
+                <div className={'hamTakerDownButton'} onClick={() => {keyDown({key: 'ArrowDown'})}}/>
+                <div className={'hamTakerLeftButton'} onClick={() => {keyDown({key: 'ArrowLeft'})}}/>
+                <div className={'hamTakerRightButton'} onClick={() => {keyDown({key: 'ArrowRight'})}}/>
             </div>
             <div className={'characterWrap'}>
                 <p className={'루시퍼'}/>
