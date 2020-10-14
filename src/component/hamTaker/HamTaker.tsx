@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './HamTaker.scss';
 
 window.addEventListener('keydown', function () {
@@ -12,16 +12,16 @@ enum MapData {
     rock,
     thorn,
     goal,
-    spikeTrapOn,
-    spikeTrapOff,
+    spikeTrapOnOff,
     skeleton,
 }
 
 const HamTaker = () => {
     const distance = 50;
     let [clear, setClear] = useState(false);
-    let [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+    let [coordinates, setCoordinates] = useState({x: 0, y: 0});
     let [life, setLife] = useState(10);
+    let [spike, setSpike] = useState(false);
     let [failHeight, setFailHeight] = useState('0');
     let [failOpacity, setFailOpacity] = useState('0');
     let [controllable, setControllable] = useState(true);
@@ -29,29 +29,29 @@ const HamTaker = () => {
         [1],
         [1, 1, 1, 1, 2, 1],
         [0, 1, 0, 3, 1],
-        [1, 1, 1, 1, 6, 1],
-        [1, 2, 1, 7, 7, 7],
+        [1, 1, 1, 1, 5, 1],
+        [1, 2, 1, 6, 6, 6],
         [1, 0, 1, 1, 1, 4]
     ]);
 
     const keyDown = (e: any) => {
-        if(!controllable) return;
+        if (!controllable) return;
         switch (e.key) {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
-                setCoordinates({ x: coordinates.x, y: coordinates.y - 1 });
+                setCoordinates({x: coordinates.x, y: coordinates.y - 1});
                 break;
             case 'ArrowDown':
                 if (!data[coordinates.y + 1] || !movable(data, coordinates.y + 1, coordinates.x)) return;
-                setCoordinates({ x: coordinates.x, y: coordinates.y + 1 });
+                setCoordinates({x: coordinates.x, y: coordinates.y + 1});
                 break;
             case 'ArrowLeft':
                 if (!data[coordinates.x - 1] || !movable(data, coordinates.y, coordinates.x - 1)) return;
-                setCoordinates({ x: coordinates.x - 1, y: coordinates.y });
+                setCoordinates({x: coordinates.x - 1, y: coordinates.y});
                 break;
             case 'ArrowRight':
                 if (!data[coordinates.x + 1] || !movable(data, coordinates.y, coordinates.x + 1)) return;
-                setCoordinates({ x: coordinates.x + 1, y: coordinates.y });
+                setCoordinates({x: coordinates.x + 1, y: coordinates.y});
                 break;
         }
     };
@@ -61,9 +61,9 @@ const HamTaker = () => {
         failAnimation();
         setTimeout(function () {
             setLife(10);
-            setCoordinates({ x: 0, y: 0 });
+            setCoordinates({x: 0, y: 0});
             setClear(false);
-        }, 350);  
+        }, 350);
 
         setTimeout(function () {
             setControllable(true);
@@ -87,13 +87,17 @@ const HamTaker = () => {
     };
 
     const movable = (data: number[][], y: number, x: number) => {
-        if(life - 1 < 0 || clear) { reset(); return;}
+        if (life - 1 < 0 || clear) {
+            reset();
+            return;
+        }
+        setSpike(!spike);
         switch (data[y][x]) {
             case MapData.land:
                 setLife(life - 1);
                 return true;
             case MapData.thorn:
-                if(life - 2 < 0) { reset(); return; }
+                if (life - 2 < 0) {reset(); return;}
                 setLife(life - 2);
                 return true;
             case MapData.goal:
@@ -102,11 +106,9 @@ const HamTaker = () => {
                 return true;
             case MapData.skeleton:
                 return false;
-            case MapData.spikeTrapOff:
-                setLife(life - 1);
-                return true;
-            case MapData.spikeTrapOn:
-                setLife(life - 2);
+            case MapData.spikeTrapOnOff:
+                if (!spike && (life - 2 < 0)) {reset(); return;}
+                setLife(life - (spike ? 1 : 2));
                 return true;
             default:
                 return false;
@@ -129,23 +131,27 @@ const HamTaker = () => {
 
     return (
         <div className={'hamTaker'}>
-            <iframe width="100" height=" 100" src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style={{ position: 'absolute', right: 0, zIndex: 999 }}></iframe>
+            <iframe width="100" height=" 100"
+                    src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    style={{position: 'absolute', right: 0, zIndex: 999}}></iframe>
             <div className={'characterWrap'}>
-                <p className={'루시퍼'} />
-                <p className={'말리나'} />
-                <p className={'모데우스'} />
-                <p className={'아자젤'} />
-                <p className={'저스티스'} />
-                <p className={'저지먼트'} />
-                <p className={'즈드라다'} />
-                <p className={'판데모니카'} />
-                <p className={'케르베로스'} />
-                <p className={'케르베로스'} />
-                <p className={'케르베로스'} />
+                <p className={'루시퍼'}/>
+                <p className={'말리나'}/>
+                <p className={'모데우스'}/>
+                <p className={'아자젤'}/>
+                <p className={'저스티스'}/>
+                <p className={'저지먼트'}/>
+                <p className={'즈드라다'}/>
+                <p className={'판데모니카'}/>
+                <p className={'케르베로스'}/>
+                <p className={'케르베로스'}/>
+                <p className={'케르베로스'}/>
             </div>
             <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p></p></div>
+                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}><p></p>
+                    </div>
                     {
                         data.map((line, x) => {
                             return (
@@ -153,8 +159,12 @@ const HamTaker = () => {
                                     {
                                         line.map((point, y) => {
                                             return (
-                                                <p key={x + '' + y} className={MapData[point]}
-                                                    style={{ width: distance, height: distance }} />
+                                                <p key={x + '' + y}
+                                                   className={
+                                                       (point === MapData.spikeTrapOnOff) ? (spike ? 'spikeTrapOn' : 'spikeTrapOff') : MapData[point]
+                                                   }
+                                                   style={{width: distance, height: distance}}
+                                                />
                                             )
                                         })
                                     }
@@ -164,7 +174,7 @@ const HamTaker = () => {
                     }
                     <h2 className={'life'}>{life}</h2>
                 </div>
-                <div className={'hamTakerSuccess'} style={{ display: clear ? 'block' : 'none' }}>
+                <div className={'hamTakerSuccess'} style={{display: clear ? 'block' : 'none'}}>
                     <div className={'hamTakerSuccessLeft'}></div>
                     <div className={'hamTakerSuccessRight'}></div>
                     <div className={'hamTakerSuccessSentence'}>
