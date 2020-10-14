@@ -27,7 +27,7 @@ const HamTaker = () => {
     let [controllable, setControllable] = useState(true);
     let [data, setData] = useState([
         [1],
-        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 2, 1],
         [0, 1, 0, 3, 1],
         [1, 1, 1, 1, 6, 1],
         [1, 2, 1, 7, 7, 7],
@@ -93,7 +93,7 @@ const HamTaker = () => {
                 setLife(life - 1);
                 return true;
             case MapData.thorn:
-                if(life - 2 < 0) { reset() };
+                if(life - 2 < 0) { reset(); return; }
                 setLife(life - 2);
                 return true;
             case MapData.goal:
@@ -125,7 +125,7 @@ const HamTaker = () => {
 
     const failStyleCenter = {
         opacity: failOpacity
-    }
+    };
 
     return (
         <div className={'hamTaker'}>
@@ -149,7 +149,7 @@ const HamTaker = () => {
                     {
                         data.map((line, x) => {
                             return (
-                                <div key={x}>
+                                <div key={x} className={'mapTile'}>
                                     {
                                         line.map((point, y) => {
                                             return (
