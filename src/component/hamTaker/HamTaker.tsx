@@ -31,11 +31,12 @@ const HamTaker = () => {
         [0, 1, 0, 3, 1],
         [1, 1, 1, 1, 5, 1],
         [1, 2, 1, 6, 6, 6],
-        [1, 0, 1, 1, 1, 4]
+        [1, 0, 5, 1, 1, 4]
     ]);
 
     const keyDown = (e: any) => {
         if (!controllable) return;
+        clear && reset();
         switch (e.key) {
             case 'ArrowUp':
                 if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
@@ -91,22 +92,25 @@ const HamTaker = () => {
             reset();
             return;
         }
-        setSpike(!spike);
         switch (data[y][x]) {
             case MapData.land:
+                setSpike(!spike);
                 setLife(life - 1);
                 return true;
             case MapData.thorn:
+                setSpike(!spike);
                 if (life - 2 < 0) {reset(); return;}
                 setLife(life - 2);
                 return true;
             case MapData.goal:
+                setSpike(!spike);
                 setLife(life - 1);
                 setClear(true);
                 return true;
             case MapData.skeleton:
                 return false;
             case MapData.spikeTrapOnOff:
+                setSpike(!spike);
                 if (!spike && (life - 2 < 0)) {reset(); return;}
                 setLife(life - (spike ? 1 : 2));
                 return true;
