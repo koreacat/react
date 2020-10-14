@@ -39,22 +39,77 @@ const HamTaker = () => {
         clear && reset();
         switch (e.key) {
             case 'ArrowUp':
-                if (!data[coordinates.y - 1] || !movable(data, coordinates.y - 1, coordinates.x)) return;
+                if (!data[coordinates.y - 1] || !movable(coordinates.y - 1, coordinates.x, 'UP')) return;
                 setCoordinates({x: coordinates.x, y: coordinates.y - 1});
                 break;
             case 'ArrowDown':
-                if (!data[coordinates.y + 1] || !movable(data, coordinates.y + 1, coordinates.x)) return;
+                if (!data[coordinates.y + 1] || !movable(coordinates.y + 1, coordinates.x, 'DOWN')) return;
                 setCoordinates({x: coordinates.x, y: coordinates.y + 1});
                 break;
             case 'ArrowLeft':
-                if (!data[coordinates.x - 1] || !movable(data, coordinates.y, coordinates.x - 1)) return;
+                if (!data[coordinates.x - 1] || !movable(coordinates.y, coordinates.x - 1, 'LEFT')) return;
                 setCoordinates({x: coordinates.x - 1, y: coordinates.y});
                 break;
             case 'ArrowRight':
-                if (!data[coordinates.x + 1] || !movable(data, coordinates.y, coordinates.x + 1)) return;
+                if (!data[coordinates.x + 1] || !movable(coordinates.y, coordinates.x + 1, 'RIGHT')) return;
                 setCoordinates({x: coordinates.x + 1, y: coordinates.y});
                 break;
         }
+    };
+
+    const movable = (y: number, x: number, dir: string) => {
+        if (life - 1 < 0 || clear) {
+            reset();
+            return;
+        }
+        switch (data[y][x]) {
+            case MapData.land:
+                setSpike(!spike);
+                setLife(life - 1);
+                return true;
+            case MapData.thorn:
+                setSpike(!spike);
+                if (life - 2 < 0) {reset(); return;}
+                setLife(life - 2);
+                return true;
+            case MapData.goal:
+                setSpike(!spike);
+                setLife(life - 1);
+                setClear(true);
+                return true;
+            case MapData.skeleton:
+                return false;
+            case MapData.spikeTrapOnOff:
+                setSpike(!spike);
+                if (!spike && (life - 2 < 0)) {reset(); return;}
+                setLife(life - (spike ? 1 : 2));
+                return true;
+            case MapData.rock:
+                moveRock(y, x, dir) && setLife(life - 1);
+                return false;
+            default:
+                return false;
+        }
+    };
+
+    const moveRock = (y: number, x: number, dir: string) => {
+        //진행 방향의 앞칸 유효성 체크 유효하지 않으면 false
+        //진행 방향의 앞칸 타입 체크
+        switch (dir) {
+            case 'UP':
+                break;
+            case 'DOWN':
+                break;
+            case 'LEFT':
+                break;
+            case 'RIGHT':
+                break;
+        }
+
+        //진행 방향의 앞칸이 땅이나 가시, 트랩, 골일 경우 그 방향으로 돌 옮기기
+        //돌이 있던 땅은 돌이 없는 원래 땅으로
+
+        return false;
     };
 
     const reset = () => {
@@ -85,38 +140,6 @@ const HamTaker = () => {
         setTimeout(function () {
             setFailHeight('0');
         }, 1900);
-    };
-
-    const movable = (data: number[][], y: number, x: number) => {
-        if (life - 1 < 0 || clear) {
-            reset();
-            return;
-        }
-        switch (data[y][x]) {
-            case MapData.land:
-                setSpike(!spike);
-                setLife(life - 1);
-                return true;
-            case MapData.thorn:
-                setSpike(!spike);
-                if (life - 2 < 0) {reset(); return;}
-                setLife(life - 2);
-                return true;
-            case MapData.goal:
-                setSpike(!spike);
-                setLife(life - 1);
-                setClear(true);
-                return true;
-            case MapData.skeleton:
-                return false;
-            case MapData.spikeTrapOnOff:
-                setSpike(!spike);
-                if (!spike && (life - 2 < 0)) {reset(); return;}
-                setLife(life - (spike ? 1 : 2));
-                return true;
-            default:
-                return false;
-        }
     };
 
     const hamTakerStyle = {
