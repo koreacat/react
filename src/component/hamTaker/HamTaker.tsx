@@ -129,7 +129,7 @@ const HamTaker = () => {
         dir === 'RIGHT' && dx++;
 
         //진행 방향의 앞칸에 돌 옮길 수 있는지 체크
-        if(data[dy] && data[dx] && data[dy][dx]){
+        if(data[dy] && data[dy][dx]){
             //진행 방향의 앞칸이 땅이나 가시, 트랩, 골일 경우 그 방향으로 돌 옮기기
             if(data[dy][dx] === MapData.land){
                 data[dy][dx] = MapData.rock;
