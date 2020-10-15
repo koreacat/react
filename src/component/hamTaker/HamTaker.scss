@@ -219,37 +219,65 @@
             }    
         }
 
-        .hamTakerUpButton {
+        
+        .hamTakerButtonWrap {
             position: absolute;
-            top: 0;
-            width: 60%;
-            height: 20%;
-            z-index: 999;
+            width: 30vw;
+            height: 30vw;
+            right: 30px;
+            bottom: 60px;
+            
+            .hamTakerButton {
+                position: relative;
+                width: 30vw;
+                height: 30vw;
+                
+                >div {
+                    position: absolute;
+                    z-index: 999;
+                    margin: auto;
+                    background: #ffffff10;
+                }
+                
+                .hamTakerUpButton {
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    width: 30%;
+                    height: 42%;
+                    border-radius: 30% 30% 100% 100%;
+                }
+    
+                .hamTakerDownButton {
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 30%;
+                    height: 42%;
+                    border-radius: 100% 100% 30% 30%;
+                }
+    
+                .hamTakerLeftButton {
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 42%;
+                    height: 30%;
+                    border-radius: 30% 100% 100% 30%;
+                }
+    
+                .hamTakerRightButton {
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 42%;
+                    height: 30%;
+                    border-radius: 100% 30% 30% 100%;
+                }
+            }
         }
-
-        .hamTakerDownButton {
-            position: absolute;
-            bottom: 0;
-            width: 60%;
-            height: 20%;
-            z-index: 999;
-        }
-
-        .hamTakerLeftButton {
-            position: absolute;
-            left: 0;
-            width: 20%;
-            height: 60%;
-            z-index: 999;
-        }
-
-        .hamTakerRightButton {
-            position: absolute;
-            right: 0;
-            width: 20%;
-            height: 60%;
-            z-index: 999;
-        }
+        
+        
     }
     .characterWrap {
         position: absolute;
@@ -260,8 +288,8 @@
         align-items: flex-end;
         bottom: 80px;
         >p {
-            width: 35px;
-            height: 35px;
+            width: 8vw;
+            height: 8vw;
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;

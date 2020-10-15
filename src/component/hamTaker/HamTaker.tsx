@@ -232,10 +232,14 @@ const HamTaker = () => {
                         <h2>HAMTAKER</h2>
                     </div>
                 </div>
-                <div className={'hamTakerUpButton'} onClick={() => {keyDown({key: 'ArrowUp'})}}/>
-                <div className={'hamTakerDownButton'} onClick={() => {keyDown({key: 'ArrowDown'})}}/>
-                <div className={'hamTakerLeftButton'} onClick={() => {keyDown({key: 'ArrowLeft'})}}/>
-                <div className={'hamTakerRightButton'} onClick={() => {keyDown({key: 'ArrowRight'})}}/>
+                <div className={'hamTakerButtonWrap'}>
+                    <div className={'hamTakerButton'}>
+                        <div className={'hamTakerUpButton'} onClick={() => {keyDown({key: 'ArrowUp'})}}/>
+                        <div className={'hamTakerDownButton'} onClick={() => {keyDown({key: 'ArrowDown'})}}/>
+                        <div className={'hamTakerLeftButton'} onClick={() => {keyDown({key: 'ArrowLeft'})}}/>
+                        <div className={'hamTakerRightButton'} onClick={() => {keyDown({key: 'ArrowRight'})}}/>
+                    </div>
+                </div>
             </div>
             <div className={'characterWrap'}>
                 <p className={'루시퍼'}/>
