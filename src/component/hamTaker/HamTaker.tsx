@@ -26,7 +26,7 @@ const stage01 = {
         [3, 0, 1, 1, 1, 4]
     ],
     startPoint : {x: 0, y: 0}
-}
+};
 
 const stage = () => {
     return [
@@ -37,11 +37,11 @@ const stage = () => {
         [1, 2, 5, 6, 6, 6],
         [3, 0, 1, 1, 1, 4]
     ];
-} 
+} ;
 
 const startPoint = () => {
     return {x: 0, y: 0};
-}
+};
 
 const HamTaker = () => {
     const distance = 50;
@@ -153,7 +153,7 @@ const HamTaker = () => {
 
         setTimeout(function () {
             setControllable(true);
-        }, 2500);
+        }, 3000);
     };
 
     const failAnimation = () => {
