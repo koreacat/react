@@ -1,10 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './HamTaker.scss';
-
-window.addEventListener('keydown', function () {
-    // @ts-ignore
-    document.getElementById('ham').focus();
-});
 
 enum MapData {
     space,
@@ -15,18 +10,6 @@ enum MapData {
     spikeTrapOnOff,
     skeleton,
 }
-
-const stage01 = {
-    stage : [
-        [1, 0, 0, 1, 1, 1],
-        [1, 1, 1, 1, 2, 1],
-        [0, 1, 0, 3, 1, 0],
-        [1, 1, 1, 1, 5, 1],
-        [1, 2, 5, 6, 6, 6],
-        [3, 0, 1, 1, 1, 4]
-    ],
-    startPoint : {x: 0, y: 0}
-};
 
 const stage = () => {
     return [
@@ -53,6 +36,18 @@ const HamTaker = () => {
     let [failOpacity, setFailOpacity] = useState('0');
     let [controllable, setControllable] = useState(true);
     let [data, setData] = useState(stage);
+
+    useEffect(() => {
+        window.addEventListener('keydown', event);
+        return () => {
+            window.removeEventListener('keydown', event);
+        }
+    });
+
+    const event = () => {
+        // @ts-ignore
+        document.getElementById('ham').focus();
+    };
 
     const keyDown = (e: any) => {
         if (!controllable) return;
