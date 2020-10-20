@@ -1,0 +1,159 @@
+.appMenu{
+    background: RGBA(255, 255, 255, 0.1);
+}
+
+.hamderTale {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+
+    .hamderTaleWrap {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 80px);
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        top: 0;
+        overflow: hidden;
+
+        .hamderTaleCharacterWrap {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            .hamderTaleCharacter {
+                width: 165px;
+                height: 165px;
+                margin-left: 100px;
+                background-image: url('./img/dog.gif');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+    
+            .hamderTaleScript {
+                width: 100px;
+                height: 120px;
+                background: #ffffff;
+                border-radius: 20px;
+                padding: 10px;
+                word-break: keep-all;
+                font-weight: 900;
+                z-index: 3;
+            }
+        }
+
+        .hamderTaleHeartBox {
+            width: 165px;
+            height: 165px;
+            border: 5px solid #ffffff;
+            margin: 10px;
+
+            .hamderTaleHeart {
+                width: 16px;
+                height: 16px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+                background-image: url('./img/heart.png');
+            }
+        }
+
+        .hamderTaleStatusbar {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 900;
+            
+            .hamderTaleStatusbarName {
+                margin-right: 20px;
+            }
+
+            .hamderTaleStatusbarLevel {
+                margin-right: 20px;
+            }
+            
+            .hamderTaleHP {
+                font-size: 14px;
+                margin-right: 5px;
+            }
+        
+            .hamderTaleHPBar {
+                width: 110px;
+                height: 20px;
+                background: #ffff00;
+                margin-right: 5px;
+            }
+
+            .hamderTaleKR {
+                font-size: 14px;
+                margin-right: 10px;
+            }
+            
+            .hamderTaleStatusbarHP {
+            }
+        }
+
+        .hamderTaleMenuWrap {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            >ul {
+                display: flex;
+                li {
+                    display: flex;
+                    width: 18vw;
+                    height: 8vh;
+                    max-width: 110px;
+                    max-height: 42px;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 10px;
+                    color: #fd7c20;
+                    border: 2px solid #fd7c20;
+                    font-size: 23px;
+                    font-weight: 900;
+                    cursor: pointer;
+
+                    @media screen and (max-width: 499px){
+                        font-size: 15px;
+                    }
+
+                    p {
+                        width: 28px;
+                        height: 28px;
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                    
+                    .hamderTaleAttack {
+                        background-image: url('./img/attack.png');
+                    }
+                    
+                    .hamderTaleaAction {
+                        background-image: url('./img/action.png');
+                    }
+
+                    .hamderTaleItem {
+                        background-image: url('./img/item.png');
+                    }
+
+                    .hamderTaleMercy {
+                        background-image: url('./img/mercy.png');
+                    }
+                }
+                li:nth-child(3){
+                    letter-spacing: -5px;
+                }
+            }
+        }
+    }
+}
