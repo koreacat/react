@@ -2,6 +2,7 @@
 .clock {
     width: 100%;
     height: 100%;
+    background: #222;
 
     .clockWrap {
         display: flex;
@@ -33,8 +34,13 @@
             height: 100px;
             border: 5px solid #ffffff;
             border-radius: 100%;
+<<<<<<< HEAD
             // transform-style: preserve-3d;
             // animation: spin 10s ease-in-out infinite;
+=======
+            transform-style: preserve-3d;
+            //animation: spin 10s ease-in-out infinite;
+>>>>>>> 20182d9582c0882b3b5f0533c5787add899c44f3
 
             @keyframes spin {
                 0% {

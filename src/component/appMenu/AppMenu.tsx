@@ -16,23 +16,11 @@ const AppIcon = ({title, img, onClick}:any) => {
 };
 
 const AppMenu = ({setAppState}: any) => {
-    const clockClick = () => {
-        setAppState(<Clock />);
-    };
-
-    const todoListClick = () => {
-        setAppState(<TodoList />);
-    };
-
-    const hamTakerClick = () => {
-        setAppState(<HamTaker />);
-    };
-
     return(
         <div className={'appMenu'}>
-            <AppIcon title={'clock'} img={'./img/default_icon.png'} onClick={clockClick}/>
-            <AppIcon title={'todoList'} img={'./img/default_icon.png'} onClick={todoListClick}/>
-            <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={hamTakerClick}/>
+            <AppIcon title={'clock'} img={'./img/default_icon.png'} onClick={() => {setAppState(<Clock />)}}/>
+            <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker />)}}/>
+            <AppIcon title={'todoList'} img={'./img/default_icon.png'} onClick={() => {setAppState(<TodoList />)}}/>
         </div>
     );
 };
