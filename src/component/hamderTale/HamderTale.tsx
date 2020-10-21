@@ -6,27 +6,14 @@ const HamderTale = () => {
     const [heartLeft, setHeartLeft] = useState(0);
     let top = 0;
     let left = 0;
-
-    let keypress = {};
+    let keypress : any = {};
 
     useEffect(() => {
         const interval = setInterval(() => {
-            // @ts-ignore
-            if(keypress['ArrowUp']) {
-                top--;
-            }
-            // @ts-ignore
-            if(keypress['ArrowDown']) {
-                top++;
-            }
-            // @ts-ignore
-            if(keypress['ArrowLeft']) {
-                left--;
-            }
-            // @ts-ignore
-            if(keypress['ArrowRight']) {
-                left++;
-            }
+            if(top > 0 && keypress['ArrowUp']) top--;
+            if(top < 139 && keypress['ArrowDown']) top++;
+            if(left > 0 && keypress['ArrowLeft']) left--;
+            if(left < 139 && keypress['ArrowRight']) left++;
             setHeartTop(top);
             setHeartLeft(left);
         }, 10);
@@ -35,15 +22,12 @@ const HamderTale = () => {
         }
     }, []);
 
-
     useEffect(() => {
         window.addEventListener('keydown', (e) => {
-            // @ts-ignore
             keypress[e.key] = true;
         });
         return () => {
             window.removeEventListener('keydown', (e) => {
-                // @ts-ignore
                 keypress[e.key] = true;
             });
         }
@@ -51,12 +35,10 @@ const HamderTale = () => {
 
     useEffect(() => {
         window.addEventListener('keyup', (e) => {
-            // @ts-ignore
             keypress[e.key] = false;
         });
         return () => {
             window.removeEventListener('keyup', (e) => {
-                // @ts-ignore
                 keypress[e.key] = false;
             });
         }
@@ -69,9 +51,9 @@ const HamderTale = () => {
 
     return (
         <div className={'hamderTale'}>
-            <iframe width="100" height="100" 
-                    src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            <iframe width="100" height="100"
+                    src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     style={{position: 'absolute', right: 0, zIndex: 2}} />
             <div className={'hamderTaleWrap'}>
                 <div className={'hamderTaleCharacterWrap'}>
@@ -81,14 +63,14 @@ const HamderTale = () => {
                 <div className={'hamderTaleHeartBox'}>
                     <div className={'hamderTaleHeart'} style={heartStyle} />
                 </div>
-                <div className={'hamderTaleStatusbar'}>
+                <p className={'hamderTaleStatusbar'}>
                     <span className={'hamderTaleStatusbarName'}>HAM</span>
                     <span className={'hamderTaleStatusbarLevel'}>LV 25</span>
                     <span className={'hamderTaleHP'}>HP</span>
                     <span className={'hamderTaleHPBar'} />
                     <span className={'hamderTaleKR'}>KR</span>
                     <span className={'hamderTaleStatusbarHP'}>92 / 92</span>
-                </div>
+                </p>
                 <div className={'hamderTaleMenuWrap'}>
                     <ul>
                         <li><p className={'hamderTaleAttack'}/><span>공격</span></li>
@@ -100,6 +82,6 @@ const HamderTale = () => {
             </div>
         </div>
     );
-}
+};
 
 export default HamderTale;

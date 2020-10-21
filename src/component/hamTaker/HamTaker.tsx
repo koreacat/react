@@ -189,7 +189,7 @@ const HamTaker = () => {
                     style={{position: 'absolute', right: 0, zIndex: 998}} />
             <div className={'hamTakerWrap'}>
                 <div className={'map'}>
-                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle}></div>
+                    <div id={'ham'} className={'ham'} tabIndex={0} onKeyDown={keyDown} style={hamTakerStyle} />
                     {
                         data.map((line, x) => {
                             return (
