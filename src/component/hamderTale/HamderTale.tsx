@@ -20,7 +20,7 @@ const HamderTale = () => {
         return () => {
             clearInterval(interval);
         }
-    }, []);
+    }, [top, left]);
 
     useEffect(() => {
         window.addEventListener('keydown', (e) => {
