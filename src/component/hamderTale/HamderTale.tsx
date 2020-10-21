@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import './HamderTale.scss';
 
 const HamderTale = () => {
-    const [heartTop, setHeartTop] = useState(66);
-    const [heartLeft, setHeartLeft] = useState(66);
-    let top = 66;
-    let left = 66;
+    const [heartTop, setHeartTop] = useState(69);
+    const [heartLeft, setHeartLeft] = useState(69);
+    let top = 69;
+    let left = 69;
     let keypress : any = {};
 
     useEffect(() => {
