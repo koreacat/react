@@ -48,18 +48,24 @@
         }
 
         .hamderTaleHeartBox {
+            position: relative;
             width: 165px;
             height: 165px;
             border: 5px solid #ffffff;
             margin: 10px;
 
             .hamderTaleHeart {
+                position: absolute;
                 width: 16px;
                 height: 16px;
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: contain;
                 background-image: url('./img/heart.png');
+    
+                &:focus {
+                    outline: none;
+                }
             }
         }
 
