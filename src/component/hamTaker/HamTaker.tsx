@@ -28,14 +28,14 @@ const startPoint = () => {
 
 const HamTaker = () => {
     const distance = 50;
-    let [clear, setClear] = useState(false);
-    let [coordinates, setCoordinates] = useState(startPoint);
-    let [life, setLife] = useState(10);
-    let [spike, setSpike] = useState(false);
-    let [failHeight, setFailHeight] = useState('0');
-    let [failOpacity, setFailOpacity] = useState('0');
-    let [controllable, setControllable] = useState(true);
-    let [data, setData] = useState(stage);
+    const [clear, setClear] = useState(false);
+    const [coordinates, setCoordinates] = useState(startPoint);
+    const [life, setLife] = useState(10);
+    const [spike, setSpike] = useState(false);
+    const [failHeight, setFailHeight] = useState('0');
+    const [failOpacity, setFailOpacity] = useState('0');
+    const [controllable, setControllable] = useState(true);
+    const [data, setData] = useState(stage);
 
     useEffect(() => {
         window.addEventListener('keydown', event);
