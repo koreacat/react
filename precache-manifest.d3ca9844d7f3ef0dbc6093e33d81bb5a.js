@@ -1,35 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "730eddc18895f9df24d6e9c1c4b513a3",
+    "revision": "0e4e6539d03ef614e53ab057bcd546e2",
     "url": "/index.html"
   },
   {
-    "revision": "e27727b3d65d5ba8bf74",
-    "url": "/static/css/main.3a8bd912.chunk.css"
+    "revision": "624d3ea1bce4b81c68cc",
+    "url": "/static/css/main.58304abf.chunk.css"
   },
   {
-    "revision": "f2efc206b7c02dfb7f4f",
-    "url": "/static/js/2.6d2b89a2.chunk.js"
+    "revision": "a549175720362077f467",
+    "url": "/static/js/2.37efc019.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/static/js/2.6d2b89a2.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.37efc019.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e27727b3d65d5ba8bf74",
-    "url": "/static/js/main.0a2ed768.chunk.js"
+    "revision": "624d3ea1bce4b81c68cc",
+    "url": "/static/js/main.c21b2274.chunk.js"
   },
   {
     "revision": "1870aadd15afa9926657",
     "url": "/static/js/runtime-main.528af2ee.js"
   },
   {
-    "revision": "56ffc195ee92ec2b60afc556f27a78b2",
-    "url": "/static/media/bark.56ffc195.mp3"
-  },
-  {
     "revision": "6deb7b5bfcb57c198ae7e9006db3ca27",
     "url": "/static/media/clock_icon.6deb7b5b.jpg"
+  },
+  {
+    "revision": "fcc53b08127a4667154c72488ec0f46f",
+    "url": "/static/media/gasterBlaster.fcc53b08.mp3"
   },
   {
     "revision": "65c4e7dac52ae7239b229bfd6f989290",
@@ -44,8 +44,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/hamTakerDone.a98989af.gif"
   },
   {
+    "revision": "219aa90f9dffb758c900f7604f07828f",
+    "url": "/static/media/hurt.219aa90f.wav"
+  },
+  {
+    "revision": "daf510e64b324d2a3861cd8512749dd4",
+    "url": "/static/media/move.daf510e6.wav"
+  },
+  {
     "revision": "719811307d52635ba1ee8369527c4db6",
     "url": "/static/media/sans.71981130.gif"
+  },
+  {
+    "revision": "5b452b1de7e50188c8cd9595233ee29c",
+    "url": "/static/media/screen_changer_part1.5b452b1d.wav"
+  },
+  {
+    "revision": "552a3de4022e8536c35a744188897c63",
+    "url": "/static/media/screen_changer_part2.552a3de4.wav"
+  },
+  {
+    "revision": "624d504fcfcd131b57ffda1eb04cb1d9",
+    "url": "/static/media/spikes.624d504f.wav"
+  },
+  {
+    "revision": "f996511371f4d0fb6d460ad17e947fa6",
+    "url": "/static/media/stone_kick.f9965113.wav"
+  },
+  {
+    "revision": "32618059412ca8671a2930871039f86f",
+    "url": "/static/media/success.32618059.wav"
   },
   {
     "revision": "bb6436ece89207e72dc56ed0b9f71efd",
