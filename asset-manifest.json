@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.58304abf.chunk.css",
-    "main.js": "/static/js/main.c21b2274.chunk.js",
-    "main.js.map": "/static/js/main.c21b2274.chunk.js.map",
+    "main.css": "/static/css/main.771a2bb9.chunk.css",
+    "main.js": "/static/js/main.2498513c.chunk.js",
+    "main.js.map": "/static/js/main.2498513c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.528af2ee.js",
     "runtime-main.js.map": "/static/js/runtime-main.528af2ee.js.map",
     "static/js/2.37efc019.chunk.js": "/static/js/2.37efc019.chunk.js",
     "static/js/2.37efc019.chunk.js.map": "/static/js/2.37efc019.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.d3ca9844d7f3ef0dbc6093e33d81bb5a.js": "/precache-manifest.d3ca9844d7f3ef0dbc6093e33d81bb5a.js",
+    "precache-manifest.c435b837aca6caa37a5cfbc2cdc746f3.js": "/precache-manifest.c435b837aca6caa37a5cfbc2cdc746f3.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.58304abf.chunk.css.map": "/static/css/main.58304abf.chunk.css.map",
+    "static/css/main.771a2bb9.chunk.css.map": "/static/css/main.771a2bb9.chunk.css.map",
     "static/js/2.37efc019.chunk.js.LICENSE.txt": "/static/js/2.37efc019.chunk.js.LICENSE.txt",
     "static/media/clock_icon.jpg": "/static/media/clock_icon.6deb7b5b.jpg",
     "static/media/gasterBlaster.mp3": "/static/media/gasterBlaster.fcc53b08.mp3",
     "static/media/HamderTale.scss": "/static/media/sans.71981130.gif",
     "static/media/HamTaker.scss": "/static/media/헬테이커.f1013f24.gif",
+    "static/media/hampleStory_icon.png": "/static/media/hampleStory_icon.263ec213.png",
     "static/media/hurt.wav": "/static/media/hurt.219aa90f.wav",
     "static/media/move.wav": "/static/media/move.daf510e6.wav",
+    "static/media/sans.wav": "/static/media/sans.91c4c929.wav",
     "static/media/screen_changer_part1.wav": "/static/media/screen_changer_part1.5b452b1d.wav",
     "static/media/screen_changer_part2.wav": "/static/media/screen_changer_part2.552a3de4.wav",
     "static/media/spikes.wav": "/static/media/spikes.624d504f.wav",
@@ -27,7 +29,7 @@
   "entrypoints": [
     "static/js/runtime-main.528af2ee.js",
     "static/js/2.37efc019.chunk.js",
-    "static/css/main.58304abf.chunk.css",
-    "static/js/main.c21b2274.chunk.js"
+    "static/css/main.771a2bb9.chunk.css",
+    "static/js/main.2498513c.chunk.js"
   ]
 }
