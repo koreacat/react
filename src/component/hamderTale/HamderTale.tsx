@@ -7,6 +7,7 @@ const HamderTale = () => {
     let top = 69, left = 69;
     let keypress : any = {};
 
+    const [sansScript, setSansScript] = useState('');
     const [heartTop, setHeartTop] = useState(top);
     const [heartLeft, setHeartLeft] = useState(left);
     const [heartHP, setHeartHP] = useState(maxHP);
@@ -58,14 +59,34 @@ const HamderTale = () => {
 
     //scenario
     useEffect(() => {
+        const sans = '그냥 본론으로 들어가자구.';
+        let scriptIndex = 1;
         let hp = heartHP;
+        
+        /*------------------------------------------------------------
+        ------------------------ SansScript 00 -----------------------
+        ------------------------------------------------------------*/
+        const timeout00 = setTimeout(() => {
+            const interval = setInterval(() => {
+                if(sans != sans.substring(0, scriptIndex)){
+                    let sansSound = new Audio(require('./sound/sans.wav'));
+                    sansSound.play();
+                }
+                setSansScript(sans.substring(0, scriptIndex++));
+            }, 100);
+    
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 3500);
+        }, 3500);
 
+    
         /*------------------------------------------------------------
         ----------------- Pattern 01 - Gaster Blaster ----------------
         ------------------------------------------------------------*/
-        setTimeout(() => {
+        const timeout01 = setTimeout(() => {
             setGasterBlasterAnimation01();
-        }, 500);
+        }, 6500);
 
         setTimeout(() => {
             setGasterAnimation01();
@@ -82,11 +103,11 @@ const HamderTale = () => {
             setTimeout(() => {
                 clearInterval(interval);
             }, 1000);
-        }, 1500);
+        }, 7500);
 
         setTimeout(() => {
             resetGasterAnimation01();
-        }, 2500);
+        }, 8500);
 
 
         /*------------------------------------------------------------
@@ -100,9 +121,9 @@ const HamderTale = () => {
         /*------------------------------------------------------------
         ----------------- Pattern 03 - Gaster Blaster ----------------
         ------------------------------------------------------------*/
-        setTimeout(() => {
+        const timeout02 = setTimeout(() => {
             setGasterBlasterAnimation01();
-        }, 3000);
+        }, 9000);
 
         setTimeout(() => {
             setGasterAnimation01();
@@ -119,11 +140,18 @@ const HamderTale = () => {
             setTimeout(() => {
                 clearInterval(interval);
             }, 1000);
-        }, 4000);
+        }, 10000);
 
         setTimeout(() => {
             resetGasterAnimation01();
-        }, 5000);
+        }, 11000);
+
+
+        return (() => {
+            clearTimeout(timeout00);
+            clearTimeout(timeout01);
+            clearTimeout(timeout02);
+        });
     }, [top, left]);
 
     const setGasterBlasterAnimation01 = () => {
@@ -199,7 +227,7 @@ const HamderTale = () => {
             <div className={'hamderTaleWrap'}>
                 <div className={'hamderTaleCharacterWrap'}>
                     <div className={'hamderTaleCharacter'} />
-                    <div className={'hamderTaleScript'}>독뎀, 패턴4개, gameover, 공격 행동 아이템 자비</div>
+                    <div className={'hamderTaleScript'}>{sansScript}</div>
                 </div>
                 <div className={'hamderTaleHeartBox'}>
                     <div className={'hamderTaleHeart'} style={heartStyle} />
