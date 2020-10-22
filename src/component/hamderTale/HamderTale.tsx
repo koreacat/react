@@ -2,8 +2,14 @@ import React, {useEffect, useState} from 'react';
 import './HamderTale.scss';
 
 const HamderTale = () => {
-    const [heartTop, setHeartTop] = useState(69);
-    const [heartLeft, setHeartLeft] = useState(69);
+    const speed = 1.5;
+    const maxHP = 100;
+    let top = 69, left = 69;
+    let keypress : any = {};
+
+    const [heartTop, setHeartTop] = useState(top);
+    const [heartLeft, setHeartLeft] = useState(left);
+    const [heartHP, setHeartHP] = useState(maxHP);
     const [gasterTopAnimation, setGasterTopAnimation] = useState('');
     const [gasterBottomAnimation, setGasterBottomAnimation] = useState('');
     const [gasterLeftAnimation, setGasterLeftAnimation] = useState('');
@@ -13,12 +19,6 @@ const HamderTale = () => {
     const [gasterBlasterBottomAnimation, setGasterBlasterBottomAnimation] = useState('');
     const [gasterBlasterLeftAnimation, setGasterBlasterLeftAnimation] = useState('');
     const [gasterBlasterRightAnimation, setGasterBlasterRightAnimation] = useState('');
-    const [controllable, setControllable] = useState(true);
-
-    const speed = 1.5;
-    let top = 69;
-    let left = 69;
-    let keypress : any = {};
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -56,12 +56,88 @@ const HamderTale = () => {
         }
     });
 
-    const onClick = () => {
+    //scenario
+    useEffect(() => {
+        let hp = heartHP;
+
+        /*------------------------------------------------------------
+        ----------------- Pattern 01 - Gaster Blaster ----------------
+        ------------------------------------------------------------*/
+        setTimeout(() => {
+            setGasterBlasterAnimation01();
+        }, 500);
+
+        setTimeout(() => {
+            setGasterAnimation01();
+            const interval = setInterval(() => {
+                if(hp <= 0) return;
+                if(top<50 || top>90 || left<50 || left>90) hp--;
+                setHeartHP(hp);
+            }, 20);
+
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 1000);
+        }, 2100);
+
+        setTimeout(() => {
+            resetGasterAnimation01();
+        }, 3600);
+
+
+        /*------------------------------------------------------------
+        ----------------- Pattern 02 - Gaster Blaster ----------------
+        ------------------------------------------------------------*/
+
+
+
+
+
+        /*------------------------------------------------------------
+        ----------------- Pattern 03 - Gaster Blaster ----------------
+        ------------------------------------------------------------*/
+        setTimeout(() => {
+            setGasterBlasterAnimation01();
+        }, 4000);
+
+        setTimeout(() => {
+            setGasterAnimation01();
+            const interval = setInterval(() => {
+                if(hp <= 0) return;
+                if(top<50 || top>90 || left<50 || left>90) hp--;
+                setHeartHP(hp);
+            }, 20);
+
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 1000);
+        }, 5600);
+
+        setTimeout(() => {
+            resetGasterAnimation01();
+        }, 7100);
+    }, [top, left]);
+
+    let onClick = () => {
         let audio = new Audio(require('./sound/bark.mp3'));
         audio.play();
+    };
 
-        if(!controllable) return;
-        setControllable(false);
+    const setGasterBlasterAnimation01 = () => {
+        setGasterBlasterTopAnimation('gasterBlasterTop 4s ease-in-out');
+        setGasterBlasterBottomAnimation('gasterBlasterBottom 4s ease-in-out');
+        setGasterBlasterLeftAnimation('gasterBlasterLeft 4s ease-in-out');
+        setGasterBlasterRightAnimation('gasterBlasterRight 4s ease-in-out');
+    };
+
+    const setGasterAnimation01 = () => {
+        setGasterTopAnimation('gasterTop 1s ease-in-out');
+        setGasterBottomAnimation('gasterBottom 1s ease-in-out');
+        setGasterLeftAnimation('gasterLeft 1s ease-in-out');
+        setGasterRightAnimation('gasterRight 1s ease-in-out');
+    };
+
+    const resetGasterAnimation01 = () => {
         setGasterBlasterTopAnimation('');
         setGasterBlasterBottomAnimation('');
         setGasterBlasterLeftAnimation('');
@@ -70,27 +146,7 @@ const HamderTale = () => {
         setGasterBottomAnimation('');
         setGasterLeftAnimation('');
         setGasterRightAnimation('');
-
-        //TODO 1초동안 interval 돌려서 하트 위치가 히트존에 있으면 hp-- 
-
-        setTimeout(() => {
-            setGasterBlasterTopAnimation('gasterBlasterTop 4s ease-in-out');
-            setGasterBlasterBottomAnimation('gasterBlasterBottom 4s ease-in-out');
-            setGasterBlasterLeftAnimation('gasterBlasterLeft 4s ease-in-out');
-            setGasterBlasterRightAnimation('gasterBlasterRight 4s ease-in-out');
-        }, 500);
-
-        setTimeout(() => {
-            setGasterTopAnimation('gasterTop 1s ease-in-out');
-            setGasterBottomAnimation('gasterBottom 1s ease-in-out');
-            setGasterLeftAnimation('gasterLeft 1s ease-in-out');
-            setGasterRightAnimation('gasterRight 1s ease-in-out');
-        }, 2100);
-
-        setTimeout(() => {
-            setControllable(true);
-        }, 3000)
-    }
+    };
 
     const heartStyle = {
         top: heartTop,
@@ -131,14 +187,14 @@ const HamderTale = () => {
 
     return (
         <div className={'hamderTale'}>
-            <iframe width="100" height="100"
-                    src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    style={{position: 'absolute', right: 0, zIndex: 2}} />
+            {/*<iframe width="100" height="100"*/}
+            {/*        src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"*/}
+            {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
+            {/*        style={{position: 'absolute', right: 0, zIndex: 2}} />*/}
             <div className={'hamderTaleWrap'}>
                 <div className={'hamderTaleCharacterWrap'}>
                     <div className={'hamderTaleCharacter'} onClick={onClick} />
-                    <div className={'hamderTaleScript'}>멍멍멍멍? 왈왈! 으르렁... 컹컹컹컹? 낑낑...</div>
+                    <div className={'hamderTaleScript'}>독뎀, 패턴4개, gameover, 공격 행동 아이템 자비</div>
                 </div>
                 <div className={'hamderTaleHeartBox'}>
                     <div className={'hamderTaleHeart'} style={heartStyle} />
@@ -157,9 +213,12 @@ const HamderTale = () => {
                     <span className={'hamderTaleStatusbarName'}>HAM</span>
                     <span className={'hamderTaleStatusbarLevel'}>LV 25</span>
                     <span className={'hamderTaleHP'}>HP</span>
-                    <span className={'hamderTaleHPBar'} />
+                    <span className={'hamderTaleHPBarWrap'}>
+                        <span className={'hamderTaleMaxHPBar'} />
+                        <span className={'hamderTaleHPBar'} style={{width:heartHP}} />
+                    </span>
                     <span className={'hamderTaleKR'}>KR</span>
-                    <span className={'hamderTaleStatusbarHP'}>92 / 92</span>
+                    <span className={'hamderTaleStatusbarHP'}>{heartHP} / {maxHP}</span>
                 </p>
                 <div className={'hamderTaleMenuWrap'}>
                     <ul>
