@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bdc7313332a1317a87aa0655141f1d0d",
+    "revision": "730eddc18895f9df24d6e9c1c4b513a3",
     "url": "/index.html"
   },
   {
-    "revision": "5b02c546db8ed34275f5",
-    "url": "/static/css/main.82ecbaf0.chunk.css"
+    "revision": "e27727b3d65d5ba8bf74",
+    "url": "/static/css/main.3a8bd912.chunk.css"
   },
   {
     "revision": "f2efc206b7c02dfb7f4f",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.6d2b89a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5b02c546db8ed34275f5",
-    "url": "/static/js/main.70d913bf.chunk.js"
+    "revision": "e27727b3d65d5ba8bf74",
+    "url": "/static/js/main.0a2ed768.chunk.js"
   },
   {
     "revision": "1870aadd15afa9926657",
@@ -32,10 +32,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/clock_icon.6deb7b5b.jpg"
   },
   {
-    "revision": "52ce512b2385d2f8144b5f9689fb00ca",
-    "url": "/static/media/dog.52ce512b.gif"
-  },
-  {
     "revision": "65c4e7dac52ae7239b229bfd6f989290",
     "url": "/static/media/gasterClose.65c4e7da.png"
   },
@@ -46,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a98989af613e325329e128e09eefcc3a",
     "url": "/static/media/hamTakerDone.a98989af.gif"
+  },
+  {
+    "revision": "719811307d52635ba1ee8369527c4db6",
+    "url": "/static/media/sans.71981130.gif"
   },
   {
     "revision": "bb6436ece89207e72dc56ed0b9f71efd",
