@@ -71,18 +71,22 @@ const HamderTale = () => {
             setGasterAnimation01();
             const interval = setInterval(() => {
                 if(hp <= 0) return;
-                if(top<50 || top>90 || left<50 || left>90) hp--;
+                if(top<50 || top>90 || left<50 || left>90){
+                    let hurtSound = new Audio(require('./sound/hurt.wav'));
+                    hurtSound.play();
+                    hp--;
+                } 
                 setHeartHP(hp);
             }, 20);
 
             setTimeout(() => {
                 clearInterval(interval);
             }, 1000);
-        }, 2100);
+        }, 1500);
 
         setTimeout(() => {
             resetGasterAnimation01();
-        }, 3600);
+        }, 2500);
 
 
         /*------------------------------------------------------------
@@ -98,36 +102,37 @@ const HamderTale = () => {
         ------------------------------------------------------------*/
         setTimeout(() => {
             setGasterBlasterAnimation01();
-        }, 4000);
+        }, 3000);
 
         setTimeout(() => {
             setGasterAnimation01();
             const interval = setInterval(() => {
                 if(hp <= 0) return;
-                if(top<50 || top>90 || left<50 || left>90) hp--;
+                if(top<50 || top>90 || left<50 || left>90){
+                    let hurtSound = new Audio(require('./sound/hurt.wav'));
+                    hurtSound.play();
+                    hp--;
+                } 
                 setHeartHP(hp);
             }, 20);
 
             setTimeout(() => {
                 clearInterval(interval);
             }, 1000);
-        }, 5600);
+        }, 4000);
 
         setTimeout(() => {
             resetGasterAnimation01();
-        }, 7100);
+        }, 5000);
     }, [top, left]);
 
-    let onClick = () => {
-        let audio = new Audio(require('./sound/bark.mp3'));
-        audio.play();
-    };
-
     const setGasterBlasterAnimation01 = () => {
-        setGasterBlasterTopAnimation('gasterBlasterTop 4s ease-in-out');
-        setGasterBlasterBottomAnimation('gasterBlasterBottom 4s ease-in-out');
-        setGasterBlasterLeftAnimation('gasterBlasterLeft 4s ease-in-out');
-        setGasterBlasterRightAnimation('gasterBlasterRight 4s ease-in-out');
+        let gasterBlasterSound = new Audio(require('./sound/gasterBlaster.mp3'));
+        gasterBlasterSound.play();
+        setGasterBlasterTopAnimation('gasterBlasterTop 3s ease-in-out');
+        setGasterBlasterBottomAnimation('gasterBlasterBottom 3s ease-in-out');
+        setGasterBlasterLeftAnimation('gasterBlasterLeft 3s ease-in-out');
+        setGasterBlasterRightAnimation('gasterBlasterRight 3s ease-in-out');
     };
 
     const setGasterAnimation01 = () => {
@@ -187,13 +192,13 @@ const HamderTale = () => {
 
     return (
         <div className={'hamderTale'}>
-            {/*<iframe width="100" height="100"*/}
-            {/*        src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"*/}
-            {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
-            {/*        style={{position: 'absolute', right: 0, zIndex: 2}} />*/}
+            <iframe width="100" height="100"
+                   src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                   style={{position: 'absolute', right: 0, zIndex: 2}} />
             <div className={'hamderTaleWrap'}>
                 <div className={'hamderTaleCharacterWrap'}>
-                    <div className={'hamderTaleCharacter'} onClick={onClick} />
+                    <div className={'hamderTaleCharacter'} />
                     <div className={'hamderTaleScript'}>독뎀, 패턴4개, gameover, 공격 행동 아이템 자비</div>
                 </div>
                 <div className={'hamderTaleHeartBox'}>

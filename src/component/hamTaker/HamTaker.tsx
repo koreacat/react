@@ -81,15 +81,24 @@ const HamTaker = () => {
             case MapData.land:
                 setSpike(!spike);
                 setLife(life - 1);
+                let moveSound01 = new Audio(require('./sound/move.wav'));
+                moveSound01.play();
                 return true;
             case MapData.thorn:
                 setSpike(!spike);
                 if (life - 2 < 0) {reset(); return;}
                 setLife(life - 2);
+                let spikesSound01 = new Audio(require('./sound/spikes.wav'));
+                spikesSound01.play();
                 return true;
             case MapData.goal:
                 setSpike(!spike);
                 setLife(life - 1);
+                let moveSound02 = new Audio(require('./sound/move.wav'));
+                moveSound02.play();
+
+                let successSound = new Audio(require('./sound/success.wav'));
+                successSound.play();
                 setClear(true);
                 return true;
             case MapData.skeleton:
@@ -97,12 +106,23 @@ const HamTaker = () => {
             case MapData.spikeTrapOnOff:
                 setSpike(!spike);
                 if (!spike && (life - 2 < 0)) {reset(); return;}
-                setLife(life - (spike ? 1 : 2));
+                
+                if(spike){
+                    let moveSound03 = new Audio(require('./sound/move.wav'));
+                    moveSound03.play();
+                    setLife(life - 1);
+                }else {
+                    let spikesSound02 = new Audio(require('./sound/spikes.wav'));
+                    spikesSound02.play();
+                    setLife(life - 2);
+                }
                 return true;
             case MapData.rock:
                 if(moveRock(y, x, dir)) {
                     setSpike(!spike);
                     if(data[coordinates.y][coordinates.x] === MapData.spikeTrapOnOff && !spike){
+                        let spikesSound = new Audio(require('./sound/spikes.wav'));
+                        spikesSound.play();
                         setLife(life - 2);
                     }else {
                         setLife(life - 1);
@@ -129,6 +149,8 @@ const HamTaker = () => {
             if(data[dy][dx] === MapData.land){
                 data[dy][dx] = MapData.rock;
                 data[y][x] = MapData.land;
+                let stoneSound = new Audio(require('./sound/stone_kick.wav'));
+                stoneSound.play();
                 return true;
             }
         }
@@ -137,6 +159,8 @@ const HamTaker = () => {
 
     const reset = () => {
         setControllable(false);
+        // let deathSound = new Audio(require('./sound/death.wav'));
+        // deathSound.play();
         failAnimation();
         setTimeout(function () {
             setData(stage);
@@ -153,6 +177,8 @@ const HamTaker = () => {
 
     const failAnimation = () => {
         setFailHeight('50%');
+        let part1Sound = new Audio(require('./sound/screen_changer_part1.wav'));
+        part1Sound.play();
 
         setTimeout(function () {
             setFailOpacity('100');
@@ -160,10 +186,13 @@ const HamTaker = () => {
 
         setTimeout(function () {
             setFailOpacity('0');
+            let part2Sound = new Audio(require('./sound/screen_changer_part2.wav'));
+            part2Sound.play();
         }, 2200);
 
         setTimeout(function () {
             setFailHeight('0');
+            
         }, 2500);
     };
 
