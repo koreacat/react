@@ -7,7 +7,7 @@ const Canvas = () => {
 	const [isDrawing, setIsDrawing] = useState(false);
 	const [canvasSize] = useState({
 		width: window.innerWidth - 2,
-		height: window.innerHeight - 80,
+		height: window.innerHeight,
 	});
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 	const [canvasRef, ctx] = useCanvas();

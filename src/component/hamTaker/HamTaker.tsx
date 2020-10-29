@@ -104,7 +104,7 @@ const HamTaker = () => {
 				successSound.play();
 				setClear(true);
 				return true;
-			case MapType.skelleton:
+			case MapType.skeleton:
 				return false;
 			case MapType.spikeTrap:
 				setSpike(!spike);
