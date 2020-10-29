@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCanvas } from "../hooks/useCanvas";
 import "./Canvas.scss";
 
 interface Coordinate {
@@ -17,13 +18,8 @@ const Canvas = () => {
 		y: 0,
 	});
 
-	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const [canvasRef, ctx] = useCanvas();
 	const isCanvasLoaded = !!canvasRef.current;
-	const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>();
-
-	useEffect(() => {
-		setCtx(canvasRef.current?.getContext("2d"));
-	}, [canvasRef]);
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
