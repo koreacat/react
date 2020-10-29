@@ -5,7 +5,7 @@ import HamderTale from '../hamderTale/HamderTale';
 import HamKemon from '../hamKemon/HamKemon';
 import HampleStory from '../hampleStory/HampleStory';
 import HamTaker from '../hamTaker/HamTaker';
-import Canvas from '../canvas/Canvas';
+import Canvas from '../canvas/App';
 
 const AppIcon = ({title, img, onClick}:any) => {
     const style = {
