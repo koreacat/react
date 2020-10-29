@@ -16,7 +16,6 @@ export default class Picasso {
     clear() { }
 
     drawLine(start: Coordinate, end: Coordinate) {
-        console.log(start, end);
         this.ctx.beginPath();
         this.ctx.moveTo(start.x, start.y);
         this.ctx.lineTo(end.x, end.y);

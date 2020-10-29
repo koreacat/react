@@ -23,6 +23,7 @@ const Canvas = () => {
 	);
 
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
+		console.log('mouse down');
 		setIsDrawing(true);
 		const nextCoordinate: Coordinate = {
 			x: e.clientX,
@@ -33,6 +34,7 @@ const Canvas = () => {
 
 	const onMouseMove = useCallback(
 		(e: React.MouseEvent) => {
+		console.log('mouse move');
 			if (!isDrawing) return;
 			const nextCoordinate: Coordinate = {
 				x: e.clientX,
@@ -45,6 +47,37 @@ const Canvas = () => {
 	);
 
 	const onMouseOut = useCallback(() => {
+		console.log('mouse out');
+		setIsDrawing(false);
+	}, []);
+
+	const onTouchStart = useCallback((e: React.TouchEvent) => {
+		console.log('touch start');
+		setIsDrawing(true);
+		const nextCoordinate: Coordinate = {
+			x: e.touches[0].clientX,
+			y: e.touches[0].clientY,
+		};
+		setCoordinate(nextCoordinate);
+	}, []);
+
+	const onTouchMove = useCallback(
+		(e: React.TouchEvent) => {
+		console.log('touch move');
+			
+			if (!isDrawing) return;
+			const nextCoordinate: Coordinate = {
+				x: e.touches[0].clientX,
+				y: e.touches[0].clientY,
+			};
+			draw(nextCoordinate);
+			setCoordinate(nextCoordinate);
+		},
+		[isDrawing, coordinate]
+	);
+
+	const onTouchEnd = useCallback(() => {
+		console.log('touch end');
 		setIsDrawing(false);
 	}, []);
 
@@ -59,6 +92,9 @@ const Canvas = () => {
 				onMouseUp={onMouseOut}
 				onMouseDown={onMouseDown}
 				onMouseMove={onMouseMove}
+				onTouchStart={onTouchStart}
+				onTouchMove={onTouchMove}
+				onTouchEnd={onTouchEnd}
 			/>
 		</div>
 	);
