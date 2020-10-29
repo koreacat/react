@@ -1,39 +1,25 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useCanvas } from "../hooks/useCanvas";
+import React, { useCallback, useState } from "react";
+import { useCanvas, usePicasso } from "../hooks/useCanvas";
+import { Coordinate } from "../type";
 import "./Canvas.scss";
-
-interface Coordinate {
-	x: number;
-	y: number;
-}
 
 const Canvas = () => {
 	const [isDrawing, setIsDrawing] = useState(false);
-	const [canvasSize, setCanvasSize] = useState({
-		width: window.innerWidth,
+	const [canvasSize] = useState({
+		width: window.innerWidth - 2,
 		height: window.innerHeight - 80,
 	});
-	const [coordinate, setCoordinate] = useState<Coordinate>({
-		x: 0,
-		y: 0,
-	});
-
+	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 	const [canvasRef, ctx] = useCanvas();
 	const isCanvasLoaded = !!canvasRef.current;
+	const [picasso] = usePicasso(ctx);
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
 			if (!isDrawing) return;
-			console.log(nextCoordinate, coordinate);
-			ctx?.beginPath();
-			ctx?.moveTo(coordinate.x, coordinate.y);
-			ctx?.lineTo(nextCoordinate.x, nextCoordinate.y);
-			// ctx!.strokeStyle = "green";
-			ctx!.lineWidth = 1;
-			ctx?.stroke();
-			ctx?.closePath();
+			picasso?.drawLine(coordinate, nextCoordinate);
 		},
-		[coordinate, ctx, isDrawing]
+		[coordinate, picasso, isDrawing]
 	);
 
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
@@ -42,7 +28,6 @@ const Canvas = () => {
 			x: e.clientX,
 			y: e.clientY,
 		};
-		console.log(nextCoordinate);
 		setCoordinate(nextCoordinate);
 	}, []);
 
@@ -59,7 +44,7 @@ const Canvas = () => {
 		[isDrawing, coordinate]
 	);
 
-	const onMouseOut = useCallback((e: React.MouseEvent) => {
+	const onMouseOut = useCallback(() => {
 		setIsDrawing(false);
 	}, []);
 

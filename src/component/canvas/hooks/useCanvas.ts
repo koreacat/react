@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import Picasso from "../lib/picasso";
 
 export function useCanvas () {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,4 +10,12 @@ export function useCanvas () {
     }, [canvasRef]);
     
     return [canvasRef, ctx] as const;
+}
+
+export function usePicasso (ctx?: CanvasRenderingContext2D | null) {
+    const [picasso, setPiccaso] = useState<Picasso | undefined | null>(ctx && new Picasso(ctx));
+    useEffect(() => {
+        if(ctx) setPiccaso(new Picasso(ctx))
+    }, [ctx])
+    return [picasso];
 }
