@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useCanvas, usePicasso } from "../hooks/useCanvas";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { usePicasso } from "../hooks/useCanvas";
 import { Coordinate } from "../type";
 import "./Canvas.scss";
 import ToolPalette from "./ToolPalette/ToolPalette";
@@ -18,13 +18,13 @@ const Canvas = (prop: CanvasProp) => {
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 	const [color, setColor] = useState("black");
 	const [penWidth, setPenWidth] = useState(1);
-	const [canvasRef, ctx] = useCanvas();
+	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const isCanvasLoaded = !!canvasRef.current;
-	const [picasso] = usePicasso(color,penWidth, ctx);
+	const [picasso] = usePicasso(color,penWidth, canvasRef);
 
 	useEffect(() => {
-		if(ctx) picasso.ctx = ctx
-	}, [ctx, picasso]);
+		if(canvasRef) picasso.canvas = canvasRef
+	}, [canvasRef, picasso]);
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
@@ -33,6 +33,10 @@ const Canvas = (prop: CanvasProp) => {
 		},
 		[coordinate, picasso, drawable]
 	);
+
+	const onClearCanvas = useCallback(() => {
+		picasso.clear();
+	}, [picasso])
 
 	const onChangeColor = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,6 +135,7 @@ const Canvas = (prop: CanvasProp) => {
 				penWidth={penWidth}
 				onChangeColor={onChangeColor}
 				onChangePenWidth={onChangePenWidth}
+				onClearCanvas={onClearCanvas}
 			/>
 		</div>
 	);

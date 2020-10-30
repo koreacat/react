@@ -7,10 +7,11 @@ interface ToolPaletteProp {
 	penWidth: number;
 	onChangeColor: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onChangePenWidth: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onClearCanvas: () => void;
 }
 
 const ToolPalette = (prop: ToolPaletteProp) => {
-	const { color, penWidth, onChangeColor, onChangePenWidth } = prop;
+	const { color, penWidth, onChangeColor, onChangePenWidth, onClearCanvas } = prop;
 
 	const [colorPaletteOpened, setColorPaletteOpened] = useState(false);
 
@@ -31,6 +32,7 @@ const ToolPalette = (prop: ToolPaletteProp) => {
 				<ColorPalette color={color} onChangeColor={onChangeColor} />
 			)}
 			<input type="number" value={penWidth} onChange={onChangePenWidth} />
+			<button id="refreshButton" onClick={onClearCanvas} title={"canvas 초기화"} />
 		</div>
 	);
 };
