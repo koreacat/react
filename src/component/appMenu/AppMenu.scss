@@ -1,19 +1,25 @@
 .appMenu {
     position: absolute;
-    display: flex;
+    display: block;
     width: 100%;
     height: 80px;
-    justify-content: center;
+    text-align: center;
     bottom: 0;
     padding: 10px;
     background: RGBA(50, 50, 50, 0.5);
     transition: all 0.5s;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
 }
 
-.appMenu:hover {
+.appMenu::-webkit-scrollbar {
+    display: none;
 }
 
 .appIcon {
+    display: inline-block;
     position: relative;
     width: 50px;
     height: 50px;
