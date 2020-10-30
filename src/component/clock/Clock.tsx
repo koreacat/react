@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Clock.scss';
 import DateFormat from '../../common/DateFormat';
 import {clockProps, clockList} from './type';
@@ -151,7 +151,7 @@ const DigilogClocks = (({date, digilogClockList}: any) => {
 
 const Clock = () => {
     const [date, setDate] = useState(new Date());
-    const [digilogClockList, setDigilogClockList] = useState(clockList);
+    const [digilogClockList] = useState(clockList);
 
     useEffect(() => {
         const interval = setInterval(

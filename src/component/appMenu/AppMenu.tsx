@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import './AppMenu.scss';
 import Clock from '../clock/Clock';
 import HamderTale from '../hamderTale/HamderTale';
@@ -6,6 +6,7 @@ import HamKemon from '../hamKemon/HamKemon';
 import HampleStory from '../hampleStory/HampleStory';
 import HamTaker from '../hamTaker/HamTaker';
 import Canvas from '../canvas/App';
+import ArtGalley from "../artGalley/ArtGalley";
 
 const AppIcon = ({title, img, onClick}: any) => {
     const style = {
@@ -36,35 +37,10 @@ const AppMenu = ({setAppState}: any) => {
             <AppIcon title={'hampleStory'} img={'./img/hampleStory_icon.png'} onClick={() => {setAppState(<HampleStory/>)}}/>
             <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
             <AppIcon title={'canvas'} img={'./img/canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
-            <AppIcon title={'drive'} img={'./img/default_icon.png'} onClick={() => {}}/>
+            <AppIcon title={'artGalley'} img={'./img/artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
             <AppIcon title={'parrot'} img={'./img/default_icon.png'} onClick={() => {}}/>
+            <AppIcon title={'drive'} img={'./img/default_icon.png'} onClick={() => {}}/>
             <AppIcon title={'cube'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'artGalley'} img={'./img/default_icon.png'} onClick={() => {}}/>
-
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'dummy'} img={'./img/default_icon.png'} onClick={() => {}}/>
         </div>
     );
 };

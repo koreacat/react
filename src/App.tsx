@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './App.scss';
 import AppMenu from './component/appMenu/AppMenu';
-import HamderTale from "./component/hamderTale/HamderTale";
-import Canvas from "./component/canvas/components/Canvas";
+import ArtGalley from "./component/artGalley/ArtGalley";
 
 function App() {
-  const [appState, setAppState] = useState(<Canvas></Canvas>);
+  const [appState, setAppState] = useState(<ArtGalley></ArtGalley>);
 
   return (
     <div className="App">

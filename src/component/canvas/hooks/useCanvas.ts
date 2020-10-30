@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Picasso from "../lib/picasso";
 
 export function useCanvas () {
@@ -16,6 +16,6 @@ export function usePicasso (ctx?: CanvasRenderingContext2D | null) {
     const [picasso, setPiccaso] = useState<Picasso | undefined | null>(ctx && new Picasso(ctx));
     useEffect(() => {
         if(ctx) setPiccaso(new Picasso(ctx))
-    }, [ctx])
+    }, [ctx]);
     return [picasso];
 }
