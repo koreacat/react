@@ -3,7 +3,6 @@ const DateFormat = ((d: Date, format: string) => {
     const KS = ["일", "월", "화", "수", "목", "금", "토"];
     const EL = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const ES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let h;
 
     let zf = ((num: number, len: number) => {
         let s = '', i = 0;
@@ -18,7 +17,7 @@ const DateFormat = ((d: Date, format: string) => {
             case "MM": return zf((d.getMonth() + 1),2);
             case "dd": return zf(d.getDate(),2);
             case "HH": return zf(d.getHours(),2);
-            case "hh": return zf(((h = d.getHours() % 12) ? h : 12), 2);
+            case "hh": return zf((d.getHours() % 12 ? d.getHours() % 12 : 12), 2);
             case "mm": return zf(d.getMinutes(),2);
             case "ss": return zf(d.getSeconds(),2);
             case "KL": return KL[d.getDay()];

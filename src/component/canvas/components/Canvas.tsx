@@ -13,7 +13,7 @@ const Canvas = (prop: CanvasProp) => {
 	const [drawable, setDrawable] = useState(false);
 	const [canvasSize] = useState({
 		width: window.innerWidth - 2,
-		height: window.innerHeight - 80,
+		height: window.innerHeight,
 	});
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 	const [color, setColor] = useState("red");

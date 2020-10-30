@@ -5,7 +5,7 @@ export enum MapType {
     thorn,
     goal,
     spikeTrap,
-    skelleton,
+    skeleton,
 }
 
 const {
@@ -15,7 +15,7 @@ const {
     thorn: THORN,
     goal: GOAL,
     spikeTrap: SPIKE_TRAP,
-    skelleton: SKELETON,
+    skeleton: SKELETON,
 } = MapType;
 
 export const basicMap = [
