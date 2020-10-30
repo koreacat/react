@@ -1,16 +1,21 @@
 import { Coordinate } from '../type';
 
 export default class Picasso {
-    private _ctx: CanvasRenderingContext2D;
+    private _ctx: CanvasRenderingContext2D | null;
     private _strokeStyle: string;
     private _lineWidth: number;
     private _ratio: number;
 
-    constructor(ctx: CanvasRenderingContext2D) {
+    constructor(strokeStyle = 'black', lineWidth = 1, ctx: CanvasRenderingContext2D | null) {
         this._ctx = ctx;
-        this._strokeStyle = 'black';
-        this._lineWidth = 1;
-        this._ratio = 1; //devicePixelRatio
+        this._strokeStyle = strokeStyle;
+        this._lineWidth = lineWidth;
+        this._ratio = window.devicePixelRatio || 1;
+    }
+
+    set ctx(ctx: CanvasRenderingContext2D) {
+        if(!ctx) throw Error("ctx should be context object");
+        this._ctx = ctx;
     }
 
     set strokeStyle(strokeStyle: string) {
@@ -21,18 +26,15 @@ export default class Picasso {
         this._lineWidth = lineWidth;
     }
 
-    set ratio(ratio: number) {
-        this._ratio = ratio;
-    }
-
     clear() { }
 
     drawLine(start: Coordinate, end: Coordinate) {
+        if(!this._ctx) throw new Error("ctx doesn't initialized");
         this._ctx.beginPath();
         this._ctx.moveTo(start.x, start.y);
         this._ctx.lineTo(end.x, end.y);
         this._ctx.strokeStyle = this._strokeStyle;
-        this._ctx.lineWidth = this._lineWidth;
+        this._ctx.lineWidth = this._lineWidth * this._ratio;
         this._ctx.stroke();
         this._ctx.closePath();
     }

@@ -16,17 +16,15 @@ const Canvas = (prop: CanvasProp) => {
 		height: window.innerHeight,
 	});
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
-	const [color, setColor] = useState("red");
+	const [color, setColor] = useState("black");
 	const [penWidth, setPenWidth] = useState(1);
 	const [canvasRef, ctx] = useCanvas();
 	const isCanvasLoaded = !!canvasRef.current;
-	const [picasso] = usePicasso(ctx);
+	const [picasso] = usePicasso(color,penWidth, ctx);
 
 	useEffect(() => {
-		if (!picasso) return;
-		picasso.strokeStyle = color;
-		picasso.lineWidth = penWidth;
-	}, [color, penWidth]);
+		if(ctx) picasso.ctx = ctx
+	}, [ctx, picasso]);
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
@@ -38,16 +36,20 @@ const Canvas = (prop: CanvasProp) => {
 
 	const onChangeColor = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
-			setColor(e.target.value);
+			const color = e.target.value;
+			setColor(color);
+			picasso.strokeStyle = color;
 		},
-		[]
+		[picasso]
 	);
 
 	const onChangePenWidth = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
-			setPenWidth(parseInt(e.target.value));
+			const penWidth = parseInt(e.target.value);
+			setPenWidth(penWidth)
+			picasso.lineWidth = penWidth;
 		},
-		[]
+		[picasso]
 	);
 
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
