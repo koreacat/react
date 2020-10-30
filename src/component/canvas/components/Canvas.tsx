@@ -15,23 +15,25 @@ const Canvas = (prop: CanvasProp) => {
 		width: window.innerWidth - 2,
 		height: window.innerHeight,
 	});
-	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 	const [color, setColor] = useState("black");
 	const [penWidth, setPenWidth] = useState(1);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const isCanvasLoaded = !!canvasRef.current;
+	const [canvasLoaded, setCanvasLoaded] = useState(false);
 	const [picasso] = usePicasso(color,penWidth, canvasRef);
 
 	useEffect(() => {
-		if(canvasRef) picasso.canvas = canvasRef
+		if(!canvasRef) return;
+
+		picasso.canvas = canvasRef
+		setCanvasLoaded(true);
 	}, [canvasRef, picasso]);
 
 	const draw = useCallback(
-		(nextCoordinate: Coordinate) => {
+		(coordinate: Coordinate) => {
 			if (!drawable) return;
-			picasso?.drawLine(coordinate, nextCoordinate);
+			picasso?.drawLine(coordinate);
 		},
-		[coordinate, picasso, drawable]
+		[picasso, drawable]
 	);
 
 	const onClearCanvas = useCallback(() => {
@@ -59,11 +61,6 @@ const Canvas = (prop: CanvasProp) => {
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
 		console.log("mouse down");
 		setDrawable(true);
-		const nextCoordinate: Coordinate = {
-			x: e.clientX,
-			y: e.clientY,
-		};
-		setCoordinate(nextCoordinate);
 	}, []);
 
 	const onMouseMove = useCallback(
@@ -75,9 +72,8 @@ const Canvas = (prop: CanvasProp) => {
 				y: e.clientY,
 			};
 			draw(nextCoordinate);
-			setCoordinate(nextCoordinate);
 		},
-		[drawable, coordinate]
+		[drawable]
 	);
 
 	const onMouseUp = useCallback(() => {
@@ -88,11 +84,6 @@ const Canvas = (prop: CanvasProp) => {
 	const onTouchStart = useCallback((e: React.TouchEvent) => {
 		console.log("touch start");
 		setDrawable(true);
-		const nextCoordinate: Coordinate = {
-			x: e.touches[0].clientX,
-			y: e.touches[0].clientY,
-		};
-		setCoordinate(nextCoordinate);
 	}, []);
 
 	const onTouchMove = useCallback(
@@ -105,9 +96,8 @@ const Canvas = (prop: CanvasProp) => {
 				y: e.touches[0].clientY,
 			};
 			draw(nextCoordinate);
-			setCoordinate(nextCoordinate);
 		},
-		[drawable, coordinate]
+		[drawable]
 	);
 
 	const onTouchEnd = useCallback(() => {
@@ -117,7 +107,7 @@ const Canvas = (prop: CanvasProp) => {
 
 	return (
 		<div className="canvasWrapper">
-			<p>{!isCanvasLoaded && "캔버스 로딩 중"}</p>
+			<p>{!canvasLoaded && "캔버스 로딩 중"}</p>
 			<canvas
 				ref={canvasRef}
 				className="canvas"

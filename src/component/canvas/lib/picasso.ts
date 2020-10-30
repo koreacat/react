@@ -34,14 +34,13 @@ export default class Picasso {
         this._ctx.clearRect(0, 0, this._canvas.current.width, this._canvas.current.height);
     }
 
-    drawLine(start: Coordinate, end: Coordinate) {
+    drawLine(start: Coordinate) {
         if(!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
         this._ctx.beginPath();
-        this._ctx.moveTo(start.x, start.y);
-        this._ctx.lineTo(end.x, end.y);
+        const radius = this._lineWidth * this._ratio / 2; // 반지름
+        this._ctx.arc(start.x, start.y, radius, 0, Math.PI *2);
         this._ctx.strokeStyle = this._strokeStyle;
-        this._ctx.lineWidth = this._lineWidth * this._ratio;
-        this._ctx.stroke();
+        this._ctx.fill();
         this._ctx.closePath();
     }
 }
