@@ -3,8 +3,13 @@ import { useCanvas, usePicasso } from "../hooks/useCanvas";
 import { Coordinate } from "../type";
 import "./Canvas.scss";
 
-const Canvas = () => {
-	const [isDrawing, setIsDrawing] = useState(false);
+interface CanvasProp {
+	color: string;
+	toolOption?: Object;
+}
+
+const Canvas = (prop: CanvasProp) => {
+	const [drawable, setDrawable] = useState(false);
 	const [canvasSize] = useState({
 		width: window.innerWidth - 2,
 		height: window.innerHeight - 80,
@@ -16,15 +21,15 @@ const Canvas = () => {
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
-			if (!isDrawing) return;
+			if (!drawable) return;
 			picasso?.drawLine(coordinate, nextCoordinate);
 		},
-		[coordinate, picasso, isDrawing]
+		[coordinate, picasso, drawable]
 	);
 
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
 		console.log('mouse down');
-		setIsDrawing(true);
+		setDrawable(true);
 		const nextCoordinate: Coordinate = {
 			x: e.clientX,
 			y: e.clientY,
@@ -35,7 +40,7 @@ const Canvas = () => {
 	const onMouseMove = useCallback(
 		(e: React.MouseEvent) => {
 		console.log('mouse move');
-			if (!isDrawing) return;
+			if (!drawable) return;
 			const nextCoordinate: Coordinate = {
 				x: e.clientX,
 				y: e.clientY,
@@ -43,17 +48,17 @@ const Canvas = () => {
 			draw(nextCoordinate);
 			setCoordinate(nextCoordinate);
 		},
-		[isDrawing, coordinate]
+		[drawable, coordinate]
 	);
 
-	const onMouseOut = useCallback(() => {
+	const onMouseUp = useCallback(() => {
 		console.log('mouse out');
-		setIsDrawing(false);
+		setDrawable(false);
 	}, []);
 
 	const onTouchStart = useCallback((e: React.TouchEvent) => {
 		console.log('touch start');
-		setIsDrawing(true);
+		setDrawable(true);
 		const nextCoordinate: Coordinate = {
 			x: e.touches[0].clientX,
 			y: e.touches[0].clientY,
@@ -65,7 +70,7 @@ const Canvas = () => {
 		(e: React.TouchEvent) => {
 		console.log('touch move');
 			
-			if (!isDrawing) return;
+			if (!drawable) return;
 			const nextCoordinate: Coordinate = {
 				x: e.touches[0].clientX,
 				y: e.touches[0].clientY,
@@ -73,12 +78,12 @@ const Canvas = () => {
 			draw(nextCoordinate);
 			setCoordinate(nextCoordinate);
 		},
-		[isDrawing, coordinate]
+		[drawable, coordinate]
 	);
 
 	const onTouchEnd = useCallback(() => {
 		console.log('touch end');
-		setIsDrawing(false);
+		setDrawable(false);
 	}, []);
 
 	return (
@@ -89,7 +94,7 @@ const Canvas = () => {
 				className="canvas"
 				width={canvasSize.width}
 				height={canvasSize.height}
-				onMouseUp={onMouseOut}
+				onMouseUp={onMouseUp}
 				onMouseDown={onMouseDown}
 				onMouseMove={onMouseMove}
 				onTouchStart={onTouchStart}
