@@ -75,7 +75,6 @@ const ColorPalette = (prop: ToolPaletteProp) => {
 	));
 	return (
 		<div className="colorPalette">
-			<button title="색상 팔레트" />
 			<div className="colorPalettePopup">
 				<div className="colorContainer">{colorItems}</div>
 			</div>
