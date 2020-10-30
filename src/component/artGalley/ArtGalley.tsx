@@ -3,7 +3,6 @@ import './ArtGalley.scss';
 import PictureGrid from "./component/pictureGrid/PictureGrid";
 import BGMButton from "../bgmButton/BGMButton";
 
-
 const ArtGalley = () => {
     const [artGalleyState, setArtGalleyState] = useState(<></>);
     const [artGalleyMenu, setArtGalleyMenu] = useState(true);
@@ -20,7 +19,7 @@ const ArtGalley = () => {
                     <p onClick={() => {}}>...</p>
                 </div>
             }
-            <BGMButton />
+            <BGMButton src={'SongontheBeach.mp3'}/>
         </div>
     )
 };
