@@ -1,27 +1,39 @@
 import { Coordinate } from '../type';
 
 export default class Picasso {
-    ctx: CanvasRenderingContext2D;
-    strokeStyle: string;
-    lineWidth: number;
-    ratio: number;
+    private _ctx: CanvasRenderingContext2D;
+    private _strokeStyle: string;
+    private _lineWidth: number;
+    private _ratio: number;
 
     constructor(ctx: CanvasRenderingContext2D) {
-        this.ctx = ctx;
-        this.strokeStyle = 'black';
-        this.lineWidth = 1;
-        this.ratio = 1; //devicePixelRatio
+        this._ctx = ctx;
+        this._strokeStyle = 'black';
+        this._lineWidth = 1;
+        this._ratio = 1; //devicePixelRatio
+    }
+
+    set strokeStyle(strokeStyle: string) {
+        this._strokeStyle = strokeStyle;
+    }
+
+    set lineWidth(lineWidth: number) {
+        this._lineWidth = lineWidth;
+    }
+
+    set ratio(ratio: number) {
+        this._ratio = ratio;
     }
 
     clear() { }
 
     drawLine(start: Coordinate, end: Coordinate) {
-        this.ctx.beginPath();
-        this.ctx.moveTo(start.x, start.y);
-        this.ctx.lineTo(end.x, end.y);
-        this.ctx.strokeStyle = this.strokeStyle;
-        this.ctx.lineWidth = this.lineWidth;
-        this.ctx.stroke();
-        this.ctx.closePath();
+        this._ctx.beginPath();
+        this._ctx.moveTo(start.x, start.y);
+        this._ctx.lineTo(end.x, end.y);
+        this._ctx.strokeStyle = this._strokeStyle;
+        this._ctx.lineWidth = this._lineWidth;
+        this._ctx.stroke();
+        this._ctx.closePath();
     }
 }
