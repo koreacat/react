@@ -1,0 +1,37 @@
+.colorPalette {
+	position: relative;
+	.colorPalettePopup {
+		position: absolute;
+		top: 0;
+		left: 150px;
+		background-color: #fff;
+		border-radius: 5px;
+	}
+
+	.colorContainer {
+		$cellSize: 48px;
+
+		display: grid;
+		grid-template-columns: repeat(7, $cellSize);
+		width: $cellSize * 7;
+		height: $cellSize * 1;
+
+		& > div {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.colorItem {
+			width: 24px;
+			height: 24px;
+			border-radius: 24px;
+
+			& > input {
+				width: 24px;
+				height: 24px;
+				opacity: 0;
+			}
+		}
+	}
+}

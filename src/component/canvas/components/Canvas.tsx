@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useCanvas, usePicasso } from "../hooks/useCanvas";
 import { Coordinate } from "../type";
 import "./Canvas.scss";
+import ToolPalette from "./ToolPalette/ToolPalette";
 
 interface CanvasProp {
-	color: string;
+	color?: string;
 	toolOption?: Object;
 }
 
@@ -15,9 +16,17 @@ const Canvas = (prop: CanvasProp) => {
 		height: window.innerHeight - 80,
 	});
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
+	const [color, setColor] = useState("red");
+	const [penWidth, setPenWidth] = useState(1);
 	const [canvasRef, ctx] = useCanvas();
 	const isCanvasLoaded = !!canvasRef.current;
 	const [picasso] = usePicasso(ctx);
+
+	useEffect(() => {
+		if (!picasso) return;
+		picasso.strokeStyle = color;
+		picasso.lineWidth = penWidth;
+	}, [color, penWidth]);
 
 	const draw = useCallback(
 		(nextCoordinate: Coordinate) => {
@@ -27,8 +36,22 @@ const Canvas = (prop: CanvasProp) => {
 		[coordinate, picasso, drawable]
 	);
 
+	const onChangeColor = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setColor(e.target.value);
+		},
+		[]
+	);
+
+	const onChangePenWidth = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setPenWidth(parseInt(e.target.value));
+		},
+		[]
+	);
+
 	const onMouseDown = useCallback((e: React.MouseEvent) => {
-		console.log('mouse down');
+		console.log("mouse down");
 		setDrawable(true);
 		const nextCoordinate: Coordinate = {
 			x: e.clientX,
@@ -39,7 +62,7 @@ const Canvas = (prop: CanvasProp) => {
 
 	const onMouseMove = useCallback(
 		(e: React.MouseEvent) => {
-		console.log('mouse move');
+			console.log("mouse move");
 			if (!drawable) return;
 			const nextCoordinate: Coordinate = {
 				x: e.clientX,
@@ -52,12 +75,12 @@ const Canvas = (prop: CanvasProp) => {
 	);
 
 	const onMouseUp = useCallback(() => {
-		console.log('mouse out');
+		console.log("mouse out");
 		setDrawable(false);
 	}, []);
 
 	const onTouchStart = useCallback((e: React.TouchEvent) => {
-		console.log('touch start');
+		console.log("touch start");
 		setDrawable(true);
 		const nextCoordinate: Coordinate = {
 			x: e.touches[0].clientX,
@@ -68,8 +91,8 @@ const Canvas = (prop: CanvasProp) => {
 
 	const onTouchMove = useCallback(
 		(e: React.TouchEvent) => {
-		console.log('touch move');
-			
+			console.log("touch move");
+
 			if (!drawable) return;
 			const nextCoordinate: Coordinate = {
 				x: e.touches[0].clientX,
@@ -82,7 +105,7 @@ const Canvas = (prop: CanvasProp) => {
 	);
 
 	const onTouchEnd = useCallback(() => {
-		console.log('touch end');
+		console.log("touch end");
 		setDrawable(false);
 	}, []);
 
@@ -100,6 +123,12 @@ const Canvas = (prop: CanvasProp) => {
 				onTouchStart={onTouchStart}
 				onTouchMove={onTouchMove}
 				onTouchEnd={onTouchEnd}
+			/>
+			<ToolPalette
+				color={color}
+				penWidth={penWidth}
+				onChangeColor={onChangeColor}
+				onChangePenWidth={onChangePenWidth}
 			/>
 		</div>
 	);
