@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./reset.scss";
 import "./App.scss";
 import Canvas from "./components/Canvas";
 
