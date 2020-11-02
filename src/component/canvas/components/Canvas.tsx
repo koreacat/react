@@ -4,14 +4,9 @@ import { Coordinate } from "../type";
 import "./Canvas.scss";
 import ToolPalette from "./ToolPalette/ToolPalette";
 
-interface CanvasProp {
-	color?: string;
-	toolOption?: Object;
-}
-
-const Canvas = (prop: CanvasProp) => {
+const Canvas = () => {
 	const [canvasSize] = useState({
-		width: window.innerWidth - 2,
+		width: window.innerWidth,
 		height: window.innerHeight,
 	});
 	const [color, setColor] = useState("black");
