@@ -10,7 +10,6 @@ interface CanvasProp {
 }
 
 const Canvas = (prop: CanvasProp) => {
-	const [drawable, setDrawable] = useState(false);
 	const [canvasSize] = useState({
 		width: window.innerWidth - 2,
 		height: window.innerHeight,
@@ -19,26 +18,32 @@ const Canvas = (prop: CanvasProp) => {
 	const [penWidth, setPenWidth] = useState(1);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [canvasLoaded, setCanvasLoaded] = useState(false);
-	const [picasso] = usePicasso(color,penWidth, canvasRef);
+	const [picasso] = usePicasso(color, penWidth, canvasRef);
 
 	useEffect(() => {
-		if(!canvasRef) return;
+		if (!canvasRef) return;
 
-		picasso.canvas = canvasRef
+		picasso.canvas = canvasRef;
 		setCanvasLoaded(true);
 	}, [canvasRef, picasso]);
 
+	const setDrawable = useCallback(
+		(drawable: boolean) => {
+			picasso.drawable = drawable;
+		},
+		[picasso]
+	);
+
 	const draw = useCallback(
 		(coordinate: Coordinate) => {
-			if (!drawable) return;
 			picasso?.drawLine(coordinate);
 		},
-		[picasso, drawable]
+		[picasso]
 	);
 
 	const onClearCanvas = useCallback(() => {
 		picasso.clear();
-	}, [picasso])
+	}, [picasso]);
 
 	const onChangeColor = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,58 +57,73 @@ const Canvas = (prop: CanvasProp) => {
 	const onChangePenWidth = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const penWidth = parseInt(e.target.value);
-			setPenWidth(penWidth)
+			setPenWidth(penWidth);
 			picasso.lineWidth = penWidth;
 		},
 		[picasso]
 	);
 
-	const onMouseDown = useCallback((e: React.MouseEvent) => {
-		console.log("mouse down");
-		setDrawable(true);
-	}, []);
-
-	const onMouseMove = useCallback(
+	const onMouseDown = useCallback(
 		(e: React.MouseEvent) => {
-			console.log("mouse move");
-			if (!drawable) return;
+			console.log("mouse down");
+			setDrawable(true);
 			const nextCoordinate: Coordinate = {
 				x: e.clientX,
 				y: e.clientY,
 			};
 			draw(nextCoordinate);
 		},
-		[drawable]
+		[draw, setDrawable]
+	);
+
+	const onMouseMove = useCallback(
+		(e: React.MouseEvent) => {
+			console.count("mouse move");
+			const nextCoordinate: Coordinate = {
+				x: e.clientX,
+				y: e.clientY,
+			};
+			draw(nextCoordinate);
+		},
+		[draw]
 	);
 
 	const onMouseUp = useCallback(() => {
 		console.log("mouse out");
 		setDrawable(false);
-	}, []);
+	}, [setDrawable]);
 
-	const onTouchStart = useCallback((e: React.TouchEvent) => {
-		console.log("touch start");
-		setDrawable(true);
-	}, []);
-
-	const onTouchMove = useCallback(
+	const onTouchStart = useCallback(
 		(e: React.TouchEvent) => {
-			console.log("touch move");
+			console.log("touch start");
+			setDrawable(true);
 
-			if (!drawable) return;
 			const nextCoordinate: Coordinate = {
 				x: e.touches[0].clientX,
 				y: e.touches[0].clientY,
 			};
 			draw(nextCoordinate);
 		},
-		[drawable]
+		[draw, setDrawable]
+	);
+
+	const onTouchMove = useCallback(
+		(e: React.TouchEvent) => {
+			console.log("touch move");
+
+			const nextCoordinate: Coordinate = {
+				x: e.touches[0].clientX,
+				y: e.touches[0].clientY,
+			};
+			draw(nextCoordinate);
+		},
+		[draw]
 	);
 
 	const onTouchEnd = useCallback(() => {
 		console.log("touch end");
 		setDrawable(false);
-	}, []);
+	}, [setDrawable]);
 
 	return (
 		<div className="canvasWrapper">
