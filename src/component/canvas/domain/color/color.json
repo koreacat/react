@@ -1,0 +1,86 @@
+[
+    {
+		"value": "#f28b82",
+		"name": "red 300"
+	},
+	{
+		"value": "orange",
+		"name": "orange 300"
+	},
+	{
+		"value": "#fdd663",
+		"name": "yellow 300"
+	},
+	{
+		"value": "#81c995",
+		"name": "green 300"
+	},
+	{
+		"value": "#8ab4f8",
+		"name": "blue 300"
+	},
+	{
+		"value": "indigo",
+		"name": "indigo 300"
+	},
+	{
+		"value": "#c58af9",
+		"name": "purple 300"
+    },
+    {
+		"value": "#ea4335",
+		"name": "red 500"
+	},
+	{
+		"value": "orange",
+		"name": "orange 500"
+	},
+	{
+		"value": "#fbbc04",
+		"name": "yellow 500"
+	},
+	{
+		"value": "#34a853",
+		"name": "green 500"
+	},
+	{
+		"value": "#4285f4",
+		"name": "blue 500"
+	},
+	{
+		"value": "indigo",
+		"name": "indigo 500"
+	},
+	{
+		"value": "#a142f4",
+		"name": "purple 500"
+	},
+	{
+		"value": "red",
+		"name": "red"
+	},
+	{
+		"value": "orange",
+		"name": "orange"
+	},
+	{
+		"value": "yellow",
+		"name": "yellow"
+	},
+	{
+		"value": "green",
+		"name": "green"
+	},
+	{
+		"value": "blue",
+		"name": "blue"
+	},
+	{
+		"value": "indigo",
+		"name": "indigo"
+	},
+	{
+		"value": "purple",
+		"name": "purple"
+	}
+]

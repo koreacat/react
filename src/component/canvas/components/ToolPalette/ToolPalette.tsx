@@ -11,7 +11,13 @@ interface ToolPaletteProp {
 }
 
 const ToolPalette = (prop: ToolPaletteProp) => {
-	const { color, penWidth, onChangeColor, onChangePenWidth, onClearCanvas } = prop;
+	const {
+		color,
+		penWidth,
+		onChangeColor,
+		onChangePenWidth,
+		onClearCanvas,
+	} = prop;
 
 	const [colorPaletteOpened, setColorPaletteOpened] = useState(false);
 
@@ -21,6 +27,9 @@ const ToolPalette = (prop: ToolPaletteProp) => {
 
 	return (
 		<div id="toolPalette">
+			{colorPaletteOpened && (
+				<ColorPalette color={color} onChangeColor={onChangeColor} />
+			)}
 			<button
 				id="colorPaletteButton"
 				title="색상 팔레트"
@@ -28,11 +37,14 @@ const ToolPalette = (prop: ToolPaletteProp) => {
 				onClick={toggleColorPaletteOpened}
 				onTouchStart={toggleColorPaletteOpened}
 			/>
-			{colorPaletteOpened && (
-				<ColorPalette color={color} onChangeColor={onChangeColor} />
-			)}
-			<input type="number" value={penWidth} onChange={onChangePenWidth} />
-			<button id="refreshButton" onClick={onClearCanvas} title={"canvas 초기화"} />
+			<input
+				id="penWidthInput"
+				title="브러시 크기 및 불투명도"
+				type="number"
+				value={penWidth}
+				onChange={onChangePenWidth}
+			/>
+			<button id="refreshButton" onClick={onClearCanvas} title={"초기화"} />
 		</div>
 	);
 };

@@ -6,20 +6,28 @@
 	top: 50%;
 	left: 0;
 	transform: translateY(-50%);
-    border-radius: 0 8px 8px 0;
-    padding: 20px;
-    background-color: #fff;
+	border-radius: 0 8px 8px 0;
+	padding: 20px;
+	background-color: #fff;
 	filter: drop-shadow(0 1px 3px #3c40434d) drop-shadow(0 4px 8px #3c404326);
+
+	#colorPaletteButton, #penWidthInput, #refreshButton {
+		margin: 10px 0;
+	}
 }
 
 #colorPaletteButton {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+
+#penWidthInput {
+	width: 50px;
 }
 
 #refreshButton {
-	background-image: url('./img/refresh.png');
+	background-image: url("./img/refresh.png");
 	width: 34px;
 	height: 34px;
 	background-size: cover;

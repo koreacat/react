@@ -1,37 +1,7 @@
 import React from "react";
 import { Color } from "../../type";
 import "./ColorPalette.scss";
-
-const colors: Color[] = [
-	{
-		value: "red",
-		name: "red",
-	},
-	{
-		value: "orange",
-		name: "orange",
-	},
-	{
-		value: "yellow",
-		name: "yellow",
-	},
-	{
-		value: "green",
-		name: "green",
-	},
-	{
-		value: "blue",
-		name: "blue",
-	},
-	{
-		value: "indigo",
-		name: "indigo",
-	},
-	{
-		value: "purple",
-		name: "purple",
-	},
-];
+import colors from "../../domain/color/color.json";
 
 interface ColorItemProp {
 	color: Color;
@@ -45,7 +15,10 @@ const ColorItem = (prop: ColorItemProp) => {
 
 	return (
 		<div>
-			<label className="colorItem" style={{ backgroundColor: value }}>
+			<label
+				className={`colorItem ${checked ? "checked" : ""}`}
+				style={{ backgroundColor: value }}
+			>
 				<input
 					type="radio"
 					value={value}

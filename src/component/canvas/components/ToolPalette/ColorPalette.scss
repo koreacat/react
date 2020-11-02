@@ -2,10 +2,11 @@
 	position: relative;
 	.colorPalettePopup {
 		position: absolute;
-		top: 0;
-		left: 150px;
+		top: 10px;
+		left: 70px;
 		background-color: #fff;
 		border-radius: 5px;
+		padding: 15px;
 	}
 
 	.colorContainer {
@@ -14,7 +15,7 @@
 		display: grid;
 		grid-template-columns: repeat(7, $cellSize);
 		width: $cellSize * 7;
-		height: $cellSize * 1;
+		height: $cellSize * 3;
 
 		& > div {
 			display: flex;
@@ -28,9 +29,11 @@
 			border-radius: 24px;
 
 			& > input {
-				width: 24px;
-				height: 24px;
 				opacity: 0;
+			}
+
+			&.checked {
+				transform: scale(1.4);
 			}
 		}
 	}
