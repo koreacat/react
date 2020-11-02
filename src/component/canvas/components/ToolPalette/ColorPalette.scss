@@ -35,6 +35,10 @@
 			&.checked {
 				transform: scale(1.4);
 			}
+
+			&[for="#ffffff"] {
+				border: 1px solid #e8eaed;
+			}
 		}
 	}
 }

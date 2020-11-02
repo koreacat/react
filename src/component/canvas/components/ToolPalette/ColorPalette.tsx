@@ -18,8 +18,10 @@ const ColorItem = (prop: ColorItemProp) => {
 			<label
 				className={`colorItem ${checked ? "checked" : ""}`}
 				style={{ backgroundColor: value }}
+				htmlFor={value}
 			>
 				<input
+					id={value}
 					type="radio"
 					value={value}
 					checked={checked}

@@ -1,4 +1,32 @@
 [
+	{
+		"value": "#000000",
+		"name": "black"
+	},
+	{
+		"value": "#5f6368",
+		"name": "grey 700"
+	},
+	{
+		"value": "#9aa0a6",
+		"name": "grey 500"
+	},
+	{
+		"value": "#dadce0",
+		"name": "green 300"
+	},
+	{
+		"value": "#e8eaed",
+		"name": "grey200"
+	},
+	{
+		"value": "#f1f3f4",
+		"name": "grey 100"
+	},
+	{
+		"value": "#ffffff",
+		"name": "white"
+	},
     {
 		"value": "#f28b82",
 		"name": "red 300"
