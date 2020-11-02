@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import Picasso from "../lib/picasso";
 
-export function usePicasso(strokeStyle = 'black', lineWidth = 1, canvas: React.RefObject<HTMLCanvasElement> | null) {
+export function usePicasso(color?: string, lineWidth?: number, canvas?: React.RefObject<HTMLCanvasElement> | null) {
     const [picasso] = useState(new Picasso({
-        strokeStyle, lineWidth, canvas
+        color,
+        lineWidth,
+        canvas
     }));
     return [picasso];
 }
