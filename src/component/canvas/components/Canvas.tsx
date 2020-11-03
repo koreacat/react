@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { usePicasso } from "../hooks/useCanvas";
 import { Coordinate } from "../type";
 import "./Canvas.scss";
+import HistoryController from "./HistoryController";
 import ToolPalette from "./ToolPalette/ToolPalette";
 
 const Canvas = () => {
@@ -148,6 +149,7 @@ const Canvas = () => {
 				onTouchMove={onTouchMove}
 				onTouchEnd={onTouchEnd}
 			/>
+			<HistoryController />
 			<ToolPalette
 				color={color}
 				penWidth={penWidth}
