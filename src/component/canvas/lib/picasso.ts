@@ -3,12 +3,16 @@ import { Coordinate } from '../type';
 type PicassoConstructorParam = Partial<Omit<Picasso, '_ctx' | 'clear' | 'drawLine'>>;
 
 export default class Picasso {
-    private _canvas: React.RefObject<HTMLCanvasElement> | null
-    private _drawable: boolean;
+    private _canvas: React.RefObject<HTMLCanvasElement> | null;
     private _ctx: CanvasRenderingContext2D | null;
+
+    private _drawable: boolean;
     private _color: string;
     private _lineWidth: number;
     private _ratio: number;
+
+    private _undoStack:ImageData[] = [];
+    private _redoStack:ImageData[] = [];
 
     constructor({
         canvas = null,
@@ -45,14 +49,27 @@ export default class Picasso {
         this._lineWidth = lineWidth;
     }
 
-    clear() {
+    get undoStack() {
+        return this._undoStack;
+    }
+
+    get redoStack() {
+        return this._redoStack;
+    }
+
+    clearCanvas() {
         if (!this._canvas?.current || !this._ctx) throw new Error("canvas isn't initialized");
+
+        this._undoStack.push(this.getImageData());
         this._ctx.clearRect(0, 0, this._canvas.current.width, this._canvas.current.height);
     }
 
     drawPoint({ x, y }: Coordinate) {
         if (!this._drawable) return;
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+
+        this._undoStack.push(this.getImageData());
+
         this._ctx.beginPath();
         const radius = this._lineWidth * this._ratio / 2; // 반지름
         this._ctx.arc(x, y, radius, 0, Math.PI * 2);
@@ -64,11 +81,12 @@ export default class Picasso {
     drawLine(start: Coordinate, end: Coordinate) {
         if (!this._drawable) return;
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+
+        this._undoStack.push(this.getImageData());
+
         const radius = this._lineWidth * this._ratio / 2; // 반지름
         const linewidth = this._lineWidth * this._ratio;
-
         this._ctx.lineWidth = linewidth;
-        this._ctx.strokeStyle = this._color;
         this._ctx.fillStyle = this._color;
 
         this._ctx.beginPath();
@@ -84,16 +102,52 @@ export default class Picasso {
         this._ctx.closePath();
     }
 
-    drawMiddleLine(start: Coordinate, end: Coordinate) {
+    private drawMiddleLine(start: Coordinate, end: Coordinate) {
         if (!this._drawable) return;
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+
         const linewidth = this._lineWidth * this._ratio;
+        this._ctx.strokeStyle = this._color;
+        this._ctx.lineWidth = linewidth;
+
         this._ctx.beginPath();
         this._ctx.moveTo(start.x, start.y);
         this._ctx.lineTo(end.x, end.y);
-        this._ctx.strokeStyle = this._color;
-        this._ctx.lineWidth = linewidth;
         this._ctx.stroke();
         this._ctx.closePath();
+    }
+
+    undo() {
+        if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+        if(this._undoStack.length === 0) return;
+
+        const image = this._undoStack.pop()!;
+        this._redoStack.push(image)
+        this._ctx.putImageData(image, 0, 0);
+    }
+
+    redo() {
+        if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+        if(this._redoStack.length === 0) return;
+
+        const image = this._redoStack.pop()!;
+        this._undoStack.push(image);
+        this._ctx.putImageData(image, 0, 0);
+    }
+
+    getImageData() {
+        if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
+        const width = this._canvas.current!.width;
+        const height = this._canvas.current!.height;
+        const imageData = this._ctx.getImageData(0, 0, width, height);
+        return imageData;
+    }
+
+    clearUndoStack() {
+        this._undoStack = [];
+    }
+
+    clearRedoStack() {
+        this._redoStack = [];
     }
 }
