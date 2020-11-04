@@ -47,7 +47,7 @@ const Canvas = () => {
 	);
 
 	const onClearCanvas = useCallback(() => {
-		picasso.clear();
+		picasso.clearCanvas();
 	}, [picasso]);
 
 	const onChangeColor = useCallback(
@@ -149,7 +149,7 @@ const Canvas = () => {
 				onTouchMove={onTouchMove}
 				onTouchEnd={onTouchEnd}
 			/>
-			<HistoryController />
+			<HistoryController undo={() => picasso.undo()} redo={() => picasso.redo()}/>
 			<ToolPalette
 				color={color}
 				penWidth={penWidth}

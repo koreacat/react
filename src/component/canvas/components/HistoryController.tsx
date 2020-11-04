@@ -30,7 +30,12 @@ const HistoryControllerItem = (prop: HistoryControllerItemProp) => {
 	);
 };
 
-const HistoryController = () => {
+interface HistoryControllerProp {
+	undo: () => void;
+	redo: () => void;
+}
+
+const HistoryController = ({undo, redo} : HistoryControllerProp) => {
 	const isPrevAvailable = true;
 	const isNextAvailable = true;
 	return (
@@ -38,12 +43,12 @@ const HistoryController = () => {
 			<HistoryControllerItem
 				disabled={!isPrevAvailable}
 				type="undo"
-				changeHistory={() => {}}
+				changeHistory={undo}
 			/>
 			<HistoryControllerItem
 				disabled={!isNextAvailable}
 				type="redo"
-				changeHistory={() => {}}
+				changeHistory={redo}
 			/>
 		</ul>
 	);
