@@ -33,14 +33,11 @@ const AppMenu = ({setAppState}: any) => {
         <div ref={appMenu} className={'appMenu'} onWheel={scrollEvent}>
             <AppIcon title={'clock'} img={'./img/clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
             <AppIcon title={'hamderTale'} img={'./img/hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>
-            <AppIcon title={'hamKemon'} img={'./img/hamKemon_icon.png'} onClick={() => {setAppState(<HamKemon/>)}}/>
-            <AppIcon title={'hampleStory'} img={'./img/hampleStory_icon.png'} onClick={() => {setAppState(<HampleStory/>)}}/>
             <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
             <AppIcon title={'canvas'} img={'./img/canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
             <AppIcon title={'artGalley'} img={'./img/artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
-            <AppIcon title={'parrot'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'drive'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'cube'} img={'./img/default_icon.png'} onClick={() => {}}/>
+            <AppIcon title={'hamKemon'} img={'./img/hamKemon_icon.png'} onClick={() => {setAppState(<HamKemon/>)}}/>
+            <AppIcon title={'hampleStory'} img={'./img/hampleStory_icon.png'} onClick={() => {setAppState(<HampleStory/>)}}/>
         </div>
     );
 };
