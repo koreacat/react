@@ -1,4 +1,3 @@
-import React from 'react'
 import Picasso from "../picasso";
 import { coordinate } from '../../fixtures/coordinate';
 import 'jest-canvas-mock'
@@ -19,6 +18,19 @@ describe('picasso', () => {
 
     })
 
+    describe('save', () => {
+        beforeAll(() => {
+            const canvas = document.createElement('canvas');
+            const canvasRef = { current: canvas }
+            picasso = new Picasso({ canvas: canvasRef, drawable: true });
+        })
+
+        test('undo stack was pushed after pushCanvasToUndoStack', () => {
+            picasso.drawStart();
+            expect(picasso.undoStack.length).toBe(1);
+        })
+    })
+
     describe('undo', () => {
         beforeAll(() => {
             const canvas = document.createElement('canvas');
@@ -35,35 +47,11 @@ describe('picasso', () => {
             expect(picasso.undoStack.length).toBe(0);
         })
 
-        describe('should be increase after canvas behavior', () => {
-
-            test('increases after clear', () => {
-                picasso.clearCanvas();
-                expect(picasso.undoStack.length).toBe(1);
-            })
-
-            test('increases after drawPoint', () => {
-                picasso.drawPoint(coordinate);
-                expect(picasso.undoStack.length).toBe(1);
-            })
-
-            test('increases after drawLine', () => {
-                picasso.drawLine(coordinate, coordinate);
-                expect(picasso.undoStack.length).toBe(1);
-            })
+        test('undo stack was pushed after pushCanvasToUndoStack', () => {
+            picasso.drawStart();
+            expect(picasso.undoStack.length).toBe(1);
         })
 
-        test('undo stack should be decreased after undo', () => {
-            picasso.drawPoint(coordinate);
-            picasso.undo();
-            expect(picasso.undoStack.length).toBe(0);
-        })
-
-        test('redo stack should be increasesd after undo', () => {
-            picasso.drawPoint(coordinate);
-            picasso.undo();
-            expect(picasso.redoStack.length).toBe(1);
-        })
     })
 
     describe('redo', () => {
@@ -83,20 +71,28 @@ describe('picasso', () => {
         })
 
         test('should increase after undo', () => {
-            picasso.drawPoint(coordinate);
+            picasso.drawStart();
             picasso.undo();
             expect(picasso.redoStack.length).toBe(1);
         })
 
         test('undo stack should be increased after redo', () => {
-            picasso.drawPoint(coordinate);
+            picasso.drawStart();
             picasso.undo();
             picasso.redo();
             expect(picasso.undoStack.length).toBe(1);
         })
 
+        test('redo stack should be cleared after drawStart', () => {
+            picasso.drawStart();
+            picasso.undo();
+            expect(picasso.redoStack.length).toBe(1);
+            picasso.drawStart();
+            expect(picasso.redoStack.length).toBe(0);
+        })
+
         test('redo stack should be decreased after redo', () => {
-            picasso.drawPoint(coordinate);
+            picasso.drawStart();
             picasso.undo();
             picasso.redo();
             expect(picasso.redoStack.length).toBe(0);

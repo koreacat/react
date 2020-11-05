@@ -11,8 +11,8 @@ export default class Picasso {
     private _lineWidth: number;
     private _ratio: number;
 
-    private _undoStack:ImageData[] = [];
-    private _redoStack:ImageData[] = [];
+    private _undoStack: ImageData[] = [];
+    private _redoStack: ImageData[] = [];
 
     constructor({
         canvas = null,
@@ -60,15 +60,13 @@ export default class Picasso {
     clearCanvas() {
         if (!this._canvas?.current || !this._ctx) throw new Error("canvas isn't initialized");
 
-        this._undoStack.push(this.getImageData());
+        this.drawStart();
         this._ctx.clearRect(0, 0, this._canvas.current.width, this._canvas.current.height);
     }
 
     drawPoint({ x, y }: Coordinate) {
         if (!this._drawable) return;
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
-
-        this._undoStack.push(this.getImageData());
 
         this._ctx.beginPath();
         const radius = this._lineWidth * this._ratio / 2; // 반지름
@@ -81,8 +79,6 @@ export default class Picasso {
     drawLine(start: Coordinate, end: Coordinate) {
         if (!this._drawable) return;
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
-
-        this._undoStack.push(this.getImageData());
 
         const radius = this._lineWidth * this._ratio / 2; // 반지름
         const linewidth = this._lineWidth * this._ratio;
@@ -119,19 +115,25 @@ export default class Picasso {
 
     undo() {
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
-        if(this._undoStack.length === 0) return;
+        if (this._undoStack.length === 0) {
+            console.warn('undoStack이 비어있습니다.');
+            return;
+        }
 
+        this.pushCanvasToRedoStack();
         const image = this._undoStack.pop()!;
-        this._redoStack.push(image)
         this._ctx.putImageData(image, 0, 0);
     }
 
     redo() {
         if (!this._canvas || !this._ctx) throw new Error("canvas isn't initialized");
-        if(this._redoStack.length === 0) return;
+        if (this._redoStack.length === 0) {
+            console.warn('redoStack이 비어있습니다.');
+            return;
+        }
 
+        this.pushCanvasToUndoStack();
         const image = this._redoStack.pop()!;
-        this._undoStack.push(image);
         this._ctx.putImageData(image, 0, 0);
     }
 
@@ -141,6 +143,21 @@ export default class Picasso {
         const height = this._canvas.current!.height;
         const imageData = this._ctx.getImageData(0, 0, width, height);
         return imageData;
+    }
+
+    drawStart() {
+        this.clearRedoStack();
+        this.pushCanvasToUndoStack();
+    }
+
+    pushCanvasToUndoStack() {
+        const image = this.getImageData();
+        this._undoStack.push(image);
+    }
+
+    private pushCanvasToRedoStack() {
+        const image = this.getImageData();
+        this._redoStack.push(image);
     }
 
     clearUndoStack() {

@@ -14,7 +14,7 @@ const Canvas = () => {
 	const [penWidth, setPenWidth] = useState(20);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [canvasLoaded, setCanvasLoaded] = useState(false);
-	const [picasso] = usePicasso(color, penWidth, canvasRef);
+	const [picasso] = usePicasso(color, penWidth);
 	const prevCoordinate = useRef<Coordinate | null>(null);
 
 	useEffect(() => {
@@ -71,6 +71,7 @@ const Canvas = () => {
 	const onMouseDown = useCallback(
 		(e: React.MouseEvent) => {
 			console.log("mouse down");
+			picasso.drawStart();
 			setDrawable(true);
 			const nextCoordinate: Coordinate = {
 				x: e.clientX,
@@ -79,7 +80,7 @@ const Canvas = () => {
 			drawPoint(nextCoordinate);
 			prevCoordinate.current = nextCoordinate;
 		},
-		[drawPoint, setDrawable]
+		[drawPoint, picasso, setDrawable]
 	);
 
 	const onMouseMove = useCallback(
@@ -96,15 +97,16 @@ const Canvas = () => {
 	);
 
 	const onMouseUp = useCallback(() => {
-		console.log("mouse out");
+		console.log("mouse up");
 		setDrawable(false);
 	}, [setDrawable]);
 
 	const onTouchStart = useCallback(
 		(e: React.TouchEvent) => {
 			console.log("touch start");
-			setDrawable(true);
 
+			picasso.drawStart();
+			setDrawable(true);
 			const nextCoordinate: Coordinate = {
 				x: e.touches[0].clientX,
 				y: e.touches[0].clientY,
@@ -112,7 +114,7 @@ const Canvas = () => {
 			drawPoint(nextCoordinate);
 			prevCoordinate.current = nextCoordinate;
 		},
-		[drawPoint, setDrawable]
+		[drawPoint, picasso, setDrawable]
 	);
 
 	const onTouchMove = useCallback(
@@ -149,7 +151,10 @@ const Canvas = () => {
 				onTouchMove={onTouchMove}
 				onTouchEnd={onTouchEnd}
 			/>
-			<HistoryController undo={() => picasso.undo()} redo={() => picasso.redo()}/>
+			<HistoryController
+				undo={() => picasso.undo()}
+				redo={() => picasso.redo()}
+			/>
 			<ToolPalette
 				color={color}
 				penWidth={penWidth}
