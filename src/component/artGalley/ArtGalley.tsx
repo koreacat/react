@@ -21,7 +21,7 @@ const ArtGalley = () => {
                     <p onClick={() => {setArtGalleyState(<></>); setArtGalleyMenu(false)}}>Cube</p>
                 </div>
             }
-            <BGMButton src={'SongontheBeach.mp3'}/>
+            <BGMButton audio={new Audio(require('../../resources/sound/artGalley/Buttercup.mp3'))}/>
         </div>
     )
 };

@@ -69,7 +69,7 @@ const HamderTale = () => {
         const timeout00 = setTimeout(() => {
             const interval = setInterval(() => {
                 if(sans != sans.substring(0, scriptIndex)){
-                    let sansSound = new Audio(require('./sound/sans.wav'));
+                    let sansSound = new Audio(require('../../resources/sound/hamderTale/sans.wav'));
                     sansSound.play();
                 }
                 setSansScript(sans.substring(0, scriptIndex++));
@@ -93,7 +93,7 @@ const HamderTale = () => {
             const interval = setInterval(() => {
                 if(hp <= 0) return;
                 if(top<50 || top>90 || left<50 || left>90){
-                    let hurtSound = new Audio(require('./sound/hurt.wav'));
+                    let hurtSound = new Audio(require('../../resources/sound/hamderTale/hurt.wav'));
                     hurtSound.play();
                     hp--;
                 } 
@@ -130,7 +130,7 @@ const HamderTale = () => {
             const interval = setInterval(() => {
                 if(hp <= 0) return;
                 if(top<50 || top>90 || left<50 || left>90){
-                    let hurtSound = new Audio(require('./sound/hurt.wav'));
+                    let hurtSound = new Audio(require('../../resources/sound/hamderTale/hurt.wav'));
                     hurtSound.play();
                     hp--;
                 } 
@@ -155,7 +155,7 @@ const HamderTale = () => {
     }, [top, left]);
 
     const setGasterBlasterAnimation01 = () => {
-        let gasterBlasterSound = new Audio(require('./sound/gasterBlaster.mp3'));
+        let gasterBlasterSound = new Audio(require('../../resources/sound/hamderTale/gasterBlaster.mp3'));
         gasterBlasterSound.play();
         setGasterBlasterTopAnimation('gasterBlasterTop 3s ease-in-out');
         setGasterBlasterBottomAnimation('gasterBlasterBottom 3s ease-in-out');
