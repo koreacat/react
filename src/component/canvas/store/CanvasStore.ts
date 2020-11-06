@@ -14,7 +14,7 @@ const START: Coordinate = {
 }
 
 export default class CanvasStore {
-    private canvas: React.RefObject<HTMLCanvasElement> | null;
+    private canvas: HTMLCanvasElement | null;
     private ctx: CanvasRenderingContext2D | null;
 
     @observable drawable: boolean;
@@ -31,7 +31,7 @@ export default class CanvasStore {
         lineWidth = 1,
         color = '#000000',
     }: CanvasStoreParam) {
-        this.canvas = canvas;
+        this.canvas = canvas?.current || null;
         this.ctx = canvas?.current?.getContext('2d') || null;
         this.drawable = drawable;
         this.lineWidth = lineWidth;
@@ -43,8 +43,8 @@ export default class CanvasStore {
 
     private get currentContext() {
         if (!this.canvas || !this.ctx) throw new Error("canvas isn't initialized");
-        const width = this.canvas.current!.width;
-        const height = this.canvas.current!.height;
+        const width = this.canvas.width;
+        const height = this.canvas.height;
         const imageData = this.ctx.getImageData(0, 0, width, height);
         return imageData;
     }
@@ -62,8 +62,8 @@ export default class CanvasStore {
     }
 
     changeCanvas(canvas: React.RefObject<HTMLCanvasElement>) {
-        if (!canvas?.current) throw new Error("canvas가 올바르지 않은 값으로 초기화되었습니다.");
-        this.canvas = canvas;
+        if (!canvas.current) throw new Error("canvas가 올바르지 않은 값으로 초기화되었습니다.");
+        this.canvas = canvas.current;
         this.ctx = canvas.current.getContext("2d");
     }
 
@@ -172,7 +172,7 @@ export default class CanvasStore {
     clearCanvas() {
         if (!this.canvas || !this.ctx) throw new Error("canvas isn't initialized");
         this.undoStack.push(this.currentContext);
-        const { width, height } = this.canvas.current!;
+        const { width, height } = this.canvas;
         this.ctx.clearRect(0, 0, width, height);
         this.clearRedoStack();
     }
