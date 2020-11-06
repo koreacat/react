@@ -21,7 +21,7 @@ const HistoryControllerItem = (prop: HistoryControllerItemProp) => {
 	return (
 		<li>
 			<button
-				className={`${type} ${pressed ? 'pressed' : ''}`}
+				className={`${type} ${pressed ? "pressed" : ""}`}
 				onClick={handleClick}
 				disabled={disabled}
 				ref={ref}
@@ -33,20 +33,25 @@ const HistoryControllerItem = (prop: HistoryControllerItemProp) => {
 interface HistoryControllerProp {
 	undo: () => void;
 	redo: () => void;
+	undoAvailable: boolean;
+	redoAvailable: boolean;
 }
 
-const HistoryController = ({undo, redo} : HistoryControllerProp) => {
-	const isPrevAvailable = true;
-	const isNextAvailable = true;
+const HistoryController = ({
+	undo,
+	redo,
+	undoAvailable,
+	redoAvailable,
+}: HistoryControllerProp) => {
 	return (
 		<ul className="historyController">
 			<HistoryControllerItem
-				disabled={!isPrevAvailable}
+				disabled={!undoAvailable}
 				type="undo"
 				changeHistory={undo}
 			/>
 			<HistoryControllerItem
-				disabled={!isNextAvailable}
+				disabled={!redoAvailable}
 				type="redo"
 				changeHistory={redo}
 			/>
