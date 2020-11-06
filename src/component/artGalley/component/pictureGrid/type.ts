@@ -9,7 +9,7 @@ export const pictureUrlList = (imageCount: number) => {
         } else {
             url = i;
         }
-        pictureUrlList.push(`url( ${require('./img/' + url + '.jpg')} )`);
+        pictureUrlList.push(`url( ${require('../../../../resources/image/artGalley/pictureGrid/' + url + '.jpg')} )`);
     }
 
     return pictureUrlList;

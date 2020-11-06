@@ -10,7 +10,7 @@ import ArtGalley from "../artGalley/ArtGalley";
 
 const AppIcon = ({title, img, onClick}: any) => {
     const style = {
-        backgroundImage: `url(${require(img + '')})`
+        backgroundImage: `url(${require('./icon/'+img)})`,
     };
     return (
         <div className={'appIcon'} onClick={onClick} style={style}>
@@ -31,16 +31,13 @@ const AppMenu = ({setAppState}: any) => {
 
     return (
         <div ref={appMenu} className={'appMenu'} onWheel={scrollEvent}>
-            <AppIcon title={'clock'} img={'./img/clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
-            <AppIcon title={'hamderTale'} img={'./img/hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>
-            <AppIcon title={'hamKemon'} img={'./img/hamKemon_icon.png'} onClick={() => {setAppState(<HamKemon/>)}}/>
-            <AppIcon title={'hampleStory'} img={'./img/hampleStory_icon.png'} onClick={() => {setAppState(<HampleStory/>)}}/>
-            <AppIcon title={'hamTaker'} img={'./img/hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
-            <AppIcon title={'canvas'} img={'./img/canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
-            <AppIcon title={'artGalley'} img={'./img/artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
-            <AppIcon title={'parrot'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'drive'} img={'./img/default_icon.png'} onClick={() => {}}/>
-            <AppIcon title={'cube'} img={'./img/default_icon.png'} onClick={() => {}}/>
+            <AppIcon title={'clock'} img={'clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
+            <AppIcon title={'hamderTale'} img={'hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>
+            <AppIcon title={'hamTaker'} img={'hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
+            <AppIcon title={'canvas'} img={'canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
+            <AppIcon title={'artGalley'} img={'artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
+            <AppIcon title={'hamKemon'} img={'hamKemon_icon.png'} onClick={() => {setAppState(<HamKemon/>)}}/>
+            <AppIcon title={'hampleStory'} img={'hampleStory_icon.png'} onClick={() => {setAppState(<HampleStory/>)}}/>
         </div>
     );
 };

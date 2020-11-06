@@ -1,17 +1,23 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import './BGMButton.scss';
 
 interface BGMButtonProps {
-    src: string,
+    audio: HTMLAudioElement,
 }
 
 const BGMButton = (props: BGMButtonProps) => {
     const bgmCheckbox: any = useRef(null);
-    const audio = new Audio(require(`./sound/${props.src}`));
+    const audio = props.audio;
 
     audio.addEventListener('ended', () => {
         audio.currentTime = 0;
         audio.play();
+    });
+
+    useEffect(() => {
+        return(() => {
+            audio.pause();
+        })
     });
 
     return(

@@ -16,10 +16,12 @@ const ArtGalley = () => {
                 artGalleyMenu &&
                 <div className={'artGalleyMenu'}>
                     <p onClick={() => {setArtGalleyState(<PictureGrid/>); setArtGalleyMenu(false)}}>Picture Grid</p>
-                    <p onClick={() => {}}>...</p>
+                    <p onClick={() => {setArtGalleyState(<></>); setArtGalleyMenu(false)}}>Parrot</p>
+                    <p onClick={() => {setArtGalleyState(<></>); setArtGalleyMenu(false)}}>Drive</p>
+                    <p onClick={() => {setArtGalleyState(<></>); setArtGalleyMenu(false)}}>Cube</p>
                 </div>
             }
-            <BGMButton src={'SongontheBeach.mp3'}/>
+            <BGMButton audio={new Audio(require('../../resources/sound/artGalley/Buttercup.mp3'))}/>
         </div>
     )
 };
