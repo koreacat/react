@@ -7,7 +7,7 @@ type HistoryControllerCommand = "undo" | "redo";
 interface HistoryControllerItemProp {
 	disabled: boolean;
 	type: HistoryControllerCommand;
-	changeHistory: (command: HistoryControllerCommand) => void;
+	changeHistory: () => void;
 }
 
 const HistoryControllerItem = (prop: HistoryControllerItemProp) => {
@@ -15,8 +15,8 @@ const HistoryControllerItem = (prop: HistoryControllerItemProp) => {
 	const [ref, pressed] = usePressed<HTMLButtonElement>();
 
 	const handleClick = useCallback(() => {
-		changeHistory(type);
-	}, [changeHistory, type]);
+		changeHistory();
+	}, [changeHistory]);
 
 	return (
 		<li>
