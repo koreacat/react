@@ -3,99 +3,49 @@ import { coordinate } from '../../fixtures/coordinate';
 import 'jest-canvas-mock'
 
 describe('picasso', () => {
-    let picasso: Picasso = null;
+    let canvas: HTMLCanvasElement;
+    let ctx: CanvasRenderingContext2D;
 
-    describe('canvas', () => {
-        beforeAll(() => {
-            picasso = new Picasso({ drawable: true });
-        })
-
-        test('should initialized', () => {
-            expect(() => picasso.clearCanvas()).toThrow("canvas isn't initialized")
-            expect(() => picasso.drawPoint(coordinate)).toThrowError("canvas isn't initialized")
-            expect(() => picasso.drawLine(coordinate, coordinate)).toThrowError("canvas isn't initialized")
-        })
-
+    beforeAll(() => {
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d')!;
     })
 
-    describe('save', () => {
-        beforeAll(() => {
-            const canvas = document.createElement('canvas');
-            const canvasRef = { current: canvas }
-            picasso = new Picasso({ canvas: canvasRef, drawable: true });
+    describe('clearCanvas', () => {
+        test('throws error when canvas is wrong value', () => {
+            expect(() => Picasso.clearCanvas(null, ctx)).toThrowError("canvas is wrong value")
         })
 
-        test('undo stack was pushed after pushCanvasToUndoStack', () => {
-            picasso.drawStart();
-            expect(picasso.undoStack.length).toBe(1);
+        test('throws error when ctx is wrong value', () => {
+            expect(() => Picasso.clearCanvas(canvas, null)).toThrowError("ctx is wrong value")
         })
     })
 
-    describe('undo', () => {
-        beforeAll(() => {
-            const canvas = document.createElement('canvas');
-            const canvasRef = { current: canvas }
-            picasso = new Picasso({ canvas: canvasRef, drawable: true });
+    describe('drawPoint', () => {
+        test('throws error when ctx is wrong value', () => {
+            expect(() => Picasso.drawPoint(null, ctx)).toThrowError("ctx is wrong value")
         })
-
-        beforeEach(() => {
-            picasso.clearUndoStack();
-            picasso.clearRedoStack();
-        })
-
-        test('is empty at first', () => {
-            expect(picasso.undoStack.length).toBe(0);
-        })
-
-        test('undo stack was pushed after pushCanvasToUndoStack', () => {
-            picasso.drawStart();
-            expect(picasso.undoStack.length).toBe(1);
-        })
-
     })
 
-    describe('redo', () => {
-        beforeAll(() => {
-            const canvas = document.createElement('canvas');
-            const canvasRef = { current: canvas }
-            picasso = new Picasso({ canvas: canvasRef, drawable: true });
+    describe('drawRoundLine', () => {
+        test('throws error when ctx is wrong value', () => {
+            expect(() => Picasso.drawRoundLine(null, ctx)).toThrowError("ctx is wrong value")
+        })
+    })
+
+    describe('drawFlatLine', () => {
+        test('throws error when ctx is wrong value', () => {
+            expect(() => Picasso.drawFlatLine(null, ctx)).toThrowError("ctx is wrong value")
+        })
+    })
+
+    describe('getCanvasImageData', () => {
+        test('throws error when canvas is wrong value', () => {
+            expect(() => Picasso.getCanvasImageData(null, ctx)).toThrowError("canvas is wrong value")
         })
 
-        beforeEach(() => {
-            picasso.clearRedoStack();
-            picasso.clearUndoStack();
-        })
-
-        test('redo stack is empty at first', () => {
-            expect(picasso.redoStack.length).toBe(0);
-        })
-
-        test('should increase after undo', () => {
-            picasso.drawStart();
-            picasso.undo();
-            expect(picasso.redoStack.length).toBe(1);
-        })
-
-        test('undo stack should be increased after redo', () => {
-            picasso.drawStart();
-            picasso.undo();
-            picasso.redo();
-            expect(picasso.undoStack.length).toBe(1);
-        })
-
-        test('redo stack should be cleared after drawStart', () => {
-            picasso.drawStart();
-            picasso.undo();
-            expect(picasso.redoStack.length).toBe(1);
-            picasso.drawStart();
-            expect(picasso.redoStack.length).toBe(0);
-        })
-
-        test('redo stack should be decreased after redo', () => {
-            picasso.drawStart();
-            picasso.undo();
-            picasso.redo();
-            expect(picasso.redoStack.length).toBe(0);
+        test('throws error when ctx is wrong value', () => {
+            expect(() => Picasso.getCanvasImageData(canvas, null)).toThrowError("ctx is wrong value")
         })
     })
 })
