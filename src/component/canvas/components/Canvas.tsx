@@ -13,7 +13,7 @@ import { MobXProviderContext, observer } from "mobx-react";
 import CanvasStore from "../store/CanvasStore";
 
 const Canvas = () => {
-	const [canvasSize] = useState({
+	const [canvasSize, setCanvasSize] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight,
 	});
@@ -26,7 +26,17 @@ const Canvas = () => {
 	useEffect(() => {
 		if (!canvasRef) return;
 		canvas.changeCanvas(canvasRef);
-	}, [canvas]);
+	}, [canvas, canvasRef]);
+
+	useEffect(() => {
+		if (!canvasRef.current) return;
+		console.log(1);
+		document.body.addEventListener("resize", () => {
+			const { clientWidth: width, clientHeight: height } = document.body;
+			console.log(width, height);
+			setCanvasSize({ width, height });
+		});
+	}, [canvasRef]);
 
 	const drawPoint = useCallback(
 		(coordinate: Coordinate) => {
