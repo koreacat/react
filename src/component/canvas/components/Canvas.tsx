@@ -29,14 +29,11 @@ const Canvas = () => {
 	}, [canvas, canvasRef]);
 
 	useEffect(() => {
-		if (!canvasRef.current) return;
-		console.log(1);
-		document.body.addEventListener("resize", () => {
+		window.addEventListener("resize", () => {
 			const { clientWidth: width, clientHeight: height } = document.body;
-			console.log(width, height);
 			setCanvasSize({ width, height });
 		});
-	}, [canvasRef]);
+	}, []);
 
 	const drawPoint = useCallback(
 		(coordinate: Coordinate) => {
@@ -76,13 +73,18 @@ const Canvas = () => {
 	const onMouseDown = useCallback(
 		(e: React.MouseEvent) => {
 			console.log("mouse down");
-			canvas.onDrawStart();
-			const nextCoordinate: Coordinate = {
-				x: e.clientX,
-				y: e.clientY,
-			};
-			drawPoint(nextCoordinate);
-			prevCoordinate.current = nextCoordinate;
+			switch (e.button) {
+				case 0:
+					// 마우스 좌클릭
+					canvas.onDrawStart();
+					const nextCoordinate: Coordinate = {
+						x: e.clientX,
+						y: e.clientY,
+					};
+					drawPoint(nextCoordinate);
+					prevCoordinate.current = nextCoordinate;
+					break;
+			}
 		},
 		[canvas, drawPoint]
 	);
@@ -100,10 +102,24 @@ const Canvas = () => {
 		[drawLine]
 	);
 
-	const onMouseUp = useCallback(() => {
-		console.log("mouse up");
-		canvas.onDrawEnd();
-	}, [canvas]);
+	const onMouseUp = useCallback(
+		(e: React.MouseEvent) => {
+			console.log("mouse up");
+			e.preventDefault();
+			switch (e.button) {
+				case 0:
+					canvas.onDrawEnd();
+					break;
+				case 3:
+					canvas.undo();
+					break;
+				case 4:
+					canvas.redo();
+					break;
+			}
+		},
+		[canvas]
+	);
 
 	const onTouchStart = useCallback(
 		(e: React.TouchEvent) => {
