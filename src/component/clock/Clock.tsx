@@ -67,9 +67,9 @@ const AnalogClock = ({date}: clockProps) => {
     const h_s = date.getHours() * 60 * 60;
     const m_s = date.getMinutes() * 60;
     const s = date.getSeconds();
-    const hoursDeg = ((h_s + m_s + s) * 0.00833333) % 360;
-    const minutesDeg = ((m_s + s) * 0.1) % 360;
-    const secondsDeg = s * 6;
+    const hoursDeg = ((h_s + m_s + s) * 0.00833333);
+    const minutesDeg = ((h_s + m_s + s) * 0.1);
+    const secondsDeg = ((h_s + m_s + s) * 6);
 
     const hoursStyle = {
         transform: `rotate(${hoursDeg}deg)`
