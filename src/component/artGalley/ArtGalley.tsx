@@ -34,7 +34,7 @@ const ArtGalley = () => {
         }
         carousel.current.style.transform = `rotateY(${currdeg}deg)`;
         direction = 0;
-    }
+    };
 
     const next = () => {
         if(currdeg % 60 === 0){
@@ -46,7 +46,7 @@ const ArtGalley = () => {
         }
         carousel.current.style.transform = `rotateY(${currdeg}deg)`;
         direction = 0;
-    }
+    };
 
     const onMouseDown = useCallback(
 		(e: React.MouseEvent) => {
@@ -107,7 +107,7 @@ const ArtGalley = () => {
                             <p className={'f'} onClick={() => {setArtGalleyState(<></>); setArtGalleyMenu(false)}}>f</p>
                         </div>
                     </div>
-                    <button className={'artGalletPrev'} onClick={prev}>prev</button>
+                    <button className={'artGalleyPrev'} onClick={prev}>prev</button>
                     <button className={'artGalleyNext'} onClick={next}>next</button>
                 </div>
                 
