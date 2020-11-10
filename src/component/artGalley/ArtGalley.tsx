@@ -48,46 +48,34 @@ const ArtGalley = () => {
         direction = 0;
     };
 
-    const onMouseDown = useCallback(
-		(e: React.MouseEvent) => {
-			switch (e.button) {
-				case 0:
-                    movable = true;
-                    previousX = e.clientX;
-					break;
-			}
-		},
-		[]
-	);
-
-    const onMouseUp = useCallback(
-		(e: React.MouseEvent) => {
-            e.preventDefault();
-            movable = false;
-		},
-		[]
-	);
-
-    const onMouseMove = useCallback(
-		(e: React.MouseEvent) => {
-            if(movable){
-                let diff = (previousX - e.clientX);
-                currdeg = currdeg - diff/2;
-                carousel.current.style.transform = `rotateY(${currdeg}deg)`;
+    const onMouseDown = useCallback((e) => {
+        switch (e.button) {
+            case 0:
+                movable = true;
                 previousX = e.clientX;
-                diff < 0 ? direction = 1 : direction = -1;
-            }
-		},
-		[]
-    );
+                break;
+        }
+    },[]);
+
+    const onMouseUp = useCallback((e) => {
+        e.preventDefault();
+        movable = false;
+    },[]);
+
+    const onMouseMove = useCallback((e) => {
+        if(movable){
+            let diff = (previousX - e.clientX);
+            currdeg = currdeg - diff/2;
+            carousel.current.style.transform = `rotateY(${currdeg}deg)`;
+            previousX = e.clientX;
+            diff < 0 ? direction = 1 : direction = -1;
+        }
+    },[]);
     
-    const onMouseLeave = useCallback(
-		(e: React.MouseEvent) => {
-            e.preventDefault();
-            movable = false;
-		},
-		[]
-	);
+    const onMouseLeave = useCallback((e) => {
+        e.preventDefault();
+        movable = false;
+    },[]);
 
     return(
         <div className={'artGalley'} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={onMouseUp} onMouseLeave={onMouseLeave}>
