@@ -5,7 +5,7 @@ import ArtGalley from "./component/artGalley/ArtGalley";
 import Canvas from './component/canvas/App';
 
 function App() {
-  const [appState, setAppState] = useState(<Canvas/>);
+  const [appState, setAppState] = useState(<ArtGalley/>);
 
   return (
     <div className="App">
