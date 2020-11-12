@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import './ArtGalley.scss';
 import PictureGrid from "./component/pictureGrid/PictureGrid";
-import BGMButton from "../bgmButton/BGMButton";
 import Carousel from "./component/carousel/Carousel";
 
 const ArtGalley = () => {
