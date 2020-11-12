@@ -25,6 +25,7 @@ const ArtGalley = () => {
         artGalleyWrap.current.style.top = '0';
     };
 
+    
     return (
         <div className={'artGalley'} >
             <div ref={artGalleyMenuWrap} className={'artGalleyMenuWrap'}>
