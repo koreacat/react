@@ -8,8 +8,6 @@ const ArtGalley = () => {
     const artGalleyMenuWrap: any = useRef(null);
     const artGalleyWrap: any = useRef(null);
 
-
-    
     const backToMenu = () => {
         artGalleyMenuWrap.current.style.opacity = '1';
         artGalleyMenuWrap.current.style.top = '0';
@@ -27,7 +25,6 @@ const ArtGalley = () => {
         artGalleyWrap.current.style.top = '0';
     };
 
-    
     return (
         <div className={'artGalley'} >
             <div ref={artGalleyMenuWrap} className={'artGalleyMenuWrap'}>

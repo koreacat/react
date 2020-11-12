@@ -1,12 +1,6 @@
-import { computed, observable } from "mobx";
+import CanvasRootStore from './CanvasRootStore';
+import { autorun, computed, observable, reaction } from "mobx";
 import { Coordinate } from "../type";
-
-type CanvasStoreParam = Partial<{
-    canvas: React.RefObject<HTMLCanvasElement> | null;
-    drawable: boolean;
-    color: string;
-    lineWidth: number;
-}>
 
 const START: Coordinate = {
     x: 0,
@@ -14,6 +8,7 @@ const START: Coordinate = {
 }
 
 export default class CanvasStore {
+    private root: CanvasRootStore;
     private canvas: HTMLCanvasElement | null;
     private ctx: CanvasRenderingContext2D | null;
 
@@ -25,17 +20,13 @@ export default class CanvasStore {
     @observable private undoStack: ImageData[];
     @observable private redoStack: ImageData[];
 
-    constructor({
-        canvas = null,
-        drawable = false,
-        lineWidth = 1,
-        color = '#000000',
-    }: CanvasStoreParam) {
-        this.canvas = canvas?.current || null;
-        this.ctx = canvas?.current?.getContext('2d') || null;
-        this.drawable = drawable;
-        this.lineWidth = lineWidth;
-        this.color = color;
+    constructor(root: CanvasRootStore) {
+        this.root = root;
+        this.canvas = null;
+        this.ctx = null;
+        this.drawable = false;
+        this.lineWidth = 1;
+        this.color = '#000000';
         this.ratio = window.devicePixelRatio || 1;
         this.undoStack = [];
         this.redoStack = [];
@@ -53,18 +44,31 @@ export default class CanvasStore {
         return this.lineWidth / 2;
     }
 
-    @computed get undoAvailable() {
+    @computed
+    get undoAvailable() {
         return this.undoStack.length > 0;
     }
 
-    @computed get redoAvailable() {
+    @computed
+    get redoAvailable() {
         return this.redoStack.length > 0;
+    }
+
+    get frame() {
+        if (!this.canvas) throw new Error("canvas isn't initialized");
+        const frame = this.canvas.toDataURL();
+        return frame;
+    }
+
+    get frameIdx() {
+        return this.root.galleryStore.frameIdx;
     }
 
     changeCanvas(canvas: React.RefObject<HTMLCanvasElement>) {
         if (!canvas.current) throw new Error("canvas가 올바르지 않은 값으로 초기화되었습니다.");
         this.canvas = canvas.current;
         this.ctx = canvas.current.getContext("2d");
+        this.loadFrame();
     }
 
     changeDrawable(drawable: boolean) {
@@ -140,9 +144,23 @@ export default class CanvasStore {
         this.ctx.putImageData(imageData, x, y);
     }
 
+    drawImage(imageSrc: string) {
+        if (!this.canvas || !this.ctx) throw new Error("canvas isn't initialized");
+        if (!imageSrc) {
+            console.warn('image src가 올바르지 않습니다.');
+            return;
+        }
+        const img = new Image();
+        img.onload = () => {
+            this.ctx!.drawImage(img, 0, 0);
+        }
+        img.src = imageSrc;
+    }
+
     onDrawEnd() {
         if (!this.canvas || !this.ctx) throw new Error("canvas isn't initialized");
         this.drawable = false;
+        this.saveCanvas();
     }
 
     undo(): boolean {
@@ -179,5 +197,18 @@ export default class CanvasStore {
 
     clearRedoStack() {
         this.redoStack.length = 0;
+    }
+
+    saveCanvas() {
+        if (this.frameIdx === null) {
+            console.error('frameIdx가 null입니다.');
+            return;
+        }
+        this.root.galleryStore.saveFrame(this.frameIdx, this.frame);
+    }
+
+    loadFrame() {
+        if (this.frameIdx === null) return;
+        this.root.canvasStore.drawImage(this.root.galleryStore.frames[this.frameIdx])
     }
 }
