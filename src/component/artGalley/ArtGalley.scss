@@ -1,96 +1,57 @@
 .artGalley {
-    display: flex;
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
     background: #000000;
-    perspective: 1000px;
     
     .artGalleyWrap {
         position: absolute;
         width: 100%;
-        height: calc(100% - 80px);
-        top: 0;
-        left: 0;
-    }
-
-    .artGalletPrev {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-color: #ffffff;
-        top: calc(50% - 40px);
-        left: 0;
-    }
-
-    .artGalleyNext {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-color: #ffffff;
-        top: calc(50% - 40px);
-        right: 0;
+        height: 100%;
+        top: calc(100% - 80px);
+        left: 0; 
+        transition: top 1.4s ease-in-out, opacity .8s;
+        
+        .artGalleyMenuButton {
+            position: fixed;
+            width: 35px;
+            height: 35px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            bottom: 110px;
+            transition: 0.5s all ease-out;
+            z-index: 3;
+            i {
+                font-size: 30px;
+                color: #ffffff;
+            }
+            &:hover {
+                bottom: 100px;
+            }
+        }
     }
 
     .artGalleyMenuWrap {
-        display: flex;
         position: absolute;
         width: 100%;
         height: calc(100% - 80px);
-        justify-content: center;
-        align-items: center;
         top: 0;
-        left: 0;
-        transform-style: preserve-3d;
-        transition: transform 1s;
+        left: 0; 
+        transition: top 1.7s ease, opacity .7s ease;
 
         .artGalleyMenu {
-            position: absolute;
-            left: calc(50% - 7vw - 50px);
-            top: calc(55% - 5vw - 50px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
 
-            > p {
-                position: absolute;
-                display: flex;
-                width: calc(14vw + 100px);
-                height: calc(10vw + 100px);
-                font-size: calc(3vw + 16px);
-                padding: 1vw;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                color: #000000;
-                background: #ffffff;
-                border-radius: 10px;
-                opacity: 0.9;
-                transition: all 0.5s;
+            >p {
+                display: block;
+                padding: 10px;
+                color: #ffffff;
                 cursor: pointer;
-                
-                &:hover {
-                    color: #ffffff;
-                    background: #111111;
-                    opacity: 1;
-                }
-            }
-    
-            .a {
-                transform: rotateY(0deg) translateZ(calc(13vw + 100px));
-            }
-            .b {
-                transform: rotateY(60deg) translateZ(calc(13vw + 100px));
-            }
-            .c {
-                transform: rotateY(120deg) translateZ(calc(13vw + 100px));
-            }
-            .d {
-                transform: rotateY(180deg) translateZ(calc(13vw + 100px));
-            }
-            .e {
-                transform: rotateY(240deg) translateZ(calc(13vw + 100px));
-            } 
-            .f {
-                transform: rotateY(300deg) translateZ(calc(13vw + 100px));
             }
         }
     }
