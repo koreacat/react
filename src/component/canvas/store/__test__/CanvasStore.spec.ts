@@ -1,11 +1,12 @@
 import CanvasStore from '../CanvasStore';
 import { getCanvasRef } from '../../fixtures/canvas';
 import 'jest-canvas-mock'
+import CanvasRootStore from '../CanvasRootStore';
 
 describe('canvas store', () => {
     let store: CanvasStore;
     beforeEach(() => {
-        store = new CanvasStore({});
+        store = new CanvasStore(new CanvasRootStore());
     })
 
     describe('changes by state changers', () => {
@@ -55,6 +56,11 @@ describe('canvas store', () => {
                 store.onDrawEnd()
                 expect(store.drawable).toBe(false);
             })
+        })
+
+        describe('drawImage', () => {
+            const imageSrc= "https://developer.mozilla.org/static/img/web-docs-sprite.22a6a085cf14.svg"
+            expect(() => store.drawImage(imageSrc)).not.toThrow();
         })
 
         describe('undo', () => {
@@ -132,4 +138,5 @@ describe('canvas store', () => {
             })
         })
     })
+
 })
