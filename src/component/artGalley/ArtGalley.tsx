@@ -8,6 +8,8 @@ const ArtGalley = () => {
     const artGalleyMenuWrap: any = useRef(null);
     const artGalleyWrap: any = useRef(null);
 
+
+    
     const backToMenu = () => {
         artGalleyMenuWrap.current.style.opacity = '1';
         artGalleyMenuWrap.current.style.top = '0';
