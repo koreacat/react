@@ -1,4 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
+import Random from "../../../../common/Random";
 import BGMButton from "../../../bgmButton/BGMButton";
 import './Carousel.scss';
 const Carousel = () => {
@@ -101,12 +102,12 @@ const Carousel = () => {
             onTouchEnd={onTouchEnd}>
             <div ref={carousel} className={'carouselWrap'}>
                 <div className={'carouselItem'}>
-                    <p className={'a'} >a</p>
-                    <p className={'b'} >b</p>
-                    <p className={'c'} >c</p>
-                    <p className={'d'} >d</p>
-                    <p className={'e'} >e</p>
-                    <p className={'f'} >f</p>
+                    <p className={'a'} >{Random.getInteger(10)}</p>
+                    <p className={'b'} >{Random.getInteger(10)}</p>
+                    <p className={'c'} >{Random.getInteger(10)}</p>
+                    <p className={'d'} >{Random.getInteger(10)}</p>
+                    <p className={'e'} >{Random.getInteger(10)}</p>
+                    <p className={'f'} >{Random.getInteger(10)}</p>
                 </div>
             </div>
             <button className={'carouselPrev'} onClick={prev}>prev</button>
