@@ -9,8 +9,10 @@ function App() {
   const [appState, setAppState] = useState(<ArtGalley/>);
 
   return (
-    <div className="App">
-      {appState}
+    <div className={'app'}>
+      <div className={'appWrap'}>
+        {appState}
+      </div>
       <AppMenu setAppState={setAppState}/>
     </div>
   );
