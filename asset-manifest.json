@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react/static/css/main.75d2afd4.chunk.css",
-    "main.js": "/react/static/js/main.e80f158c.chunk.js",
-    "main.js.map": "/react/static/js/main.e80f158c.chunk.js.map",
+    "main.css": "/react/static/css/main.4fb673e2.chunk.css",
+    "main.js": "/react/static/js/main.27dc3b6e.chunk.js",
+    "main.js.map": "/react/static/js/main.27dc3b6e.chunk.js.map",
     "runtime-main.js": "/react/static/js/runtime-main.0a4db6bd.js",
     "runtime-main.js.map": "/react/static/js/runtime-main.0a4db6bd.js.map",
     "static/js/2.0d81f44c.chunk.js": "/react/static/js/2.0d81f44c.chunk.js",
     "static/js/2.0d81f44c.chunk.js.map": "/react/static/js/2.0d81f44c.chunk.js.map",
     "index.html": "/react/index.html",
-    "precache-manifest.172044f6dbff647abaf943c1acd7ebf4.js": "/react/precache-manifest.172044f6dbff647abaf943c1acd7ebf4.js",
+    "precache-manifest.94d014c878eeec86baa3a9062a4adab1.js": "/react/precache-manifest.94d014c878eeec86baa3a9062a4adab1.js",
     "service-worker.js": "/react/service-worker.js",
-    "static/css/main.75d2afd4.chunk.css.map": "/react/static/css/main.75d2afd4.chunk.css.map",
+    "static/css/main.4fb673e2.chunk.css.map": "/react/static/css/main.4fb673e2.chunk.css.map",
     "static/js/2.0d81f44c.chunk.js.LICENSE.txt": "/react/static/js/2.0d81f44c.chunk.js.LICENSE.txt",
     "static/media/001.jpg": "/react/static/media/001.a13b9e3e.jpg",
     "static/media/004.jpg": "/react/static/media/004.1d2d2b3f.jpg",
@@ -23,6 +23,7 @@
     "static/media/046.jpg": "/react/static/media/046.17b348b9.jpg",
     "static/media/055.jpg": "/react/static/media/055.147fb153.jpg",
     "static/media/Buttercup.mp3": "/react/static/media/Buttercup.3efa411a.mp3",
+    "static/media/font.scss": "/react/static/media/NotoSerifKR-SemiBold.5cd99795.otf",
     "static/media/clock_icon.jpg": "/react/static/media/clock_icon.6deb7b5b.jpg",
     "static/media/gasterBlaster.mp3": "/react/static/media/gasterBlaster.fcc53b08.mp3",
     "static/media/HamderTale.scss": "/react/static/media/sans.71981130.gif",
@@ -41,7 +42,7 @@
   "entrypoints": [
     "static/js/runtime-main.0a4db6bd.js",
     "static/js/2.0d81f44c.chunk.js",
-    "static/css/main.75d2afd4.chunk.css",
-    "static/js/main.e80f158c.chunk.js"
+    "static/css/main.4fb673e2.chunk.css",
+    "static/js/main.27dc3b6e.chunk.js"
   ]
 }

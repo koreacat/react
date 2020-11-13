@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dda799c4af5774f6b819ad8ac61d4b45",
+    "revision": "1666caa589d75c76d35588c564f65e7d",
     "url": "/react/index.html"
   },
   {
-    "revision": "480411e3f38782c2cf17",
-    "url": "/react/static/css/main.75d2afd4.chunk.css"
+    "revision": "1766931f6d63496895f9",
+    "url": "/react/static/css/main.4fb673e2.chunk.css"
   },
   {
     "revision": "d6f32013308530a8fcf8",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react/static/js/2.0d81f44c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "480411e3f38782c2cf17",
-    "url": "/react/static/js/main.e80f158c.chunk.js"
+    "revision": "1766931f6d63496895f9",
+    "url": "/react/static/js/main.27dc3b6e.chunk.js"
   },
   {
     "revision": "790d185f1e3865afd495",
@@ -66,6 +66,34 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "3efa411a53b79fe3777b077d9972ccf1",
     "url": "/react/static/media/Buttercup.3efa411a.mp3"
+  },
+  {
+    "revision": "fba3dd1e1779b81102523044c60a0319",
+    "url": "/react/static/media/NotoSerifKR-Black.fba3dd1e.otf"
+  },
+  {
+    "revision": "aa7d9598c23f4e912c4df5b97ad593a3",
+    "url": "/react/static/media/NotoSerifKR-Bold.aa7d9598.otf"
+  },
+  {
+    "revision": "e4c127f5c593546f8f78ec317a1f7134",
+    "url": "/react/static/media/NotoSerifKR-ExtraLight.e4c127f5.otf"
+  },
+  {
+    "revision": "5cff0fc8f3a1f77370c6a22d0350a8ad",
+    "url": "/react/static/media/NotoSerifKR-Light.5cff0fc8.otf"
+  },
+  {
+    "revision": "55d8ef7a7ce510531b65239ee7ecc6d3",
+    "url": "/react/static/media/NotoSerifKR-Medium.55d8ef7a.otf"
+  },
+  {
+    "revision": "b2f26f622334461ea0e1af0d2c1b3a8c",
+    "url": "/react/static/media/NotoSerifKR-Regular.b2f26f62.otf"
+  },
+  {
+    "revision": "5cd9979545e94fa5ca29c5c097e0cd16",
+    "url": "/react/static/media/NotoSerifKR-SemiBold.5cd99795.otf"
   },
   {
     "revision": "6deb7b5bfcb57c198ae7e9006db3ca27",
