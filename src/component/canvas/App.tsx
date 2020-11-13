@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { observer, Provider } from "mobx-react";
-import "./reset.scss";
 import "./App.scss";
 import Canvas from "./components/Canvas";
 import CanvasRootStore from "./store/CanvasRootStore";
