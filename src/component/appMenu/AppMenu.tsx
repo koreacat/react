@@ -34,6 +34,7 @@ const AppMenu = ({setAppState}: any) => {
             <AppIcon title={'clock'} img={'clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
             <AppIcon title={'artGalley'} img={'artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
             <AppIcon title={'canvas'} img={'canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
+            <AppIcon title={'poker'} img={'default_icon.png'} onClick={() => {setAppState(<div></div>)}}/>
             <AppIcon title={'hamderTale'} img={'hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>
             <AppIcon title={'hamTaker'} img={'hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
             <AppIcon title={'hamKemon'} img={'hamKemon_icon.png'} onClick={() => {setAppState(<HamKemon/>)}}/>
