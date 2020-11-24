@@ -16,39 +16,77 @@
         top: 0;
         left: 0;
         
-        @keyframes rainbow {
+        @keyframes red {
             0% {
                 background: white;
+                box-shadow: 0px 0px 0px 0px white;
             }
-            10% {
+            25% {
                 background: red;
-            }
-            20% {
-                background: orange;
-            }
-            30% {
-                background: yellow;
-            }
-            40% {
-                background: green;
+                box-shadow: 0px 0px 25px 1px red;
             }
             50% {
-                background: blue;
+                background: white;
+                box-shadow: 0px 0px 0px 0px white;
             }
-            60% {
-                background: navy;
-            }
-            70% {
-                background: indigo;
-            }
-            80% {
-                background: purple;
-            }
-            90% {
-                background: magenta;
+            75% {
+                background: red;
+                box-shadow: 0px 0px 25px 1px red;
             }
             100% {
                 background: white;
+                box-shadow: 0px 0px 0px 0px white;
+            }
+        }
+        
+        @keyframes rainbow {
+            0% {
+                background: white;
+                box-shadow: 0px 0px 0px 0px white;
+            }
+            10% {
+                background: red;
+                box-shadow: 0px 0px 25px 1px red;
+            }
+            20% {
+                background: orange;
+                box-shadow: 0px 0px 25px 1px orange;
+            }
+            30% {
+                background: yellow;
+                box-shadow: 0px 0px 25px 1px yellow;
+            }
+            40% {
+                background: green;
+                box-shadow: 0px 0px 25px 1px green;
+            }
+            50% {
+                background: blue;
+                box-shadow: 0px 0px 25px 1px blue;
+            }
+            60% {
+                background: navy;
+                box-shadow: 0px 0px 25px 1px navy;
+            }
+            70% {
+                background: indigo;
+                box-shadow: 0px 0px 25px 1px indigo;
+            }
+            80% {
+                background: purple;
+                box-shadow: 0px 0px 25px 1px purple;
+            }
+            90% {
+                background: magenta;
+                box-shadow: 0px 0px 25px 1px magenta;
+            }
+            95% {
+                background: pink;
+                box-shadow: 0px 0px 25px 1px pink;
+            }
+            100% {
+                background: white;
+                box-shadow: 0px 0px 0px 0px white;
             }
         }
         

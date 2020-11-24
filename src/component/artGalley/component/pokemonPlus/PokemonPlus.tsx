@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import './PokemonPlus.scss';
+import Random from "../../../../common/Random";
 
 const PokemonPlus = () => {
 	const circle = useRef(null);
@@ -7,10 +8,10 @@ const PokemonPlus = () => {
 
 	const click = () => {
 		if(circleAnimation !== '') return;
-		setCircleAnimation('rainbow  1s');
+		Random.getInteger(100) > 40 ? setCircleAnimation('red  1.0s') : setCircleAnimation('rainbow 1.5s ease-in-out');
 		setTimeout(() => {
 			setCircleAnimation('');
-		}, 1000)
+		}, 1500)
 	};
 
 	const circleStyle = {
