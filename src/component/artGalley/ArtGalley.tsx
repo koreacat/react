@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import './ArtGalley.scss';
 import PictureGrid from "./component/pictureGrid/PictureGrid";
 import Carousel from "./component/carousel/Carousel";
+import PokemonPlus from "./component/pokemonPlus/PokemonPlus";
 
 const ArtGalley = () => {
     const [artGalleyState, setArtGalleyState] = useState(<></>);
@@ -31,7 +32,7 @@ const ArtGalley = () => {
                 <div className={'artGalleyMenu'}>
                     <p onClick={() => { setArtGalleyState(<Carousel />); goToGalley(); }}>Carousel</p>
                     <p onClick={() => { setArtGalleyState(<PictureGrid />); goToGalley(); }}>Picture Grid</p>
-                    <p onClick={() => { }}>Parrot</p>
+                    <p onClick={() => { setArtGalleyState(<PokemonPlus />); goToGalley(); }}>Pokemon Plus</p>
                     <p onClick={() => { }}>Drive</p>
                     <p onClick={() => { }}>Cube</p>
                     <p onClick={() => { }}>f</p>
