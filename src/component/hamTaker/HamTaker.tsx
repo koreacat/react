@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./HamTaker.scss";
 
-import { MapType, basicMap } from "./maps";
+import { MapType } from "./maps";
 import Characters from "./components/Characters";
 import GameController from "./components/GameController";
 
@@ -9,7 +9,26 @@ const startPoint = () => {
 	return { x: 0, y: 0 };
 };
 
-const stage = basicMap;
+const {
+    space: SPACE,
+    land: LAND,
+    rock: ROCK,
+    thorn: THORN,
+    goal: GOAL,
+    spikeTrap: SPIKE_TRAP,
+    skeleton: SKELETON,
+} = MapType;
+
+const stage = () => {
+	return [
+		[LAND, SPACE, SPACE, LAND, LAND, LAND],
+		[LAND, LAND, LAND, LAND, ROCK, LAND],
+		[SPACE, LAND, SPACE, THORN, LAND, SPACE],
+		[LAND, LAND, LAND, LAND, SPIKE_TRAP, LAND],
+		[LAND, ROCK, SPIKE_TRAP, SKELETON, SKELETON, SKELETON],
+		[THORN, SPACE, LAND, LAND, LAND, GOAL]
+	];
+}
 
 const HamTaker = () => {
 	const distance = 50;
@@ -225,7 +244,7 @@ const HamTaker = () => {
 			<iframe
 				width="100"
 				height=" 100"
-				src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;playlist=lDZnM3Uuq0E&amp;loop=1"
+				src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				style={{ position: "absolute", right: 0, zIndex: 998 }}
 			/>

@@ -14,13 +14,6 @@
         opacity: 1;
     }
     
-    .pictureGridTitle:after {
-        content: 'loading...';
-        display: block;
-        color: #ffffff;
-        font-size: calc(2vw + 2vh);
-    }
-    
     .pictureGridWrap {
         display: none;
         flex-wrap: wrap;

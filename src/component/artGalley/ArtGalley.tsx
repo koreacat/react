@@ -33,9 +33,6 @@ const ArtGalley = () => {
                     <p onClick={() => { setArtGalleyState(<Carousel />); goToGalley(); }}>Carousel</p>
                     <p onClick={() => { setArtGalleyState(<PictureGrid />); goToGalley(); }}>Picture Grid</p>
                     <p onClick={() => { setArtGalleyState(<PokemonPlus />); goToGalley(); }}>Pokemon Plus</p>
-                    <p onClick={() => { }}>Drive</p>
-                    <p onClick={() => { }}>Cube</p>
-                    <p onClick={() => { }}>f</p>
                 </div>
             </div>
             <div ref={artGalleyWrap} className={'artGalleyWrap'} >

@@ -168,7 +168,6 @@ const Clock = () => {
         <div className={'clock'}>
             <div className={'clockWrap'}>
                 <AnalogClock date={date}/>
-                <DigitalClock date={date}/>
                 <DigilogClocks date={date} digilogClockList={digilogClockList}/>
                 <KoreanClock date={date}/>
             </div>
