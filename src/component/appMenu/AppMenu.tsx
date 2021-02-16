@@ -5,6 +5,9 @@ import HamderTale from '../hamderTale/HamderTale';
 import HamTaker from '../hamTaker/HamTaker';
 import Canvas from '../canvas/App';
 import ArtGalley from "../artGalley/ArtGalley";
+import Profile from "../profile/Profile";
+import HamkestDungeon from "../hamkestDungeon/HamkestDungeon";
+import Matterjs from "../matterjs/Matterjs";
 
 const AppIcon = ({title, img, onClick}: any) => {
     const style = {
@@ -29,14 +32,15 @@ const AppMenu = ({setAppState}: any) => {
 
     return (
         <div ref={appMenu} className={'appMenu'} onWheel={scrollEvent}>
-            <AppIcon title={'profile'} img={'default_icon.png'} onClick={() => {setAppState(<div/>)}}/>
-            <AppIcon title={'clocks'} img={'clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
+            <AppIcon title={'profile'} img={'default_icon.png'} onClick={() => {setAppState(<Profile/>)}}/>
+			<AppIcon title={'matterjs'} img={'default_icon.png'} onClick={() => {setAppState(<Matterjs/>)}}/>
+			<AppIcon title={'hamkest Dungeon'} img={'hamkestDungeon_icon.jpg'} onClick={() => {setAppState(<HamkestDungeon/>)}}/>
             <AppIcon title={'hamTaker'} img={'hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
-            <AppIcon title={'artGalley'} img={'artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
-            <AppIcon title={'canvas'} img={'canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
             <AppIcon title={'hamderTale'} img={'hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>
-            
-        </div>
+			<AppIcon title={'artGalley'} img={'artGalley_icon.jpg'} onClick={() => {setAppState(<ArtGalley/>)}}/>
+			<AppIcon title={'clocks'} img={'clock_icon.jpg'} onClick={() => {setAppState(<Clock/>)}}/>
+			<AppIcon title={'canvas'} img={'canvas_icon.png'} onClick={() => {setAppState(<Canvas/>)}}/>
+		</div>
     );
 };
 

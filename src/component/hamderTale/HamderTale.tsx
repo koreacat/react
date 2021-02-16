@@ -39,33 +39,29 @@ const HamderTale = () => {
         window.addEventListener('keydown', (e) => {
             keypress[e.key] = true;
         });
+		window.addEventListener('keyup', (e) => {
+			keypress[e.key] = false;
+		});
         return () => {
             window.removeEventListener('keydown', (e) => {
                 keypress[e.key] = true;
             });
+			window.removeEventListener('keyup', (e) => {
+				keypress[e.key] = false;
+			});
         }
     });
 
-    useEffect(() => {
-        window.addEventListener('keyup', (e) => {
-            keypress[e.key] = false;
-        });
-        return () => {
-            window.removeEventListener('keyup', (e) => {
-                keypress[e.key] = false;
-            });
-        }
-    });
 
     //scenario
     useEffect(() => {
-        const sans = '그냥 본론으로 들어가자구.';
-        let scriptIndex = 1;
         let hp = heartHP;
-        
+
         /*------------------------------------------------------------
         ------------------------ SansScript 00 -----------------------
         ------------------------------------------------------------*/
+		const sans = '그냥 본론으로 들어가자구.';
+		let scriptIndex = 1;
         const timeout00 = setTimeout(() => {
             const interval = setInterval(() => {
                 if(sans != sans.substring(0, scriptIndex)){
@@ -74,13 +70,13 @@ const HamderTale = () => {
                 }
                 setSansScript(sans.substring(0, scriptIndex++));
             }, 100);
-    
+
             setTimeout(() => {
                 clearInterval(interval);
             }, 3500);
         }, 3500);
 
-    
+
         /*------------------------------------------------------------
         ----------------- Pattern 01 - Gaster Blaster ----------------
         ------------------------------------------------------------*/
@@ -96,7 +92,7 @@ const HamderTale = () => {
                     let hurtSound = new Audio(require('../../resources/sound/hamderTale/hurt.wav'));
                     hurtSound.play();
                     hp--;
-                } 
+                }
                 setHeartHP(hp);
             }, 20);
 
@@ -133,7 +129,7 @@ const HamderTale = () => {
                     let hurtSound = new Audio(require('../../resources/sound/hamderTale/hurt.wav'));
                     hurtSound.play();
                     hp--;
-                } 
+                }
                 setHeartHP(hp);
             }, 20);
 
@@ -220,10 +216,10 @@ const HamderTale = () => {
 
     return (
         <div className={'hamderTale'}>
-            <iframe width="100" height="100" 
-                src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;" 
+            <iframe width="100" height="100"
+                src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                style={{position: 'absolute', right: 0, zIndex: 2}} 
+                style={{position: 'absolute', right: 0, zIndex: 2}}
                 />
             <div className={'hamderTaleWrap'}>
                 <div className={'hamderTaleCharacterWrap'}>
