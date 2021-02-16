@@ -39,7 +39,8 @@ const draw = () => {
 
 	worldAddInterval = setInterval(() => {
 		World.add(engine.world, [
-			Bodies.circle(Random.getInteger(40, 550), -100, Random.getInteger(20, 40), options())
+			Bodies.circle(Random.getInteger(40, 550), -100, Random.getInteger(20, 30), options()),
+			Bodies.rectangle(Random.getInteger(40, 550), -100, Random.getInteger(20, 30), Random.getInteger(20, 30), options())
 		]);
 	}, 200);
 
