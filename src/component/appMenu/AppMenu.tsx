@@ -35,7 +35,7 @@ const AppMenu = ({setAppState}: any) => {
         <div ref={appMenu} className={'appMenu'} onWheel={scrollEvent}>
             <AppIcon title={'profile'} img={'default_icon.png'} onClick={() => {setAppState(<Profile/>)}}/>
 			<AppIcon title={'matterjs'} img={'matterjs_icon.png'} onClick={() => {setAppState(<Matterjs/>)}}/>
-			<AppIcon title={'feedingCats'} img={'default_icon.png'} onClick={() => {setAppState(<FeedingCats/>)}}/>
+			<AppIcon title={'feedingCats'} img={'feedingCats_icon.jpg'} onClick={() => {setAppState(<FeedingCats/>)}}/>
 			<AppIcon title={'hamkest Dungeon'} img={'hamkestDungeon_icon.jpg'} onClick={() => {setAppState(<HamkestDungeon/>)}}/>
             <AppIcon title={'hamTaker'} img={'hamTaker_icon.jpg'} onClick={() => {setAppState(<HamTaker/>)}}/>
             <AppIcon title={'hamderTale'} img={'hamderTale_icon.png'} onClick={() => {setAppState(<HamderTale/>)}}/>

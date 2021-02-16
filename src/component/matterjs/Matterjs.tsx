@@ -3,29 +3,29 @@ import './Matterjs.scss';
 import Matter from 'matter-js';
 import Random from "../../common/Random";
 
-const { Engine, Render, Bodies, World, Mouse, MouseConstraint } = Matter;
+const { Engine, Render, Bodies, World, Mouse, MouseConstraint, Composite } = Matter;
 let engine: any, render: any, canvas: any = null;
-let worldAddInterval: any, worldClearInterval: any = null;
+let worldAddInterval: any, worldAddStopTimeout: any = null;
 let mouse: any, mouseConstraint: any = null;
+
+const ground = Bodies.rectangle(150, 495, 280, 5, {isStatic: true});
+const wallA = Bodies.rectangle(5, 250, 5, 550, {isStatic: true});
+const wallB = Bodies.rectangle(295, 250, 5, 550, {isStatic: true});
 
 const init = () => {
 	canvas = document.getElementById('matterjsCanvas');
 	while (canvas.hasChildNodes()) canvas.removeChild(canvas.firstChild);
 	engine = Engine.create();
 	render = Render.create({element: canvas, engine: engine, options: {
-			width: 600,
+			width: 300,
 			height: 500,
 			wireframes: false
 		}
 	});
+	World.add(engine.world, [ground, wallA, wallB]);
 };
 
 const draw = () => {
-	let ground = Bodies.rectangle(300, 480, 600, 50, {isStatic: true});
-	let wallA = Bodies.rectangle(10, 250, 50, 500, {isStatic: true});
-	let wallB = Bodies.rectangle(590, 250, 50, 500, {isStatic: true});
-	World.add(engine.world, [ground, wallA, wallB]);
-
 	const options = () => {
 		return {
 			restitution: 1.0,
@@ -37,16 +37,18 @@ const draw = () => {
 		}
 	};
 
+	clearInterval(worldAddInterval);
 	worldAddInterval = setInterval(() => {
 		World.add(engine.world, [
-			Bodies.circle(Random.getInteger(40, 550), -100, Random.getInteger(20, 30), options()),
-			Bodies.rectangle(Random.getInteger(40, 550), -100, Random.getInteger(20, 30), Random.getInteger(20, 30), options())
+			Bodies.circle(Random.getInteger(50, 240), -10, Random.getInteger(20, 30), options()),
+			Bodies.rectangle(Random.getInteger(50, 240), -10, Random.getInteger(20, 30), Random.getInteger(20, 30), options())
 		]);
 	}, 200);
 
-	worldClearInterval = setInterval(() => {
-		clear();
-	}, 20000);
+	clearTimeout(worldAddStopTimeout);
+	worldAddStopTimeout = setTimeout(() => {
+		clearInterval(worldAddInterval);
+	}, 10000);
 };
 
 const event = () => {
@@ -78,6 +80,17 @@ const clear = () => {
 	event();
 };
 
+const flush = () => {
+	clearInterval(worldAddInterval);
+	Composite.remove(engine.world, ground);
+};
+
+const block = () => {
+	draw();
+	Composite.remove(engine.world, ground);
+	World.add(engine.world, ground);
+};
+
 const Matterjs = () => {
 	useEffect(() => {
 		init();
@@ -87,7 +100,6 @@ const Matterjs = () => {
 
 		return () => {
 			clearInterval(worldAddInterval);
-			clearInterval(worldClearInterval);
 		}
 	}, []);
 
@@ -95,6 +107,10 @@ const Matterjs = () => {
 		<div className={'matterjs'}>
 			<div className={'matterjsWrap'}>
 				<div id={'matterjsCanvas'} className={'matterjsCanvas'} />
+				<div>
+					<button onClick={flush}>flush</button>
+					<button onClick={block}>block</button>
+				</div>
 			</div>
 		</div>
 	)

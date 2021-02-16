@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './FeedingCats.scss';
 
+let canvas: any = null;
+
 const FeedingCats = () => {
+    useEffect(() => {
+        canvas = document.getElementById('feedingCatsCanvas');
+    })
+
 
     return (
         <div className={'feedingCats'}>
 			<div className={'feedingCatsWrap'}>
-                cat
+                <canvas id={'feedingCatsCanvas'}></canvas>
             </div>
         </div>
     )
