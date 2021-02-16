@@ -13,21 +13,6 @@
         flex-wrap: wrap;
         overflow: hidden;
 
-        .digitalClock {
-            color: white;
-            text-align: center;
-            margin: 20px;
-
-            p {
-                font-weight: 900;
-
-                > span {
-                    display: block;
-                    margin-bottom: 5px;
-                }
-            }
-        }
-
         .analogClock {
             position: relative;
             width: 100px;

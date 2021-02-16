@@ -1,5 +1,5 @@
 import CanvasRootStore from './CanvasRootStore';
-import { autorun, computed, observable, reaction } from "mobx";
+import { computed, observable } from "mobx";
 import { Coordinate } from "../type";
 
 const START: Coordinate = {

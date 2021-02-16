@@ -64,7 +64,7 @@ const HamderTale = () => {
 		let scriptIndex = 1;
         const timeout00 = setTimeout(() => {
             const interval = setInterval(() => {
-                if(sans != sans.substring(0, scriptIndex)){
+                if(sans !== sans.substring(0, scriptIndex)){
                     let sansSound = new Audio(require('../../resources/sound/hamderTale/sans.wav'));
                     sansSound.play();
                 }
@@ -148,7 +148,7 @@ const HamderTale = () => {
             clearTimeout(timeout01);
             clearTimeout(timeout02);
         });
-    }, [top, left]);
+    }, [top, left, heartHP]);
 
     const setGasterBlasterAnimation01 = () => {
         let gasterBlasterSound = new Audio(require('../../resources/sound/hamderTale/gasterBlaster.mp3'));
@@ -216,7 +216,7 @@ const HamderTale = () => {
 
     return (
         <div className={'hamderTale'}>
-            <iframe width="100" height="100"
+            <iframe width="100" height="100" title="hamderTale"
                 src="https://www.youtube.com/embed/H0YDbhBNJfY?amp;autoplay=1&amp;"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style={{position: 'absolute', right: 0, zIndex: 2}}

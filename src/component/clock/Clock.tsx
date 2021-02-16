@@ -56,17 +56,6 @@ const KoreanClock = (({date}: clockProps) => {
     );
 });
 
-const DigitalClock = ({date}: clockProps) => {
-    return (
-        <div className={'digitalClock'}>
-            <p>
-                <span>{DateFormat(date, 'a/p hh:mm:ss')}</span>
-                <span>{DateFormat(date, 'yyyy-MM-dd ES')}</span>
-            </p>
-        </div>
-    )
-};
-
 const AnalogClock = ({date}: clockProps) => {
     const h_s = date.getHours() * 60 * 60;
     const m_s = date.getMinutes() * 60;

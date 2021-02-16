@@ -1,14 +1,15 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import Random from "../../../../common/Random";
 import BGMButton from "../../../bgmButton/BGMButton";
 import './Carousel.scss';
+let currdeg = 0;
+let movable = false;
+let previousX = 0;
+let direction = -1;
+
 const Carousel = () => {
     const carousel: any = useRef(null);
-    let currdeg = 0;
-    let movable = false;
-    let previousX = 0;
-    let direction = -1;
-
+    
     useEffect(() => {
         const interval = setInterval(() => {
             currdeg += direction;

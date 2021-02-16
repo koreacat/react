@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './App.scss';
 import './font.scss';
 import AppMenu from './component/appMenu/AppMenu';
-import Matterjs from "./component/matterjs/Matterjs";
+import FeedingCats from './component/feedingCats/FeedingCats';
 
 function App() {
-  const [appState, setAppState] = useState(<Matterjs/>);
+  const [appState, setAppState] = useState(<FeedingCats/>);
 
   return (
     <div className={'app'}>

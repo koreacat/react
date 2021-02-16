@@ -242,6 +242,7 @@ const HamTaker = () => {
 	return (
 		<div className={"hamTaker"}>
 			<iframe
+				title="hamTaker"
 				width="100"
 				height=" 100"
 				src="https://www.youtube.com/embed/TzJW3OUSxKs?amp;autoplay=1&amp;"
