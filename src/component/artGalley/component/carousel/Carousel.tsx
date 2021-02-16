@@ -102,12 +102,12 @@ const Carousel = () => {
             onTouchEnd={onTouchEnd}>
             <div ref={carousel} className={'carouselWrap'}>
                 <div className={'carouselItem'}>
-                    <p className={'a'} >{Random.getInteger(10)}</p>
-                    <p className={'b'} >{Random.getInteger(10)}</p>
-                    <p className={'c'} >{Random.getInteger(10)}</p>
-                    <p className={'d'} >{Random.getInteger(10)}</p>
-                    <p className={'e'} >{Random.getInteger(10)}</p>
-                    <p className={'f'} >{Random.getInteger(10)}</p>
+                    <p className={'a'} >{Random.getInteger(0, 10)}</p>
+                    <p className={'b'} >{Random.getInteger(0, 10)}</p>
+                    <p className={'c'} >{Random.getInteger(0, 10)}</p>
+                    <p className={'d'} >{Random.getInteger(0, 10)}</p>
+                    <p className={'e'} >{Random.getInteger(0, 10)}</p>
+                    <p className={'f'} >{Random.getInteger(0, 10)}</p>
                 </div>
             </div>
             <button className={'carouselPrev'} onClick={prev}>prev</button>

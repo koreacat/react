@@ -38,7 +38,7 @@ const PictureGrid = () => {
             pictures.forEach((item: any, i: number) => {
                 setTimeout(() => {
                     item.style.opacity = 1;
-                    item.style.backgroundImage = pictureUrl[Random.getInteger(pictureUrl.length)];
+                    item.style.backgroundImage = pictureUrl[Random.getInteger(0, pictureUrl.length)];
                 }, 100 * (i % 10) + (i * 10));
                 setTimeout(() => {
                     item.style.opacity = 0;

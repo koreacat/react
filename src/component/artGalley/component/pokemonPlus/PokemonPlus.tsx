@@ -8,7 +8,7 @@ const PokemonPlus = () => {
 
 	const click = () => {
 		if(circleAnimation !== '') return;
-		Random.getInteger(100) > 40 ? setCircleAnimation('red  1.0s') : setCircleAnimation('rainbow 1.5s ease-in-out');
+		Random.getInteger(0, 100) > 40 ? setCircleAnimation('red  1.0s') : setCircleAnimation('rainbow 1.5s ease-in-out');
 		setTimeout(() => {
 			setCircleAnimation('');
 		}, 1500)
