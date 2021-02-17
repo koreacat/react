@@ -85,7 +85,7 @@ const flush = () => {
 	Composite.remove(engine.world, ground);
 };
 
-const block = () => {
+const fill = () => {
 	draw();
 	Composite.remove(engine.world, ground);
 	World.add(engine.world, ground);
@@ -109,7 +109,7 @@ const Matterjs = () => {
 				<div id={'matterjsCanvas'} className={'matterjsCanvas'} />
 				<div>
 					<button onClick={flush}>flush</button>
-					<button onClick={block}>block</button>
+					<button onClick={fill}>fill</button>
 				</div>
 			</div>
 		</div>

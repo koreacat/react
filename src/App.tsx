@@ -6,7 +6,7 @@ import FeedingCats from './component/feedingCats/FeedingCats';
 import Matterjs from './component/matterjs/Matterjs';
 
 function App() {
-  const [appState, setAppState] = useState(<Matterjs/>);
+  const [appState, setAppState] = useState(<FeedingCats/>);
 
   return (
     <div className={'app'}>
