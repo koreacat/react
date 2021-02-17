@@ -35,23 +35,27 @@ const HamderTale = () => {
         }
     }, [top, left]);
 
-    useEffect(() => {
-        window.addEventListener('keydown', (e) => {
-            keypress[e.key] = true;
-        });
+	useEffect(() => {
+		window.addEventListener('keydown', (e) => {
+			keypress[e.key] = true;
+		});
+		return () => {
+			window.removeEventListener('keydown', (e) => {
+				keypress[e.key] = true;
+			});
+		}
+	});
+
+	useEffect(() => {
 		window.addEventListener('keyup', (e) => {
 			keypress[e.key] = false;
 		});
-        return () => {
-            window.removeEventListener('keydown', (e) => {
-                keypress[e.key] = true;
-            });
+		return () => {
 			window.removeEventListener('keyup', (e) => {
 				keypress[e.key] = false;
 			});
-        }
-    });
-
+		}
+	});
 
     //scenario
     useEffect(() => {
@@ -148,7 +152,7 @@ const HamderTale = () => {
             clearTimeout(timeout01);
             clearTimeout(timeout02);
         });
-    }, [top, left, heartHP]);
+    }, [top, left]);
 
     const setGasterBlasterAnimation01 = () => {
         let gasterBlasterSound = new Audio(require('../../resources/sound/hamderTale/gasterBlaster.mp3'));

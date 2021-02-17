@@ -5,6 +5,7 @@ let canvas: any = null;
 let c: any = null;
 let projectTiles: any = null;
 let player: any = null;
+let speed: number = 100;
 
 class Player {
     x: number;
@@ -38,7 +39,7 @@ class Projectile {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color; 
+        this.color = color;
         this.velocity = velocity;
     }
 
@@ -51,8 +52,8 @@ class Projectile {
 
     update() {
         this.draw();
-        this.x = this.x + this.velocity.x;
-        this.y = this.y + this.velocity.y;
+        this.x = this.x + this.velocity.x * speed;
+        this.y = this.y + this.velocity.y * speed;
     }
 }
 
@@ -67,45 +68,52 @@ function animate() {
 }
 
 const event = () => {
-    window.addEventListener('click', (e) => {
+	let intervalId: any;
+    window.addEventListener('mousedown', (e) => {
         const angle = Math.atan2(
             e.clientY - canvas.height / 2,
             e.clientX - canvas.width / 2
-        )
+        );
 
         const velocity = {
             x: Math.cos(angle),
             y: Math.sin(angle)
-        }
+        };
 
-        projectTiles.push(new Projectile(
-            canvas.width / 2,
-            canvas.height / 2,
-            5,
-            'red',
-            velocity
-        ))
+		intervalId = setInterval(() => {
+			projectTiles.push(new Projectile(
+				canvas.width / 2,
+				canvas.height / 2,
+				5,
+				'#fff',
+				velocity
+			))
+		}, 200);
     })
-}
+
+	window.addEventListener('mouseup', (e) => {
+		clearInterval(intervalId);
+	})
+};
 
 const FeedingCats = () => {
-    
+
     useEffect(() => {
         canvas = document.getElementById('feedingCatsCanvas');
-        canvas.width = 300;
-        canvas.height = 500;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         c = canvas.getContext('2d');
 
         const x = canvas.width / 2;
         const y = canvas.height / 2;
-        player = new Player(x, y, 30, 'blue');
+        player = new Player(x, y, 30, 'green');
         player.draw();
         projectTiles = [];
 
 
         event();
         animate();
-    })
+    });
 
     return (
         <div className={'feedingCats'}>
@@ -114,6 +122,6 @@ const FeedingCats = () => {
             </div>
         </div>
     )
-}
+};
 
 export default FeedingCats;
