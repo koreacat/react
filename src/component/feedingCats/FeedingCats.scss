@@ -14,7 +14,13 @@
         top: 0;
         overflow: hidden;
         
-        color: white;
-        
+        .feedingCatsScore {
+            position: fixed;
+            color: white;
+        }
+
+        button {
+            color: #fff;
+        }
     }
 }
