@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './FeedingCats.scss';
 import gsap from 'gsap';
 
-let x = 0; 
+let x = 0;
 let y = 0;
 
 let canvas: any = null;
@@ -140,7 +140,7 @@ class Particle {
 let animationId: any = null;
 function animate() {
     animationId = requestAnimationFrame(animate);
-    c.fillStyle = 'rgba(0, 0, 0, 0.1)'
+    c.fillStyle = 'rgba(0, 0, 0, 0.1)';
     c.fillRect(0, 0, canvas.width, canvas.height);
     player.draw();
 
@@ -157,7 +157,7 @@ function animate() {
 
         //remove from edges of screen
         if(
-            projectTile.x - projectTile.radius < 0 || 
+            projectTile.x - projectTile.radius < 0 ||
             projectTile.x - projectTile.radius > canvas.width ||
             projectTile.y + projectTile.radius < 0 ||
             projectTile.y - projectTile.raius > canvas.height
@@ -184,14 +184,14 @@ function animate() {
 
             //touch enemy
             if(dist - enemy.radius - projectile.radius < 1) {
-                
+
                 for(let i = 0; i < enemy.radius * 2; i++) {
                     particles.push(
                         new Particle(
-                            projectile.x, 
+                            projectile.x,
                             projectile.y,
                             Math.random() * 2,
-                            enemy.color, 
+                            enemy.color,
                             {
                                 x: (Math.random() - 0.5) * (Math.random() * 6),
                                 y: (Math.random() - 0.5) * (Math.random() * 6)
@@ -206,7 +206,7 @@ function animate() {
 
                     gsap.to(enemy, {
                         radius: enemy.radius - 10
-                    })
+                    });
                     setTimeout(() => {
                         projectTiles.splice(projectileIndex, 1)
                     }, 0)
@@ -219,7 +219,7 @@ function animate() {
                         projectTiles.splice(projectileIndex, 1)
                     }, 0)
                 }
-            } 
+            }
         });
     });
 }
@@ -238,16 +238,16 @@ function spawnEnemies() {
             x = Math.random() * canvas.width;
             y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
         }
-        
 
-        const color = `hsl(${Math.random() * 360}, 50%, 50%)`
 
-        const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x)
+        const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+
+        const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
 
         const velocity = {
             x: Math.cos(angle),
             y: Math.sin(angle)
-        }
+        };
 
         enemies.push(new Enemy(x, y, radius, color, velocity));
     }, 1000);
@@ -351,7 +351,7 @@ const FeedingCats = () => {
                     <span id={'feedingCatsScoreEl'}>0</span>
                     <button id={'startGameBtn'} style={{display: 'none'}}>restart</button>
                 </div>
-                <canvas id={'feedingCatsCanvas'}></canvas>
+                <canvas id={'feedingCatsCanvas'} />
             </div>
         </div>
     )
