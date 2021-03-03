@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import './FeedingCats.scss';
 import gsap from 'gsap';
 
+let feedingCats: any = null;
+
 let x = 0;
 let y = 0;
 
@@ -138,6 +140,7 @@ class Particle {
 }
 
 let animationId: any = null;
+
 function animate() {
     animationId = requestAnimationFrame(animate);
     c.fillStyle = 'rgba(0, 0, 0, 0.1)';
@@ -264,64 +267,40 @@ function init() {
     startGameBtn.style.display = 'none';
 }
 
+let clickEvent = (e: any) => {
+    const angle = Math.atan2(
+        e.clientY - canvas.height / 2,
+        e.clientX - canvas.width / 2
+    );
+
+    const velocity = {
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
+
+	projectTiles.push(new Projectile(
+		canvas.width / 2,
+		canvas.height / 2,
+		5,
+		'#fff',
+		velocity
+	))
+};
+
 const event = () => {
-    window.addEventListener('click', (e) => {
-        const angle = Math.atan2(
-            e.clientY - canvas.height / 2,
-            e.clientX - canvas.width / 2
-        );
-
-        const velocity = {
-            x: Math.cos(angle),
-            y: Math.sin(angle)
-        };
-
-		projectTiles.push(new Projectile(
-			canvas.width / 2,
-			canvas.height / 2,
-			5,
-			'#fff',
-			velocity
-		))
-    })
-
+    feedingCats.addEventListener('click', (e: any) => clickEvent(e))
     startGameBtn.addEventListener('click', () => {
         init();
         animate();
         spawnEnemies();
     });
-
-	// let intervalId: any;
-    // window.addEventListener('mousedown', (e) => {
-    //     const angle = Math.atan2(
-    //         e.clientY - canvas.height / 2,
-    //         e.clientX - canvas.width / 2
-    //     );
-
-    //     const velocity = {
-    //         x: Math.cos(angle),
-    //         y: Math.sin(angle)
-    //     };
-
-	// 	intervalId = setInterval(() => {
-	// 		projectTiles.push(new Projectile(
-	// 			canvas.width / 2,
-	// 			canvas.height / 2,
-	// 			5,
-	// 			'#fff',
-	// 			velocity
-	// 		))
-	// 	}, 200);
-    // })
-
-	// window.addEventListener('mouseup', (e) => {
-	// 	clearInterval(intervalId);
-	// })
 };
 
 const FeedingCats = () => {
 
     useEffect(() => {
+        feedingCats = document.getElementById('feedingCats');
+        feedingCats.removeEventListener('click', clickEvent);
         canvas = document.getElementById('feedingCatsCanvas');
         feedingCatsScoreEl = document.getElementById('feedingCatsScoreEl');
         startGameBtn = document.getElementById('startGameBtn');
@@ -341,10 +320,16 @@ const FeedingCats = () => {
         event();
         animate();
         spawnEnemies();
-    });
+
+        return (() => {
+            feedingCats.removeEventListener('click', clickEvent);
+            cancelAnimationFrame(animationId);
+            clearInterval(spawnEnemiesIntervalId);
+        })
+    }, []);
 
     return (
-        <div className={'feedingCats'}>
+        <div className={'feedingCats'} id={'feedingCats'}>
 			<div className={'feedingCatsWrap'}>
                 <div className={'feedingCatsScore'}>
                     <span>Score: </span>

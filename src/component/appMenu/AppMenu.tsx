@@ -5,7 +5,6 @@ import HamderTale from '../hamderTale/HamderTale';
 import HamTaker from '../hamTaker/HamTaker';
 import Canvas from '../canvas/App';
 import ArtGalley from "../artGalley/ArtGalley";
-import Profile from "../profile/Profile";
 import HamkestDungeon from "../hamkestDungeon/HamkestDungeon";
 import Matterjs from "../matterjs/Matterjs";
 import FeedingCats from '../feedingCats/FeedingCats';
