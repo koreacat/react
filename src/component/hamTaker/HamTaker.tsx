@@ -21,12 +21,14 @@ const {
 
 const stage = () => {
 	return [
-		[LAND, SPACE, SPACE, LAND, LAND, LAND],
-		[LAND, LAND, LAND, LAND, ROCK, LAND],
-		[SPACE, LAND, SPACE, THORN, LAND, SPACE],
-		[LAND, LAND, LAND, LAND, SPIKE_TRAP, LAND],
-		[LAND, ROCK, SPIKE_TRAP, SKELETON, SKELETON, SKELETON],
-		[THORN, SPACE, LAND, LAND, LAND, GOAL]
+		[LAND, THORN, SPACE, LAND, LAND, LAND],
+		[LAND, ROCK, LAND, LAND, ROCK, LAND],
+		[LAND, LAND, SPACE, THORN, SPIKE_TRAP, THORN],
+		[SPIKE_TRAP, SKELETON, LAND, ROCK, LAND, SPIKE_TRAP],
+		[THORN, SKELETON, LAND, LAND, ROCK, LAND],
+		[SPIKE_TRAP, SPACE, THORN, SPACE, SPIKE_TRAP, ROCK],
+		[THORN, SKELETON, ROCK, THORN, ROCK, LAND],
+		[SPIKE_TRAP, LAND, LAND, ROCK, LAND, GOAL]
 	];
 }
 
@@ -34,7 +36,7 @@ const HamTaker = () => {
 	const distance = 50;
 	const [clear, setClear] = useState(false);
 	const [coordinates, setCoordinates] = useState(startPoint);
-	const [life, setLife] = useState(10);
+	const [life, setLife] = useState(20);
 	const [spike, setSpike] = useState(false);
 	const [failHeight, setFailHeight] = useState("0");
 	const [failOpacity, setFailOpacity] = useState("0");
@@ -192,7 +194,7 @@ const HamTaker = () => {
 		failAnimation();
 		setTimeout(function () {
 			setData(stage);
-			setLife(10);
+			setLife(20);
 			setCoordinates({ x: 0, y: 0 });
 			setClear(false);
 			setSpike(false);
