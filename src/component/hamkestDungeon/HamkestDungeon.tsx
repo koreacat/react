@@ -6,7 +6,7 @@ const HamkestDungeon = () => {
 	return (
 		<div className={'hamkestDungeon'}>
 			<div className={'hamkestDungeonWrap'}>
-				hamkest
+				hamkest developing...
 			</div>
 		</div>
 	)
