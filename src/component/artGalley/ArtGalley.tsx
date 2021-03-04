@@ -3,6 +3,7 @@ import './ArtGalley.scss';
 import PictureGrid from "./component/pictureGrid/PictureGrid";
 import Carousel from "./component/carousel/Carousel";
 import PokemonPlus from "./component/pokemonPlus/PokemonPlus";
+import PopCat from "./component/popCat/PopCat";
 
 const ArtGalley = () => {
     const [artGalleyState, setArtGalleyState] = useState(<></>);
@@ -31,6 +32,7 @@ const ArtGalley = () => {
             <div ref={artGalleyMenuWrap} className={'artGalleyMenuWrap'}>
                 <div className={'artGalleyMenu'}>
                     <p onClick={() => { setArtGalleyState(<Carousel />); goToGalley(); }}>Carousel</p>
+                    <p onClick={() => { setArtGalleyState(<PopCat />); goToGalley(); }}>Pop Cat</p>
                     <p onClick={() => { setArtGalleyState(<PictureGrid />); goToGalley(); }}>Picture Grid</p>
                     <p onClick={() => { setArtGalleyState(<PokemonPlus />); goToGalley(); }}>Pokemon Plus</p>
                 </div>
